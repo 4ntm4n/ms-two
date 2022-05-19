@@ -9,6 +9,11 @@ legend {
     display: flex;
 }
 
+.flex-container{
+    max-width: 950px;
+    flex-flow: row wrap;
+}
+
 .input-fields {
     margin: 0.3em 0 1em 0;
 }
@@ -36,3 +41,15 @@ legend {
 #prio-box {
     margin-bottom: 1em;
 }
+
+
+/* notes-section -------------------------------------- */
+
+#notes-section {
+    flex-direction: column;
+}
+
+.note {
+    
+}
+
