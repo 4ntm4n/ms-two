@@ -1,17 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="create post-it notes, digital post-it notes, organize, post-it, agile ,create">
+    <meta name="description" content="create sticky-notes, digital sticky-notes, organize, post-it, agile ,create">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- script in head uses defer attr, to load after html content to increase speed by parallel load, see: https://www.w3schools.com/tags/att_script_defer.asp-->
     <script src="assets/js/script.js" defer></script>
     <title>Document</title>
 </head>
+
 <body>
-    
+
+    <head>
+        <h1>Notes</h1>
+
+
+        <form id="notes-input" class="flexbox" type="POST">
+            <h2>create a sticky note</h2>
+            <fieldset class ="flexbox">
+                <legend>Sticky Note Generator</legend>
+
+                <label for="tite-input">Title</label>
+                <input class="input-fields" value="name your sticky note" type="text" id="title-input">
+
+                <label for="content-input">Content</label>
+                <textarea class="input-fields" name="" id="content-input" cols="30" rows="10"></textarea>
+                
+                <input type="submit">
+            </fieldset>
+
+        </form>
+    </head>
+    <section>
+        <ul>
+            <li>
+                <h3 class ="note-title" id="unique-note-title">sticky note title</h3>
+                <p class ="note-content" id="unique-note-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quisquam iusto, maiores
+                    perspiciatis quos, nesciunt sed qui officia nisi eligendi eum sapiente quidem enim molestiae! Maxime
+                    saepe nostrum libero eos.</p>
+
+                    <span class ="note-id" id="unique-note-id">1002</span>
+            </li>
+        </ul>
+    </section>
+    <footer>
+        copyright &copy; Anton Askling 2022
+    </footer>
 </body>
+
 </html>
