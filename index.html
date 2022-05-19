@@ -20,15 +20,15 @@
 
 
         <form id="notes-input" class="flexbox" type="POST">
-            <h2>create a sticky note</h2>
+            
             <fieldset class ="flexbox">
                 <legend>Sticky Note Generator</legend>
 
                 <label for="tite-input">Title</label>
-                <input class="input-fields" value="name your sticky note" type="text" id="title-input">
+                <input class="input-fields" placeholder="name your sticky note" type="text" id="title-input" required>
 
                 <label for="content-input">Content</label>
-                <textarea class="input-fields" name="" id="content-input" cols="30" rows="10"></textarea>
+                <textarea class="input-fields" name="" id="content-input" placeholder="add your content here" maxlength="99" required></textarea>
                 
                 <input type="submit">
             </fieldset>
@@ -36,9 +36,10 @@
         </form>
     </head>
     <section>
+            <h2>your sticky notes lands here</h2>
         <ul>
-            <li>
-                <h3 class ="note-title" id="unique-note-title">sticky note title</h3>
+            <li class="">
+                <h3 class ="note-title" id="unique-note-title">example sticky note</h3>
                 <p class ="note-content" id="unique-note-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quisquam iusto, maiores
                     perspiciatis quos, nesciunt sed qui officia nisi eligendi eum sapiente quidem enim molestiae! Maxime
                     saepe nostrum libero eos.</p>
