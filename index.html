@@ -20,31 +20,38 @@
 
 
         <form id="notes-input" class="flexbox" type="POST">
-            
-            <fieldset class ="flexbox">
+
+            <fieldset class="flexbox">
                 <legend>Sticky Note Generator</legend>
 
                 <label for="tite-input">Title</label>
                 <input class="input-fields" placeholder="name your sticky note" type="text" id="title-input" required>
 
                 <label for="content-input">Content</label>
-                <textarea class="input-fields" name="" id="content-input" placeholder="add your content here" maxlength="99" required></textarea>
-                
-                <input type="submit">
+                <textarea class="input-fields" name="" id="content-input" placeholder="add your content here"
+                    maxlength="99" required></textarea>
+
+                <div id="prio-box">
+                    <label for="input-checkbox"> prioritize this sticky</label>
+                    <input type="checkbox">
+                </div>
+
+                <input id="input-submit" type="submit" value="create a sticky note">
             </fieldset>
 
         </form>
     </head>
     <section>
-            <h2>your sticky notes lands here</h2>
+        <h2>your sticky notes lands here</h2>
         <ul>
             <li class="">
-                <h3 class ="note-title" id="unique-note-title">example sticky note</h3>
-                <p class ="note-content" id="unique-note-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quisquam iusto, maiores
+                <h3 class="note-title" id="unique-note-title">example sticky note</h3>
+                <p class="note-content" id="unique-note-content">Lorem, ipsum dolor sit amet consectetur adipisicing
+                    elit. Tenetur quisquam iusto, maiores
                     perspiciatis quos, nesciunt sed qui officia nisi eligendi eum sapiente quidem enim molestiae! Maxime
                     saepe nostrum libero eos.</p>
 
-                    <span class ="note-id" id="unique-note-id">1002</span>
+                <span class="note-id" id="unique-note-id">1002</span>
             </li>
         </ul>
     </section>

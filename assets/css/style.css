@@ -32,3 +32,7 @@ legend {
     height: 100px;
     resize: none;
 }
+
+#prio-box {
+    margin-bottom: 1em;
+}
