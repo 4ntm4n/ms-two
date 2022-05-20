@@ -40,9 +40,21 @@ const noteMaker = (title, content, prio) => {
     }
 }
 
+// this function takes an array as argument and loops through it and append it to the DOM.
 const renderNotes = (array) => {
+    const notesList = document.getElementById('notes-list'); 
+    notesList.innerHTML = '';
+    let arrayIndex = array.length -1; // find array index of each object when looped.
+
     for (let i = 0; i < array.length; i++)  {
-        console.log(array[i].title)
+        li = document.createElement('li');  // create a list element for each object in array.
+        li.classList.add('note');
+        li.innerHTML =`
+            <h3 class="note-title" >${array[i].title}</h3>
+            <p class="note-content">${array[i].content}</p>
+            <span class="note-id"> num123 change this </span>
+        `
+        notesList.appendChild(li);
     }
 }
 
