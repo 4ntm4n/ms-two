@@ -40,5 +40,14 @@ const noteMaker = (title, content, prio) => {
     }
 }
 
+const renderNotes = (array) => {
+    for (let i = 0; i < array.length; i++)  {
+        console.log(array[i].title)
+    }
+}
+
 const form = document.getElementById('notes-input');
 form.addEventListener('submit', handleSubmit);
+
+
+
