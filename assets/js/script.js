@@ -10,16 +10,16 @@ const handleSubmit = (event) => {
     const formCheckbox = document.getElementById('input-checkbox');
     let isPrio;
 
-    //control if checkbox is checked and sends input data to the noteMaker()=>
+    //control if checkbox is checked  and sends input data to the noteMaker()=>
     formCheckbox.checked ? isPrio = true : isPrio = false;
     noteMaker(formTitle.value, formContent.value, isPrio);
 
     form.reset(); // reset the form.
 }
 
-//create a note object ant push it to the myNotes array.
+//create a note object and push it to the myNotes array.
 const noteMaker = (title, content, prio) => {
-    myNotes.push({
+    const note = {
         title,
         content,
         prio,
@@ -29,7 +29,9 @@ const noteMaker = (title, content, prio) => {
             console.log('an id has been set');
             console.log(myNotes[0]);
         }
-    });
+    }
+    //if the note is prio it lands first in the array, else last.
+    note.prio ? myNotes.unshift(note) : myNotes.push(note);
 
     //check if it works
     if(myNotes !== []){
