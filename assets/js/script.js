@@ -53,6 +53,10 @@ const renderNotes = (array) => {
             <p class="note-content">${array[i].content}</p>
             <span class="note-id"> num123 change this </span>
         `
+        li.addEventListener('click',() => {
+            
+            li.remove()
+        }) //todo: add push to deleted array.
         notesList.appendChild(li);
     }
 }
