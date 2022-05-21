@@ -44,7 +44,6 @@ const noteMaker = (title, content, prio) => {
 const renderNotes = (array) => {
     const notesList = document.getElementById('notes-list'); 
     notesList.innerHTML = '';
-    let arrayIndex = array.length -1; // find array index of each object when looped.
 
     for (let i = 0; i < array.length; i++)  {
         li = document.createElement('li');  // create a list element for each object in array.
