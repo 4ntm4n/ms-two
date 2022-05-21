@@ -1,5 +1,6 @@
 //store objects from noteMaker in array
 const myNotes = [];
+const myDelNotes = [];
 
 const handleSubmit = (event) => {
     //prevent default value and save form input data
@@ -38,6 +39,8 @@ const noteMaker = (title, content, prio) => {
         console.log('an object was created with the following id: ' + myNotes[0]._id);
         console.log(myNotes[0].title + " " + myNotes[0].content+ " " + myNotes[0].prio);
     }
+
+    renderNotes(myNotes);
 }
 
 // this function takes an array as argument and loops through it and append it to the DOM.
@@ -54,12 +57,29 @@ const renderNotes = (array) => {
             <span class="note-id"> num123 change this </span>
         `
         li.addEventListener('click',() => {
-            
-            li.remove()
+            deleteNotes(array[i].title, array[i].content, array[i].prio);
+            li.remove();
         }) //todo: add push to deleted array.
         notesList.appendChild(li);
     }
 }
+
+const deleteNotes = (title, content, prio) => {
+    const delNote = {
+        title,
+        content,
+        prio,
+        _id: 1, //do not set directly, use setter method.
+        set id(idNum){
+            this._id = idNum;
+            console.log('an id has been set');
+            console.log(myNotes[0]);
+        }
+    }
+    //if the note is prio it lands first in the array, else last.
+    delNote.prio ? myDelNotes.unshift(delNote) : myDelNotes.push(delNote);
+}
+
 
 const form = document.getElementById('notes-input');
 form.addEventListener('submit', handleSubmit);
