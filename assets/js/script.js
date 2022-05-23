@@ -1,6 +1,6 @@
 //store objects from noteMaker in array
 const myNotes = [];
-const myDelNotes = [{ title: "hello", id: 3 }, {}];
+const myDelNotes = [];
 let nonPrioCount = 1000; // id number for nonPrio-notes will origin from this number
 let prioCount = 999; //id number for Prio-notes will origin from this number
 
@@ -66,6 +66,7 @@ const renderNotes = (array) => {
     btn = document.createElement("button");
     btn.innerHTML = "Remove";
     li.classList.add("note");
+    li.setAttribute('id', array[i]._id)
     li.innerHTML = `
             <h3 class="note-title" >${array[i].title}</h3>
             <p class="note-content">${array[i].content}</p>
@@ -73,7 +74,11 @@ const renderNotes = (array) => {
         `;
     li.appendChild(btn);
     notesList.appendChild(li);
-    btn.addEventListener("click", (i) => removeTask(i)); //todo: add push to deleted array.
+    btn.addEventListener("click", (i) => {
+  
+        //removeTask(i)
+        
+    }); //todo: add push to deleted array.
   }
 };
 
@@ -105,13 +110,19 @@ form.addEventListener("submit", handleSubmit);
 const hej = [1, 2, 4, 5, 6, 7, 8, 9, 10];
 const hejdo = [1, 5, 7, 6];
 
+const fruits = ['banana', 'orange', 'peach', 'sausage', 'pineapple']
+const error = ['brown', 'sausage', 'yellow']
 
+let delIndex;
 //function that compares two arrays and find index of their matches
-const findMatches = (baseArr, compArr) => {
+const findMatch = (baseArr, compArr) => {
   // 1. filter out matches in baseArr and compArr and store it as an array (matches)
   matches = baseArr.filter((noteId) => compArr.includes(noteId));
+  console.log(matches[0]); //log name
+  console.log(baseArr.indexOf(matches[0])); //log index
   
-  //4. store index of found matches in baseArr
+  delIndex = baseArr.indexOf(matches[0])
+  //4. store index of found match in baseArr
   const indexInBaseArr = []; 
   
   //2. loop through matches array
@@ -126,4 +137,16 @@ const findMatches = (baseArr, compArr) => {
 };
 
 //stores return value of fndMatches being called.
-let matchIndex = findMatches(hej, hejdo);
+let matchError = findMatch(fruits, error)
+
+
+const deleteMatch = (baseArr, match) => {
+    console.log(match);
+    console.log(baseArr);
+    baseArr.splice(match, 1);
+    
+    console.log(baseArr);
+
+
+} 
+
