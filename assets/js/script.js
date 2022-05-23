@@ -2,7 +2,7 @@
 const myNotes = [];
 const myDelNotes = [];
 let nonPrioCount = 1000; // id number for nonPrio-notes will origin from this number
-let prioCount = 999; //id number for Prio-notes will origin from this number
+let prioCount = 1000; //id number for Prio-notes will origin from this number
 
 const handleSubmit = (event) => {
   //prevent default value and save form input data
@@ -12,12 +12,18 @@ const handleSubmit = (event) => {
   const formTitle = document.getElementById("title-input");
   const formContent = document.getElementById("content-input");
   const formCheckbox = document.getElementById("input-checkbox");
-  let isPrio;
 
   //control if checkbox is checked  and sends input data to the noteMaker()=>
-  formCheckbox.checked ? (isPrio = true) : (isPrio = false);
-  isPrio ? prioCount-- : nonPrioCount++;
+  let isPrio = false;
+  if (formCheckbox.checked) {
+      isPrio = true;
+      prioCount--
+  }else {
+    isPrio = false
+    nonPrioCount++
+  }
   noteMaker(formTitle.value, formContent.value, isPrio);
+  form.reset()
 };
 
 //create a note object and push it to the myNotes array.
@@ -38,19 +44,11 @@ const noteMaker = (title, content, prio) => {
   if (note.prio) {
     note.id = prioCount;
     myNotes.unshift(note);
+    console.log(`a Prio note was created with id: ${prioCount}`);
   } else {
     note.id = nonPrioCount;
     myNotes.push(note);
-  }
-
-  //check if it works
-  if (myNotes !== []) {
-    console.log(
-      "an object was created with the following id: " + myNotes[0]._id
-    );
-    console.log(
-      myNotes[0].title + " " + myNotes[0].content + " " + myNotes[0].prio
-    );
+    console.log(`a non Prio note was created with id: ${nonPrioCount}`);
   }
 
   renderNotes(myNotes);
@@ -66,7 +64,7 @@ const renderNotes = (array) => {
     btn = document.createElement("button");
     btn.innerHTML = "Remove";
     li.classList.add("note");
-    li.setAttribute('id', array[i]._id)
+    li.setAttribute("id", array[i]._id);
     li.innerHTML = `
             <h3 class="note-title" >${array[i].title}</h3>
             <p class="note-content">${array[i].content}</p>
@@ -75,20 +73,27 @@ const renderNotes = (array) => {
     li.appendChild(btn);
     notesList.appendChild(li);
     btn.addEventListener("click", (i) => {
-  
-        //removeTask(i)
-        
+      removeNote(i);
     }); //todo: add push to deleted array.
   }
 };
 
-function removeTask(i) {
-  /* 2. THE BUTTON IS NOW A CHILD OF THE LI, SO DELETE ITS PARENT */
-  let deleteTask = i.target.parentElement;
-  deleteTask.remove();
+function removeNote(i) {
+  // scrape content off note and make it into an object, before remove note from DOM
+  let deleteDomNote = i.target.parentElement;
+  const domNoteId = Number(i.target.parentNode.id);
+  const domNoteTitle = i.target.parentNode.children[0].textContent;
+  const domNoteContent = i.target.parentNode.children[1].textContent;
+  console.log(`${domNoteId} ${domNoteTitle} ${domNoteContent}`);
+  
+  let wasPrio;
+  domNoteId < 1000 ? (wasPrio = true) : (wasPrio = false);
+  console.log(wasPrio);
+  //deleteNote(domNoteTitle, domNoteContent, wasPrio);
+  deleteDomNote.remove();
 }
 
-const deleteNotes = (title, content, prio) => {
+const deleteNote = (title, content, prio) => {
   const delNote = {
     title,
     content,
@@ -110,8 +115,8 @@ form.addEventListener("submit", handleSubmit);
 const hej = [1, 2, 4, 5, 6, 7, 8, 9, 10];
 const hejdo = [1, 5, 7, 6];
 
-const fruits = ['banana', 'orange', 'peach', 'sausage', 'pineapple']
-const error = ['brown', 'sausage', 'yellow']
+const fruits = ["banana", "orange", "peach", "sausage", "pineapple"];
+const error = ["brown", "sausage", "yellow"];
 
 let delIndex;
 //function that compares two arrays and find index of their matches
@@ -120,33 +125,29 @@ const findMatch = (baseArr, compArr) => {
   matches = baseArr.filter((noteId) => compArr.includes(noteId));
   console.log(matches[0]); //log name
   console.log(baseArr.indexOf(matches[0])); //log index
-  
-  delIndex = baseArr.indexOf(matches[0])
+
+  delIndex = baseArr.indexOf(matches[0]);
   //4. store index of found match in baseArr
-  const indexInBaseArr = []; 
-  
+  const indexInBaseArr = [];
+
   //2. loop through matches array
   for (notes of matches) {
-    //3. push index of matches to indexInBaseArr  
-    indexInBaseArr.push(baseArr.indexOf(notes)); 
+    //3. push index of matches to indexInBaseArr
+    indexInBaseArr.push(baseArr.indexOf(notes));
   }
-  
+
   //5. return array containing index of matches.
   console.log(indexInBaseArr);
   return indexInBaseArr;
 };
 
 //stores return value of fndMatches being called.
-let matchError = findMatch(fruits, error)
-
+let matchError = findMatch(fruits, error);
 
 const deleteMatch = (baseArr, match) => {
-    console.log(match);
-    console.log(baseArr);
-    baseArr.splice(match, 1);
-    
-    console.log(baseArr);
+  console.log(match);
+  console.log(baseArr);
+  baseArr.splice(match, 1);
 
-
-} 
-
+  console.log(baseArr);
+};
