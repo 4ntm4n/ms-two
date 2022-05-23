@@ -16,18 +16,18 @@ const handleSubmit = (event) => {
   //control if checkbox is checked  and sends input data to the noteMaker()=>
   let isPrio = false;
   if (formCheckbox.checked) {
-      isPrio = true;
-      prioCount--
-  }else {
-    isPrio = false
-    nonPrioCount++
+    isPrio = true;
+    prioCount--;
+  } else {
+    isPrio = false;
+    nonPrioCount++;
   }
   noteMaker(formTitle.value, formContent.value, isPrio);
-  form.reset()
+  form.reset();
 };
 
 //create a note object and push it to the myNotes array.
-const noteMaker = (title, content, prio) => {
+const noteMaker = (title, content, prio, _id) => {
   const note = {
     title,
     content,
@@ -85,38 +85,34 @@ function removeNote(i) {
   const domNoteTitle = i.target.parentNode.children[0].textContent;
   const domNoteContent = i.target.parentNode.children[1].textContent;
   console.log(`${domNoteId} ${domNoteTitle} ${domNoteContent}`);
-  
+
   let wasPrio;
   domNoteId < 1000 ? (wasPrio = true) : (wasPrio = false);
   console.log(wasPrio);
-  //deleteNote(domNoteTitle, domNoteContent, wasPrio);
+  deleteNote(domNoteTitle, domNoteContent, wasPrio, domNoteId);
   deleteDomNote.remove();
 }
 
-const deleteNote = (title, content, prio) => {
+const deleteNote = (title, content, prio, id) => {
   const delNote = {
     title,
     content,
     prio,
-    _id: 1, //do not set directly, use setter method.
+    _id: 0, //do not set directly, use setter method.
     set id(idNum) {
       this._id = idNum;
       console.log("an id has been set");
       console.log(myNotes[0]);
     },
   };
+
+  delNote.id = id;
+  console.log(delNote._id);
   //if the note is prio it lands first in the array, else last.
   delNote.prio ? myDelNotes.unshift(delNote) : myDelNotes.push(delNote);
+
+  deleteMatch(myNotes, myDelNotes);
 };
-
-const form = document.getElementById("notes-input");
-form.addEventListener("submit", handleSubmit);
-
-const hej = [1, 2, 4, 5, 6, 7, 8, 9, 10];
-const hejdo = [1, 5, 7, 6];
-
-const fruits = ["banana", "orange", "peach", "sausage", "pineapple"];
-const error = ["brown", "sausage", "yellow"];
 
 let delIndex;
 //function that compares two arrays and find index of their matches
@@ -151,3 +147,6 @@ const deleteMatch = (baseArr, match) => {
 
   console.log(baseArr);
 };
+
+const form = document.getElementById("notes-input");
+form.addEventListener("submit", handleSubmit);
