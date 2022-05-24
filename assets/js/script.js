@@ -108,10 +108,9 @@ const deleteNote = (title, content, prio, id) => {
 
   delNote.id = id;
   console.log(delNote._id);
-  //if the note is prio it lands first in the array, else last.
-  delNote.prio ? myDelNotes.unshift(delNote) : myDelNotes.push(delNote);
+  myDelNotes.unshift(delNote)
 
-  deleteMatch(myNotes, myDelNotes);
+  deleteNoteObj(myNotes, delNote[0]);
 };
 
 let delIndex;
@@ -137,16 +136,16 @@ const findMatch = (baseArr, compArr) => {
   return indexInBaseArr;
 };
 
-//stores return value of fndMatches being called.
-let matchError = findMatch(fruits, error);
 
-const deleteMatch = (baseArr, match) => {
-  console.log(match);
+
+const deleteNoteObj = (baseArr, index) => {
+  console.log(index);
   console.log(baseArr);
-  baseArr.splice(match, 1);
+  baseArr.splice(index, 1);
 
   console.log(baseArr);
 };
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
+
