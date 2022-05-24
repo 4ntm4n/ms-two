@@ -155,3 +155,12 @@ const deleteDuplies = (array) => {
 
 
 
+const delBtn = document.getElementById('render-deleted');
+const impBtn = document.getElementById('render-important');
+const oldBtn = document.getElementById('render-old-first');
+
+delBtn.addEventListener('click', () => renderNotes(myDelNotes));
+impBtn.addEventListener('click', () => renderNotes(myNotes));
+
+const form = document.getElementById("notes-input");
+form.addEventListener("submit", handleSubmit);
