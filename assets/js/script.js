@@ -108,7 +108,7 @@ const deleteNote = (title, content, prio, id) => {
 
   delNote.id = id;
   console.log(delNote._id);
-  myDelNotes.unshift(delNote)
+  myDelNotes.unshift(delNote);
 
   deleteNoteObj(myNotes, delNote[0]);
 };
@@ -136,16 +136,20 @@ const findMatch = (baseArr, compArr) => {
   return indexInBaseArr;
 };
 
-
-
 const deleteNoteObj = (baseArr, index) => {
   console.log(index);
   console.log(baseArr);
   baseArr.splice(index, 1);
-
   console.log(baseArr);
+};
+
+//create function to remove duplicates in array.
+
+const deleteDuplies = (array) => {
+  array = array.filter((item, index) => {
+    array.indexOf(item) === index;
+  });
 };
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
-
