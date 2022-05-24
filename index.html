@@ -11,7 +11,7 @@
     <!-- script in head uses defer attr, to load after html content to increase speed by parallel load, see: https://www.w3schools.com/tags/att_script_defer.asp-->
     <script src="https://kit.fontawesome.com/2759c1d447.js" crossorigin="anonymous" async></script>
     <script src="assets/js/script.js" defer></script>
-    
+
     <title>Document</title>
 </head>
 
@@ -22,13 +22,15 @@
 
         <div id="controlPanel">
             <ul id="controls" class="flexbox">
-                <li ><button><i class="fa-solid fa-ghost"></i> Deleted</button></li>
-                <li ><button> <i class="fa-regular fa-star"></i> Important</button></li>
-                <li ><button> <i class="fa-solid fa-person-hiking"></i> oldest first</button></li>
+                <li><button class="btn" id="render-deleted"><i class="fa-solid fa-ghost"></i> Deleted</button></li>
+                <li><button class="btn" id="render-important"> <i class="fa-regular fa-star"></i> Important</button>
+                </li>
+                <li><button class="btn" id="render-old-first"> <i class="fa-solid fa-person-hiking"></i> oldest
+                        first</button></li>
             </ul>
         </div>
 
-        <form id="notes-input" class="flexbox" type ="POST">
+        <form id="notes-input" class="flexbox" type="POST">
 
             <fieldset class="flexbox">
                 <legend>Sticky Note Generator</legend>
@@ -52,10 +54,10 @@
     </head>
     <section id="notes-section" class="flexbox">
         <h2>your sticky notes lands here</h2>
-        <ul id="notes-list" class ="flexbox flex-container">
+        <ul id="notes-list" class="flexbox flex-container">
             <li class="note">
-                <h3 class="note-title" >example sticky note</h3>
-                <p class="note-content" >Lorem, ipsum dolor sit amet consectetur adipisicing
+                <h3 class="note-title">example sticky note</h3>
+                <p class="note-content">Lorem, ipsum dolor sit amet consectetur adipisicing
                     elit. Tenetur quisquam iusto, maiores
                     perspiciatis quos, nesciunt sed qui officia nisi eligendi eum sapiente quidem enim molestiae! Maxime
                     saepe nostrum libero eos.</p>
@@ -64,8 +66,8 @@
             </li>
 
             <li class="note">
-                <h3 class="note-title" >example sticky note</h3>
-                <p class="note-content" >Lorem, ipsum dolor sit amet consectetur adipisicing
+                <h3 class="note-title">example sticky note</h3>
+                <p class="note-content">Lorem, ipsum dolor sit amet consectetur adipisicing
                     elit. Tenetur quisquam iusto, maiores
                     perspiciatis quos, nesciunt sed qui officia nisi eligendi eum sapiente quidem enim molestiae! Maxime
                     saepe nostrum libero eos.</p>
@@ -74,8 +76,8 @@
             </li>
 
             <li class="note">
-                <h3 class="note-title" >example sticky note</h3>
-                <p class="note-content" >Lorem, ipsum dolor sit amet consectetur adipisicing
+                <h3 class="note-title">example sticky note</h3>
+                <p class="note-content">Lorem, ipsum dolor sit amet consectetur adipisicing
                     elit. Tenetur quisquam iusto, maiores
                     perspiciatis quos, nesciunt sed qui officia nisi eligendi eum sapiente quidem enim molestiae! Maxime
                     saepe nostrum libero eos.</p>

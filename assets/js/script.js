@@ -1,6 +1,6 @@
 //store objects from noteMaker in array
 const myNotes = [];
-const myDelNotes = [];
+let myDelNotes = [];
 let nonPrioCount = 1000; // id number for nonPrio-notes will origin from this number
 let prioCount = 1000; //id number for Prio-notes will origin from this number
 
@@ -36,7 +36,6 @@ const noteMaker = (title, content, prio, _id) => {
     set id(idNum) {
       this._id = idNum;
       console.log("an id has been set");
-      console.log(myNotes[0]);
     },
   };
 
@@ -74,7 +73,7 @@ const renderNotes = (array) => {
     notesList.appendChild(li);
     btn.addEventListener("click", (i) => {
       removeNote(i);
-    }); //todo: add push to deleted array.
+    });
   }
 };
 
@@ -113,7 +112,6 @@ const deleteNote = (title, content, prio, id) => {
   deleteNoteObj(myNotes, delNote[0]);
 };
 
-let delIndex;
 //function that compares two arrays and find index of their matches
 const findMatch = (baseArr, compArr) => {
   // 1. filter out matches in baseArr and compArr and store it as an array (matches)
@@ -136,6 +134,7 @@ const findMatch = (baseArr, compArr) => {
   return indexInBaseArr;
 };
 
+
 const deleteNoteObj = (baseArr, index) => {
   console.log(index);
   console.log(baseArr);
@@ -145,11 +144,14 @@ const deleteNoteObj = (baseArr, index) => {
 
 //create function to remove duplicates in array.
 
+//https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects#:~:text=How%20it%20works%3A-,Array.,duplicates%2C%20it%20is%20using%20Array.
 const deleteDuplies = (array) => {
-  array = array.filter((item, index) => {
-    array.indexOf(item) === index;
-  });
+    const ids = array.map(o => o._id)
+    const filtered = array.filter(({_id}, index) => !ids.includes(_id, index + 1))
+
+    console.log(filtered)
 };
 
-const form = document.getElementById("notes-input");
-form.addEventListener("submit", handleSubmit);
+
+
+
