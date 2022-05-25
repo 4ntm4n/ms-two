@@ -27,30 +27,30 @@ const handleSubmit = (event) => {
 };
 
 //create a note object and push it to the myNotes array.
-const noteMaker = (title, content, prio, _id) => {
+const noteMaker = (title, content, prio, _id, removed = false) => {
   const note = {
     title,
     content,
     prio,
     _id: 0, //do not set directly, use setter method.
+    removed,
     set id(idNum) {
       this._id = idNum;
       console.log("an id has been set");
     },
   };
-
+  note.prio && note.removed === false ? note.id = prioCount : note.id = nonPrioCount;
   //if the note is prio it lands first in the array, else last.
   if (note.prio) {
-    note.id = prioCount;
-    myNotes.unshift(note);
+        note.removed ? myDelNotes.unshift(note) : myNotes.unshift(note);
     console.log(`a Prio note was created with id: ${prioCount}`);
   } else {
-    note.id = nonPrioCount;
-    myNotes.push(note);
+        note.removed ? myDelNotes.push(note) : myNotes.push(note);
     console.log(`a non Prio note was created with id: ${nonPrioCount}`);
   }
 
-  renderNotes(myNotes);
+  note.removed === false ? renderNotes(myNotes) : console.log("an item was removed");
+  
 };
 
 // this function takes an array as argument and loops through it and append it to the DOM.
@@ -71,7 +71,7 @@ const renderNotes = (array) => {
         `;
     li.appendChild(btn);
     notesList.appendChild(li);
-    btn.addEventListener("click", (i) => {
+    btn.addEventListener("click", (i) => {  
       removeNote(i);
     });
   }
@@ -88,7 +88,7 @@ function removeNote(i) {
   let wasPrio;
   domNoteId < 1000 ? (wasPrio = true) : (wasPrio = false);
   console.log(wasPrio);
-  deleteNote(domNoteTitle, domNoteContent, wasPrio, domNoteId);
+  noteMaker(domNoteTitle, domNoteContent, wasPrio, domNoteId, true);
   deleteDomNote.remove();
 }
 
@@ -151,6 +151,8 @@ const deleteDuplies = (array) => {
     return filtered;
 };
 
+
+
 const filterImp = (array) => {
     const tempArr = array.filter( note => {
         return note.prio === true
@@ -171,9 +173,9 @@ delBtn.addEventListener('click', () => {
     myDelNotes = deleteDuplies(myDelNotes);
     renderNotes(myDelNotes)
 });
-//click function to filter out and render 
+//click function to filter out and render
 impBtn.addEventListener('click', () => {
-   const impNotes = filterImp(myNotes)
+   const impNotes = filterNotes(myNotes)
    renderNotes(impNotes)
     
 });
