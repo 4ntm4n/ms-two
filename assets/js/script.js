@@ -1,5 +1,5 @@
 //store objects from noteMaker in array
-const myNotes = [];
+let myNotes = [];
 let myDelNotes = [];
 let nonPrioCount = 1000; // id number for nonPrio-notes will origin from this number
 let prioCount = 1000; //id number for Prio-notes will origin from this number
@@ -17,17 +17,15 @@ const handleSubmit = (event) => {
   let isPrio = false;
   if (formCheckbox.checked) {
     isPrio = true;
-    prioCount--;
   } else {
     isPrio = false;
-    nonPrioCount++;
   }
-  noteMaker(formTitle.value, formContent.value, isPrio);
+  noteMaker(formTitle.value, formContent.value, isPrio, 0, false);
   form.reset();
 };
 
 //create a note object and push it to the myNotes array.
-const noteMaker = (title, content, prio, _id, removed = false) => {
+const noteMaker = (title, content, prio, setId, removed = false) => {
   const note = {
     title,
     content,
@@ -39,18 +37,31 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
       console.log("an id has been set");
     },
   };
-  note.prio && note.removed === false ? note.id = prioCount : note.id = nonPrioCount;
-  //if the note is prio it lands first in the array, else last.
-  if (note.prio) {
-        note.removed ? myDelNotes.unshift(note) : myNotes.unshift(note);
-    console.log(`a Prio note was created with id: ${prioCount}`);
-  } else {
-        note.removed ? myDelNotes.push(note) : myNotes.push(note);
-    console.log(`a non Prio note was created with id: ${nonPrioCount}`);
-  }
 
-  note.removed === false ? renderNotes(myNotes) : console.log("an item was removed");
-  
+  setId =
+    "" && note.removed
+      ? (note.id = setId)
+      : console.log("a brand new note was created");
+
+    if (note.removed){
+      myDelNotes.unshift(note);
+      console.log("this note was deleted: " + note.removed);
+      myDelNotes = deleteDuplies(myDelNotes)
+    }else if (note.prio) {
+      console.log("a PRIO note was created");
+      prioCount--;
+      note.id = prioCount;
+      myNotes.unshift(note)
+    }else if (note.prio === false) {
+      nonPrioCount++;
+      note.id = nonPrioCount;
+      myNotes.push(note);
+    }else {
+      console.log("guess something went wrong again")
+    }
+     
+
+  renderNotes(myNotes);
 };
 
 // this function takes an array as argument and loops through it and append it to the DOM.
@@ -71,7 +82,7 @@ const renderNotes = (array) => {
         `;
     li.appendChild(btn);
     notesList.appendChild(li);
-    btn.addEventListener("click", (i) => {  
+    btn.addEventListener("click", (i) => {
       removeNote(i);
     });
   }
@@ -88,8 +99,18 @@ function removeNote(i) {
   let wasPrio;
   domNoteId < 1000 ? (wasPrio = true) : (wasPrio = false);
   console.log(wasPrio);
+  const delIndex = myNotes.findIndex((note) => {
+    return note._id === domNoteId;
+  });
   noteMaker(domNoteTitle, domNoteContent, wasPrio, domNoteId, true);
+
+  console.log(myNotes);
+
+  console.log(delIndex);
+  myNotes.splice(delIndex, 1);
+  console.log(myNotes);
   deleteDomNote.remove();
+  renderNotes(myNotes);
 }
 
 const deleteNote = (title, content, prio, id) => {
@@ -116,8 +137,8 @@ const deleteNote = (title, content, prio, id) => {
 const findMatch = (baseArr, compArr) => {
   // 1. filter out matches in baseArr and compArr and store it as an array (matches)
   matches = baseArr.filter((noteId) => compArr.includes(noteId));
-  console.log(matches[0]); //log name
-  console.log(baseArr.indexOf(matches[0])); //log index
+  console.log(matches); //log name
+  console.log(baseArr.indexOf(matches)); //log index
 
   delIndex = baseArr.indexOf(matches[0]);
   //4. store index of found match in baseArr
@@ -134,7 +155,6 @@ const findMatch = (baseArr, compArr) => {
   return indexInBaseArr;
 };
 
-
 const deleteNoteObj = (baseArr, index) => {
   console.log(index);
   console.log(baseArr);
@@ -146,40 +166,34 @@ const deleteNoteObj = (baseArr, index) => {
 
 //https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects#:~:text=How%20it%20works%3A-,Array.,duplicates%2C%20it%20is%20using%20Array.
 const deleteDuplies = (array) => {
-    const ids = array.map(note => note._id)
-    const filtered = array.filter(({_id}, index) => !ids.includes(_id, index + 1))
-    return filtered;
+  const ids = array.map((note) => note._id);
+  const filtered = array.filter(
+    ({ _id }, index) => !ids.includes(_id, index + 1)
+  );
+  return filtered;
 };
 
-
-
-const filterImp = (array) => {
-    const tempArr = array.filter( note => {
-        return note.prio === true
-    });
-
-    return tempArr;
-}
-
-
+const impFilter = (array) => {
+  return array.filter((note) => {
+    return note.prio === true;
+  });
+};
 
 //get control panel buttons from index.html
-const delBtn = document.getElementById('render-deleted');
-const impBtn = document.getElementById('render-important');
-const oldBtn = document.getElementById('render-old-first');
+const delBtn = document.getElementById("render-deleted");
+const impBtn = document.getElementById("render-important");
+const oldBtn = document.getElementById("render-old-first");
 
-//click function that removes any duplicates and then renders them 
-delBtn.addEventListener('click', () => {
-    myDelNotes = deleteDuplies(myDelNotes);
-    renderNotes(myDelNotes)
+//click function that removes any duplicates and then renders them
+delBtn.addEventListener("click", () => {
+  renderNotes(myDelNotes);
 });
 //click function to filter out and render
-impBtn.addEventListener('click', () => {
-   const impNotes = filterNotes(myNotes)
-   renderNotes(impNotes)
-    
+impBtn.addEventListener("click", () => {
+  let impNotes = impFilter(myNotes);
+  renderNotes(impNotes);
 });
-oldBtn.addEventListener('click', () => renderNotes(myNotes));
+oldBtn.addEventListener("click", () => renderNotes(myNotes));
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
