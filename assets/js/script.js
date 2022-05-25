@@ -146,21 +146,38 @@ const deleteNoteObj = (baseArr, index) => {
 
 //https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects#:~:text=How%20it%20works%3A-,Array.,duplicates%2C%20it%20is%20using%20Array.
 const deleteDuplies = (array) => {
-    const ids = array.map(o => o._id)
+    const ids = array.map(note => note._id)
     const filtered = array.filter(({_id}, index) => !ids.includes(_id, index + 1))
-
-    console.log(filtered)
+    return filtered;
 };
 
+const filterImp = (array) => {
+    const tempArr = array.filter( note => {
+        return note.prio === true
+    });
+
+    return tempArr;
+}
 
 
 
+//get control panel buttons from index.html
 const delBtn = document.getElementById('render-deleted');
 const impBtn = document.getElementById('render-important');
 const oldBtn = document.getElementById('render-old-first');
 
-delBtn.addEventListener('click', () => renderNotes(myDelNotes));
-impBtn.addEventListener('click', () => renderNotes(myNotes));
+//click function that removes any duplicates and then renders them 
+delBtn.addEventListener('click', () => {
+    myDelNotes = deleteDuplies(myDelNotes);
+    renderNotes(myDelNotes)
+});
+//click function to filter out and render 
+impBtn.addEventListener('click', () => {
+   const impNotes = filterImp(myNotes)
+   renderNotes(impNotes)
+    
+});
+oldBtn.addEventListener('click', () => renderNotes(myNotes));
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
