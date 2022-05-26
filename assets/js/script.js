@@ -48,23 +48,6 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
     myNotes.push(note);
   }
 
-  /*  if (note.removed) {
-    myDelNotes.unshift(note);
-    console.log("this note was deleted: " + note.removed);
-    myDelNotes = deleteDuplies(myDelNotes);
-  } else if (note.prio) {
-    console.log("a PRIO note was created");
-    prioCount--;
-    note.id = prioCount;
-    myNotes.unshift(note);
-  } else if (!note.prio) {
-    nonPrioCount++;
-    note.id = nonPrioCount;
-    myNotes.push(note);
-  } else {
-    console.log("guess something went wrong again");
-  } */
-
   renderNotes(notRemovedFilter(myNotes));
 };
 
@@ -93,8 +76,6 @@ const renderNotes = (array) => {
 };
 
 function removeNote(i) {
-  // scrape content off note and make it into an object, before remove note from DOM
-
   const domNoteId = Number(i.target.parentNode.id);
 
   //find the clicked note in the myNotes array by filtering its id.
@@ -102,54 +83,15 @@ function removeNote(i) {
     return note._id === domNoteId;
   });
 
-  //set the corelating objects remove value to true
+  //set the corelating objects .remove value to true
   myNotes[index].removed = true;
 
   //render myNotes again but only objects that have removed set to false.
   renderNotes(notRemovedFilter(myNotes));
-  /* let deleteDomNote = i.target.parentElement;
-  
-  const domNoteTitle = i.target.parentNode.children[0].textContent;
-  const domNoteContent = i.target.parentNode.children[1].textContent;
-  console.log(`${domNoteId} ${domNoteTitle} ${domNoteContent}`);
 
-  let wasPrio;
-  domNoteId < 1000 ? (wasPrio = true) : (wasPrio = false);
-  console.log(wasPrio);
-
-  const delIndex = myNotes.findIndex((note) => {
-    return note._id === domNoteId;
-  });
-
-  noteMaker(domNoteTitle, domNoteContent, wasPrio, domNoteId, true);
-
-  console.log(delIndex + " is the index of note being deleted");
-  myNotes.splice(delIndex, 1);
- */
-  /* deleteDomNote.remove();
-  renderNotes(myDelNotes) */
 }
 
-/* const deleteNote = (title, content, prio, id) => {
-  const delNote = {
-    title,
-    content,
-    prio,
-    _id: 0, //do not set directly, use setter method.
-    set id(idNum) {
-      this._id = idNum;
-      console.log("an id has been set");
-      console.log(myNotes[0]);
-    },
-  };
 
-  delNote.id = id;
-  console.log(delNote._id);
-  myDelNotes.unshift(delNote);
-
-  deleteNoteObj(myNotes, delNote[0]);
-};
- */
 //function that compares two arrays and find index of their matches
 const findMatch = (baseArr, compArr) => {
   // 1. filter out matches in baseArr and compArr and store it as an array (matches)
