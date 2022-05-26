@@ -1,6 +1,6 @@
 //store objects from noteMaker in array
-let myNotes = [];
-let myDelNotes = [];
+const myNotes = [];
+//let myDelNotes = [];
 let nonPrioCount = 1000; // id number for nonPrio-notes will origin from this number
 let prioCount = 1000; //id number for Prio-notes will origin from this number
 
@@ -38,28 +38,26 @@ const noteMaker = (title, content, prio, setId, removed = false) => {
     },
   };
 
-  setId =
-    "" && note.removed
-      ? (note.id = setId)
-      : console.log("a brand new note was created");
+  note.removed
+    ? (note.id = setId)
+    : console.log("a brand new note was created");
 
-    if (note.removed){
-      myDelNotes.unshift(note);
-      console.log("this note was deleted: " + note.removed);
-      myDelNotes = deleteDuplies(myDelNotes)
-    }else if (note.prio) {
-      console.log("a PRIO note was created");
-      prioCount--;
-      note.id = prioCount;
-      myNotes.unshift(note)
-    }else if (note.prio === false) {
-      nonPrioCount++;
-      note.id = nonPrioCount;
-      myNotes.push(note);
-    }else {
-      console.log("guess something went wrong again")
-    }
-     
+ /*  if (note.removed) {
+    myDelNotes.unshift(note);
+    console.log("this note was deleted: " + note.removed);
+    myDelNotes = deleteDuplies(myDelNotes);
+  } else if (note.prio) {
+    console.log("a PRIO note was created");
+    prioCount--;
+    note.id = prioCount;
+    myNotes.unshift(note);
+  } else if (!note.prio) {
+    nonPrioCount++;
+    note.id = nonPrioCount;
+    myNotes.push(note);
+  } else {
+    console.log("guess something went wrong again");
+  } */
 
   renderNotes(myNotes);
 };
@@ -90,7 +88,9 @@ const renderNotes = (array) => {
 
 function removeNote(i) {
   // scrape content off note and make it into an object, before remove note from DOM
-  let deleteDomNote = i.target.parentElement;
+
+
+  /* let deleteDomNote = i.target.parentElement;
   const domNoteId = Number(i.target.parentNode.id);
   const domNoteTitle = i.target.parentNode.children[0].textContent;
   const domNoteContent = i.target.parentNode.children[1].textContent;
@@ -99,21 +99,21 @@ function removeNote(i) {
   let wasPrio;
   domNoteId < 1000 ? (wasPrio = true) : (wasPrio = false);
   console.log(wasPrio);
+
   const delIndex = myNotes.findIndex((note) => {
     return note._id === domNoteId;
   });
+
   noteMaker(domNoteTitle, domNoteContent, wasPrio, domNoteId, true);
 
-  console.log(myNotes);
-
-  console.log(delIndex);
+  console.log(delIndex + " is the index of note being deleted");
   myNotes.splice(delIndex, 1);
-  console.log(myNotes);
-  deleteDomNote.remove();
-  renderNotes(myNotes);
+ */
+  /* deleteDomNote.remove();
+  renderNotes(myDelNotes) */; 
 }
 
-const deleteNote = (title, content, prio, id) => {
+/* const deleteNote = (title, content, prio, id) => {
   const delNote = {
     title,
     content,
@@ -132,7 +132,7 @@ const deleteNote = (title, content, prio, id) => {
 
   deleteNoteObj(myNotes, delNote[0]);
 };
-
+ */
 //function that compares two arrays and find index of their matches
 const findMatch = (baseArr, compArr) => {
   // 1. filter out matches in baseArr and compArr and store it as an array (matches)
