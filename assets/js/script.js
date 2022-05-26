@@ -1,5 +1,5 @@
 //store objects from noteMaker in array
-const myNotes = [];
+let myNotes = [];
 //let myDelNotes = [];
 let nonPrioCount = 1000; // id number for nonPrio-notes will origin from this number
 let prioCount = 1000; //id number for Prio-notes will origin from this number
@@ -20,12 +20,12 @@ const handleSubmit = (event) => {
   } else {
     isPrio = false;
   }
-  noteMaker(formTitle.value, formContent.value, isPrio, 0, false);
+  noteMaker(formTitle.value, formContent.value, isPrio);
   form.reset();
 };
 
 //create a note object and push it to the myNotes array.
-const noteMaker = (title, content, prio, setId, removed = false) => {
+const noteMaker = (title, content, prio, _id, removed = false) => {
   const note = {
     title,
     content,
@@ -38,11 +38,17 @@ const noteMaker = (title, content, prio, setId, removed = false) => {
     },
   };
 
-  note.removed
-    ? (note.id = setId)
-    : console.log("a brand new note was created");
+  if (note.prio) {
+    prioCount--;
+    note.id = prioCount
+    myNotes.unshift(note);
+  } else {
+    nonPrioCount++;
+    note.id = nonPrioCount;
+    myNotes.push(note);
+  }
 
- /*  if (note.removed) {
+  /*  if (note.removed) {
     myDelNotes.unshift(note);
     console.log("this note was deleted: " + note.removed);
     myDelNotes = deleteDuplies(myDelNotes);
@@ -59,7 +65,7 @@ const noteMaker = (title, content, prio, setId, removed = false) => {
     console.log("guess something went wrong again");
   } */
 
-  renderNotes(myNotes);
+  renderNotes(notRemovedFilter(myNotes));
 };
 
 // this function takes an array as argument and loops through it and append it to the DOM.
@@ -89,9 +95,20 @@ const renderNotes = (array) => {
 function removeNote(i) {
   // scrape content off note and make it into an object, before remove note from DOM
 
-
-  /* let deleteDomNote = i.target.parentElement;
   const domNoteId = Number(i.target.parentNode.id);
+
+  //find the clicked note in the myNotes array by filtering its id.
+  const index = myNotes.findIndex((note) => {
+    return note._id === domNoteId;
+  });
+
+  //set the corelating objects remove value to true
+  myNotes[index].removed = true;
+
+  //render myNotes again but only objects that have removed set to false.
+  renderNotes(notRemovedFilter(myNotes));
+  /* let deleteDomNote = i.target.parentElement;
+  
   const domNoteTitle = i.target.parentNode.children[0].textContent;
   const domNoteContent = i.target.parentNode.children[1].textContent;
   console.log(`${domNoteId} ${domNoteTitle} ${domNoteContent}`);
@@ -110,7 +127,7 @@ function removeNote(i) {
   myNotes.splice(delIndex, 1);
  */
   /* deleteDomNote.remove();
-  renderNotes(myDelNotes) */; 
+  renderNotes(myDelNotes) */
 }
 
 /* const deleteNote = (title, content, prio, id) => {
@@ -179,6 +196,18 @@ const impFilter = (array) => {
   });
 };
 
+const removedFilter = (array) => {
+  return array.filter((note) => {
+    return note.removed === true;
+  });
+};
+
+const notRemovedFilter = (array) => {
+  return array.filter((note) => {
+    return note.removed === false;
+  });
+};
+
 //get control panel buttons from index.html
 const delBtn = document.getElementById("render-deleted");
 const impBtn = document.getElementById("render-important");
@@ -186,14 +215,15 @@ const oldBtn = document.getElementById("render-old-first");
 
 //click function that removes any duplicates and then renders them
 delBtn.addEventListener("click", () => {
-  renderNotes(myDelNotes);
+  const removedNotes = removedFilter(myNotes);
+  renderNotes(removedNotes);
 });
 //click function to filter out and render
 impBtn.addEventListener("click", () => {
-  let impNotes = impFilter(myNotes);
+  const impNotes = impFilter(myNotes);
   renderNotes(impNotes);
 });
-oldBtn.addEventListener("click", () => renderNotes(myNotes));
+oldBtn.addEventListener("click", () => renderNotes(notRemovedFilter(myNotes)));
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
