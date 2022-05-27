@@ -75,6 +75,8 @@ const renderNotes = (array) => {
   }
 };
 
+
+//function to remove note from the view.
 function removeNote(i) {
   const domNoteId = Number(i.target.parentNode.id);
 
@@ -83,13 +85,24 @@ function removeNote(i) {
     return note._id === domNoteId;
   });
 
-  //set the corelating objects .remove value to true
+  //set the corelating object's .remove value to true
+  if(myNotes[index].removed === true){
+    myNotes.splice([index], 1)
+    renderNotes(removedFilter(myNotes));
+  }else{
   myNotes[index].removed = true;
+  renderNotes(notRemovedFilter(myNotes));
+}
+  }
 
   //render myNotes again but only objects that have removed set to false.
-  renderNotes(notRemovedFilter(myNotes));
+ 
 
-}
+
+
+
+
+
 
 
 //function that compares two arrays and find index of their matches
