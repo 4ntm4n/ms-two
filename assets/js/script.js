@@ -76,7 +76,7 @@ const renderNotes = (array) => {
     //important button
     const impNoteBtn = document.createElement("button");
     impNoteBtn.classList.add('imp-btn')
-    impNoteBtn.innerHTML = "make prio";
+    array[i].prio ? rmBtn.innerHTML = "not prio" : rmBtn.innerHTML = "make prio";
     li.appendChild(impNoteBtn);
   
     notesList.appendChild(li);
