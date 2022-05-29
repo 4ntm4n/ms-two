@@ -1,8 +1,8 @@
 //store objects from noteMaker in array
 let myNotes = [];
 //let myDelNotes = [];
-let nonPrioCount = 1000; // id number for nonPrio-notes will origin from this number
-let prioCount = 1000; //id number for Prio-notes will origin from this number
+let nonPrioCount = 1000; // non-prio notes ID origin. 
+let prioCount = 1000; //PRIO notes ID origin.
 
 const handleSubmit = (event) => {
   //prevent default value and save form input data
@@ -85,26 +85,16 @@ function removeNote(i) {
     return note._id === domNoteId;
   });
 
-  //set the corelating object's .remove value to true
+  //is note already removed? delete it! else set removed to true.
   if(myNotes[index].removed === true){
     myNotes.splice([index], 1)
-    renderNotes(removedFilter(myNotes));
+    renderNotes(removedFilter(myNotes)); //render removed notes
   }else{
   myNotes[index].removed = true;
-  renderNotes(notRemovedFilter(myNotes));
+  renderNotes(notRemovedFilter(myNotes)); //render all notes - removed
 }
   }
-
-  //render myNotes again but only objects that have removed set to false.
  
-
-
-
-
-
-
-
-
 //function that compares two arrays and find index of their matches
 const findMatch = (baseArr, compArr) => {
   // 1. filter out matches in baseArr and compArr and store it as an array (matches)
@@ -145,6 +135,7 @@ const deleteDuplies = (array) => {
   return filtered;
 };
 
+
 const impFilter = (array) => {
   return array.filter((note) => {
     return note.prio === true;
@@ -163,6 +154,20 @@ const notRemovedFilter = (array) => {
   });
 };
 
+//add function to sort notes by name A-Z. 
+
+const sortAz = (array) => {
+  array.sort((a, b) => (a.title > b.title) ? 1 : -1);
+  renderNotes(array)
+}
+
+const sortZa = (array) => {
+  array.sort((a, b) => (a.title > b.title) ? 1 : -1);
+  renderNotes(array)
+}
+
+//add function to control 
+
 //get control panel buttons from index.html
 const delBtn = document.getElementById("render-deleted");
 const impBtn = document.getElementById("render-important");
@@ -173,7 +178,7 @@ delBtn.addEventListener("click", () => {
   const removedNotes = removedFilter(myNotes);
   renderNotes(removedNotes);
 });
-//click function to filter out and render
+//click function to filter out and render important notes
 impBtn.addEventListener("click", () => {
   const impNotes = impFilter(myNotes);
   renderNotes(impNotes);
