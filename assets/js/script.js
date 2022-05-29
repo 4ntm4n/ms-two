@@ -133,8 +133,6 @@ const NoteImpStatus = (i) => {
     return note._id === domNoteId;
   });
 
-
- 
    let tempArr = [];
   if (myNotes[index].prio === true) {
     myNotes[index].prio = false; //set prio to false
@@ -144,7 +142,7 @@ const NoteImpStatus = (i) => {
     myNotes[index].prio = true;
     tempArr = myNotes.splice([index], 1);
     myNotes = tempArr.concat(myNotes)
-  };
+  }; 
 
   renderNotes(notRemovedFilter(myNotes));
 }

@@ -149,3 +149,7 @@ input[type="checkbox"]#input-checkbox:checked + span {
 .removed, .removed.prio {
     background-color: grey;
 }
+
+.removed .imp-btn{
+    display: none;
+}
