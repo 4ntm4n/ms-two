@@ -80,14 +80,20 @@ const renderNotes = (array) => {
     li.appendChild(impNoteBtn);
   
     notesList.appendChild(li);
+
+    //event listeners to buttons inside the notes
     rmBtn.addEventListener("click", (i) => {
       removeNote(i);
+    });
+
+    impNoteBtn.addEventListener("click", (i) => {
+      NoteImpStatus(i);
     });
   }
 };
 
 //function to remove note from the view.
-function removeNote(i) {
+const removeNote(i) => {
   const domNoteId = Number(i.target.parentNode.id);
 
   //find the clicked note in the myNotes array by filtering its id.
@@ -104,6 +110,32 @@ function removeNote(i) {
     renderNotes(notRemovedFilter(myNotes)); //render all notes - removed
   }
 }
+
+//function to make note important or non important.
+const NoteImpStatus(i) => {
+  const domNoteId = Number(i.target.parentNode.id);
+
+  //find the clicked note in the myNotes array by filtering its id.
+  const index = myNotes.findIndex((note) => {
+    return note._id === domNoteId;
+  });
+
+  //is note already removed? delete it! else set removed to true.
+  if (myNotes[index].prio === true) {
+    prioCount--;
+    myNotes[index].prio = false; //set prio to false
+    myNotes[index].id = prioCount; //change its id to be less than 1000  
+  } else {
+    nonPrioCount++;
+    myNotes[index].prio = true;
+    myNotes[index].id = nonPrioCount;
+  }
+
+  renderNotes(notRemovedFilter(myNotes));
+}
+
+
+
 
 //function that compares two arrays and find index of their matches
 const findMatch = (baseArr, compArr) => {
@@ -189,14 +221,11 @@ const interact = () => {
   const numOfNotes = myNotes.length;
   const h2 = document.getElementsByTagName('h2')[0];
 
-    numOfNotes == 1 ? h2.innerHTML = "You added a note, therefore you are..."
-  : numOfNotes == 2 ? h2.innerHTML = "Aaah.. you are getting the hang of it"
-  : numOfNotes == 6 ? h2.innerHTML = `Ah, yes. ${myNotes[myNotes.length - 1].title}...`
-  : numOfNotes >= 7 ? h2.innerHTML = "Mmm... notes..."
-  : numOfNotes >= 100 ? h2.innerHTML = "All your notes are belong to us!"
-  : numOfNotes >= 50 ? h2.innerHTML = "Are you ok there bud..?"
-  : numOfNotes >= 4 ? h2.innerHTML = "so much to do.."
-  : h2.innerHTML = "going to sleep for a while, you'll manage.. ";
+    numOfNotes == 1 ? h2.innerHTML = "You have added a note, therefore you are..."
+  : numOfNotes == 2 ? h2.innerHTML = ""
+  : numOfNotes == 100 ? h2.innerHTML = "All your notes are belong to us!"
+  : numOfNotes >= 999 ? h2.innerHTML = "mother of god.. no one has created this many notes... bailing out, your on your own.... "
+  : h2.innerHTML = "All your notes are displayed here";
   
 
 }
