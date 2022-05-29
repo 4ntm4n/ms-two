@@ -141,3 +141,11 @@ input[type="checkbox"]#input-checkbox:checked + span {
 .note-id {
     color: rgba(43, 42, 42, 0.288);
 }
+
+.prio {
+    background-color: orange;
+}
+
+.removed, .removed.prio {
+    background-color: grey;
+}

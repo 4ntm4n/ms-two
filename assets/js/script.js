@@ -70,15 +70,28 @@ const renderNotes = (array) => {
     //remove btn
     const rmBtn = document.createElement("button");
     rmBtn.classList.add('rm-btn')
-    array[i].removed ? rmBtn.innerHTML = "DELETE" : rmBtn.innerHTML = "Remove";
-    li.appendChild(rmBtn);
+    if (array[i].removed){
+      rmBtn.innerHTML = "DELETE"
+      li.classList.add('removed');
+    }else {
+      rmBtn.innerHTML = "Remove";
+    }
 
+    
     //important button
     const impNoteBtn = document.createElement("button");
     impNoteBtn.classList.add('imp-btn')
-    array[i].prio ? impNoteBtn.innerHTML = "not prio" : impNoteBtn.innerHTML = "make prio";
-    li.appendChild(impNoteBtn);
+    if (array[i].prio){
+      impNoteBtn.innerHTML = "not prio"
+      li.classList.add('prio');
+    }else {
+      impNoteBtn.innerHTML = "make prio";
+    }
   
+    
+
+    li.appendChild(rmBtn);
+    li.appendChild(impNoteBtn);
     notesList.appendChild(li);
 
     //event listeners to buttons inside the notes
@@ -125,11 +138,8 @@ const NoteImpStatus = (i) => {
    let tempArr = [];
   if (myNotes[index].prio === true) {
     myNotes[index].prio = false; //set prio to false
-    console.log(myNotes)
     tempArr = myNotes.splice([index], 1);
-    console.log(tempArr)
     myNotes = myNotes.concat(tempArr)
-    console.log(myNotes)
   } else {
     myNotes[index].prio = true;
     tempArr = myNotes.splice([index], 1);
@@ -254,3 +264,39 @@ oldBtn.addEventListener("click", () => renderNotes(notRemovedFilter(myNotes)));
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
+
+
+/*   //important button
+    const impNoteBtn = document.createElement("button");
+    impNoteBtn.classList.add('imp-btn')
+
+    if (array[i].prio) {
+      li.style.backgroundColor = 'orange'; //make note bg grey when removed
+      impNoteBtn.innerHTML = "not prio" // change button text from remove to delete when removed
+
+      }else {
+        impNoteBtn.innerHTML = "make prio"
+      }
+      li.appendChild(impNoteBtn);
+
+         //remove btn
+    const rmBtn = document.createElement("button");
+    rmBtn.classList.add('rm-btn')
+
+     if (array[i].removed && !array[i].prio) {
+        li.style.backgroundColor = 'grey'; //make note bg grey when removed
+        rmBtn.innerHTML = "DELETE" // change button text from remove to delete when removed
+      }else  if (array[i].removed && array[i].prio) {
+        li.style.backgroundColor = 'grey'; //make note bg grey when removed
+       rmBtn.innerHTML = "DELETE" // change button text from remove to delete when removed
+      } else {
+
+       rmBtn.innerHTML = "Remove";
+      }
+    
+      li.appendChild(rmBtn);
+    
+      
+
+  
+    notesList.appendChild(li); */
