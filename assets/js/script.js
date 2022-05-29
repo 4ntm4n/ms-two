@@ -1,12 +1,19 @@
 //store objects from noteMaker in array
 let myNotes = [];
+const numOfNotes = myNotes.length;
 //let myDelNotes = [];
-let nonPrioCount = 1000; // non-prio notes ID origin. 
+let nonPrioCount = 1000; // non-prio notes ID origin.
 let prioCount = 1000; //PRIO notes ID origin.
 
 const handleSubmit = (event) => {
   //prevent default value and save form input data
   event.preventDefault();
+  const h2 = getElemensByTagName('h2')[0]
+  switch (numOfNotes) {
+    case 1: 
+
+  };
+
 
   console.log("form was submitted");
   const formTitle = document.getElementById("title-input");
@@ -40,7 +47,7 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
 
   if (note.prio) {
     prioCount--;
-    note.id = prioCount
+    note.id = prioCount;
     myNotes.unshift(note);
   } else {
     nonPrioCount++;
@@ -75,7 +82,6 @@ const renderNotes = (array) => {
   }
 };
 
-
 //function to remove note from the view.
 function removeNote(i) {
   const domNoteId = Number(i.target.parentNode.id);
@@ -86,15 +92,15 @@ function removeNote(i) {
   });
 
   //is note already removed? delete it! else set removed to true.
-  if(myNotes[index].removed === true){
-    myNotes.splice([index], 1)
+  if (myNotes[index].removed === true) {
+    myNotes.splice([index], 1);
     renderNotes(removedFilter(myNotes)); //render removed notes
-  }else{
-  myNotes[index].removed = true;
-  renderNotes(notRemovedFilter(myNotes)); //render all notes - removed
-}
+  } else {
+    myNotes[index].removed = true;
+    renderNotes(notRemovedFilter(myNotes)); //render all notes - removed
   }
- 
+}
+
 //function that compares two arrays and find index of their matches
 const findMatch = (baseArr, compArr) => {
   // 1. filter out matches in baseArr and compArr and store it as an array (matches)
@@ -135,7 +141,6 @@ const deleteDuplies = (array) => {
   return filtered;
 };
 
-
 const impFilter = (array) => {
   return array.filter((note) => {
     return note.prio === true;
@@ -154,19 +159,26 @@ const notRemovedFilter = (array) => {
   });
 };
 
-//add function to sort notes by name A-Z. 
+//add function to sort notes by name A-Z.
 
-const sortAz = (array) => {
-  array.sort((a, b) => (a.title > b.title) ? 1 : -1);
-  renderNotes(array)
-}
+const sortByTitle = (array) => {
+  // note.sorted has note been added? add it, set it to false and continue
+  if (array[0].sorted === null) {
+    array.forEach((note) => (note.sorted = false));
+  }
 
-const sortZa = (array) => {
-  array.sort((a, b) => (a.title > b.title) ? 1 : -1);
-  renderNotes(array)
-}
-
-//add function to control 
+  /* is note.sorted false? sort note.title A-Z set .sorted to true and renderNotes, 
+  else sort .title Z-A set .sorted to false and render notes */
+  if (array[0].sorted === false) {
+    array.sort((a, b) => (a.title > b.title ? -1 : 1));
+    array.forEach((note) => (note.sorted = true)); // add a sorted key that is set to true.
+    renderNotes(array);
+  } else {
+    array.sort((a, b) => (a.title > b.title ? 1 : -1));
+    array.forEach((note) => (note.sorted = false)); // add a sorted key that is set to false.
+    renderNotes(array);
+  }
+};
 
 //get control panel buttons from index.html
 const delBtn = document.getElementById("render-deleted");
