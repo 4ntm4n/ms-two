@@ -58,10 +58,8 @@ const renderNotes = (array) => {
   const notesList = document.getElementById("notes-list");
   notesList.innerHTML = "";
 
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {  
     li = document.createElement("li"); // create a list element for each object in array.
-    btn = document.createElement("button");
-    btn.innerHTML = "Remove";
     li.classList.add("note");
     li.setAttribute("id", array[i]._id);
     li.innerHTML = `
@@ -69,9 +67,20 @@ const renderNotes = (array) => {
             <p class="note-content">${array[i].content}</p>
             <span class="note-id"> ${array[i]._id} </span>
         `;
-    li.appendChild(btn);
+    //remove btn
+    const rmBtn = document.createElement("button");
+    rmBtn.classList.add('rm-btn')
+    array[i].removed ? rmBtn.innerHTML = "DELETE" : rmBtn.innerHTML = "Remove";
+    li.appendChild(rmBtn);
+
+    //important button
+    const impNoteBtn = document.createElement("button");
+    impNoteBtn.classList.add('imp-btn')
+    impNoteBtn.innerHTML = "make prio";
+    li.appendChild(impNoteBtn);
+  
     notesList.appendChild(li);
-    btn.addEventListener("click", (i) => {
+    rmBtn.addEventListener("click", (i) => {
       removeNote(i);
     });
   }
@@ -182,7 +191,7 @@ const interact = () => {
 
     numOfNotes == 1 ? h2.innerHTML = "You added a note, therefore you are..."
   : numOfNotes == 2 ? h2.innerHTML = "Aaah.. you are getting the hang of it"
-  : numOfNotes == 6 ? h2.innerHTML = `Ah, yes. ${myNotes[0].title}...`
+  : numOfNotes == 6 ? h2.innerHTML = `Ah, yes. ${myNotes[myNotes.length - 1].title}...`
   : numOfNotes >= 7 ? h2.innerHTML = "Mmm... notes..."
   : numOfNotes >= 100 ? h2.innerHTML = "All your notes are belong to us!"
   : numOfNotes >= 50 ? h2.innerHTML = "Are you ok there bud..?"
