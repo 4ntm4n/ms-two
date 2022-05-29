@@ -1,6 +1,6 @@
 //store objects from noteMaker in array
 let myNotes = [];
-const numOfNotes = myNotes.length;
+
 //let myDelNotes = [];
 let nonPrioCount = 1000; // non-prio notes ID origin.
 let prioCount = 1000; //PRIO notes ID origin.
@@ -8,12 +8,6 @@ let prioCount = 1000; //PRIO notes ID origin.
 const handleSubmit = (event) => {
   //prevent default value and save form input data
   event.preventDefault();
-  const h2 = getElemensByTagName('h2')[0]
-  switch (numOfNotes) {
-    case 1: 
-
-  };
-
 
   console.log("form was submitted");
   const formTitle = document.getElementById("title-input");
@@ -54,7 +48,8 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
     note.id = nonPrioCount;
     myNotes.push(note);
   }
-
+  
+  interact();
   renderNotes(notRemovedFilter(myNotes));
 };
 
@@ -179,6 +174,23 @@ const sortByTitle = (array) => {
     renderNotes(array);
   }
 };
+
+
+const interact = () => {
+  const numOfNotes = myNotes.length;
+  const h2 = document.getElementsByTagName('h2')[0];
+
+    numOfNotes == 1 ? h2.innerHTML = "You added a note, therefore you are..."
+  : numOfNotes == 2 ? h2.innerHTML = "Aaah.. you are getting the hang of it"
+  : numOfNotes == 6 ? h2.innerHTML = `Ah, yes. ${myNotes[0].title}...`
+  : numOfNotes >= 7 ? h2.innerHTML = "Mmm... notes..."
+  : numOfNotes >= 100 ? h2.innerHTML = "All your notes are belong to us!"
+  : numOfNotes >= 50 ? h2.innerHTML = "Are you ok there bud..?"
+  : numOfNotes >= 4 ? h2.innerHTML = "so much to do.."
+  : h2.innerHTML = "going to sleep for a while, you'll manage.. ";
+  
+
+}
 
 //get control panel buttons from index.html
 const delBtn = document.getElementById("render-deleted");
