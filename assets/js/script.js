@@ -93,7 +93,7 @@ const renderNotes = (array) => {
 };
 
 //function to remove note from the view.
-const removeNote(i) => {
+const removeNote = (i) => {
   const domNoteId = Number(i.target.parentNode.id);
 
   //find the clicked note in the myNotes array by filtering its id.
@@ -112,7 +112,7 @@ const removeNote(i) => {
 }
 
 //function to make note important or non important.
-const NoteImpStatus(i) => {
+const NoteImpStatus = (i) => {
   const domNoteId = Number(i.target.parentNode.id);
 
   //find the clicked note in the myNotes array by filtering its id.
@@ -120,16 +120,21 @@ const NoteImpStatus(i) => {
     return note._id === domNoteId;
   });
 
-  //is note already removed? delete it! else set removed to true.
+
+ 
+   let tempArr = [];
   if (myNotes[index].prio === true) {
-    prioCount--;
     myNotes[index].prio = false; //set prio to false
-    myNotes[index].id = prioCount; //change its id to be less than 1000  
+    console.log(myNotes)
+    tempArr = myNotes.splice([index], 1);
+    console.log(tempArr)
+    myNotes = myNotes.concat(tempArr)
+    console.log(myNotes)
   } else {
-    nonPrioCount++;
     myNotes[index].prio = true;
-    myNotes[index].id = nonPrioCount;
-  }
+    tempArr = myNotes.splice([index], 1);
+    myNotes = tempArr.concat(myNotes)
+  };
 
   renderNotes(notRemovedFilter(myNotes));
 }
@@ -222,7 +227,7 @@ const interact = () => {
   const h2 = document.getElementsByTagName('h2')[0];
 
     numOfNotes == 1 ? h2.innerHTML = "You have added a note, therefore you are..."
-  : numOfNotes == 2 ? h2.innerHTML = ""
+  : numOfNotes == 2 ? h2.innerHTML = "yeah... that's pretty much it..."
   : numOfNotes == 100 ? h2.innerHTML = "All your notes are belong to us!"
   : numOfNotes >= 999 ? h2.innerHTML = "mother of god.. no one has created this many notes... bailing out, your on your own.... "
   : h2.innerHTML = "All your notes are displayed here";
