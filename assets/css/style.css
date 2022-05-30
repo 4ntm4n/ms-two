@@ -20,6 +20,7 @@ h1, h2, h3, legend {
 
 li {
     box-sizing: border-box;
+    display: flex;
 }
 
 legend {
@@ -94,13 +95,6 @@ legend {
     outline: none;
 }
 
-
-
-input[type="checkbox"]#input-checkbox:checked + span {
-    border-color: red;
-  background-color:red;
-}
-
 #input-submit {
     background-color: white;
     border: 2px solid black;
@@ -120,8 +114,17 @@ input[type="checkbox"]#input-checkbox:checked + span {
 /* notes-section -------------------------------------- */
 
 #notes-section {
+    width: 100%;
+    margin: auto;
     flex-direction: column;
     align-items: center;
+    position: relative;
+}
+
+#notes-list {
+    justify-content: center;
+    position: relative;
+    right:15px;
 }
 
 .note {
@@ -131,13 +134,15 @@ input[type="checkbox"]#input-checkbox:checked + span {
     text-align: center;
     list-style-type: none;
     border: 2px solid black;
-    
+    flex-direction: column;
+    z-index: 1;
     
 }
 
 .note:hover {
     box-shadow: 4px 8px 1px 1px rgb(0, 0, 0);
 }
+
 
 .note h3, p ,span {
     margin: 1em;
@@ -152,9 +157,35 @@ input[type="checkbox"]#input-checkbox:checked + span {
     box-sizing: border-box;
     width: 100%;
     list-style: none;
-    justify-content: center;
-    background-color: red;
+    justify-content: space-around;
+    display: none;
+    z-index: 2;
 }
+
+.note:hover .note-btn-list {
+    display: block;
+}
+
+
+.note button {
+    background-color: rgba(255, 255, 255, 0) !important;
+    border:2px solid black;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    font-size: large;
+ 
+    
+}
+
+.note button:hover {
+    color: orange;
+    
+}
+
+
+
 
 .prio {
     background-color: orange;
