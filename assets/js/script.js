@@ -1,3 +1,10 @@
+//fontAwesome Icons
+const ghost = "G"
+const skull = "D"
+const reverse = "R"
+const prioIcon = "P"
+const notPrioIcon = "!P"
+
 //store objects from noteMaker in array
 let myNotes = [];
 
@@ -54,46 +61,56 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
 };
 
 // this function takes an array as argument and loops through it and append it to the DOM.
+
 const renderNotes = (array) => {
   const notesList = document.getElementById("notes-list");
   notesList.innerHTML = "";
 
   for (let i = 0; i < array.length; i++) {
+    
+    const impNoteBtn = document.createElement("button");
+    const restBtn = document.createElement("button");
+    const rmBtn = document.createElement("button");
+
     li = document.createElement("li"); // create a list element for each object in array.
     li.classList.add("note");
     li.setAttribute("id", array[i]._id);
-    
+
     li.innerHTML = `
             <h3 class="note-title" >${array[i].title}</h3>
             <p class="note-content">${array[i].content}</p>
             <span class="note-id"> ${array[i]._id} </span>
         `;
     //remove btn
-    const rmBtn = document.createElement("button");
-    rmBtn.classList.add("note-btn","rm-btn");
+    
+    
     if (array[i].removed) {
-      rmBtn.innerHTML = "DELETE";
+      rmBtn.setAttribute("class", "note-btn del-btn");
+      rmBtn.innerHTML = skull;
       li.classList.add("removed");
     } else {
-      rmBtn.innerHTML = "Remove";
+      rmBtn.classList.add("note-btn", "rm-btn");
+      rmBtn.innerHTML = ghost;
     }
 
     // add hidden restore button and display block in css 2, add sort button in html
-    const restBtn = document.createElement("button");
-    restBtn.classList.add("rest-btn");
+    
+    restBtn.classList.add("note-btn", "rest-btn");
     if (array[i].removed) {
-      restBtn.innerHTML = "restore";
+      restBtn.innerHTML = reverse;
       li.appendChild(restBtn);
+
+      impNoteBtn.style.display = "none";
     }
 
     //important button
-    const impNoteBtn = document.createElement("button");
-    impNoteBtn.classList.add("imp-btn");
     if (array[i].prio) {
-      impNoteBtn.innerHTML = "not prio";
+      impNoteBtn.innerHTML = notPrioIcon;
+      impNoteBtn.classList.add("imp-btn", "note-btn", "mk-prio");
       li.classList.add("prio");
     } else {
-      impNoteBtn.innerHTML = "make prio";
+      impNoteBtn.classList.add("imp-btn","note-btn", "mkn-prio");
+      impNoteBtn.innerHTML = prioIcon;
     }
 
     li.appendChild(rmBtn);
@@ -207,7 +224,6 @@ const findMatch = (baseArr, compArr) => {
   return indexInBaseArr;
 };
 
-
 //create function to remove duplicates in array.
 
 //https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects#:~:text=How%20it%20works%3A-,Array.,duplicates%2C%20it%20is%20using%20Array.
@@ -240,7 +256,6 @@ const notRemovedFilter = (array) => {
 
 //add function to sort notes by name A-Z.
 const sortByTitle = (array) => {
-
   // note.sorted has note been added? add it, set it to false and continue
   if (array[0].sorted === null) {
     array.forEach((note) => (note.sorted = false));
@@ -293,4 +308,3 @@ oldBtn.addEventListener("click", () => renderNotes(notRemovedFilter(myNotes)));
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
-

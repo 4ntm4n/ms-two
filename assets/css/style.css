@@ -179,16 +179,18 @@ legend {
     display: none;  
 }
 
-.rest-btn, .rm-btn{
+ .rm-btn{
+    top:44px;
+    left: 60px;    
+}
+
+.rest-btn{
     top:44px;
     left: 60px;
 }
 .del-btn, .mkn-prio, .mk-prio {
  left: 150px;
 }
-
-
-
 
 
 
