@@ -62,8 +62,7 @@ const renderNotes = (array) => {
     li = document.createElement("li"); // create a list element for each object in array.
     li.classList.add("note");
     li.setAttribute("id", array[i]._id);
-    //add buttons here:
-
+    
     li.innerHTML = `
             <h3 class="note-title" >${array[i].title}</h3>
             <p class="note-content">${array[i].content}</p>
@@ -71,7 +70,7 @@ const renderNotes = (array) => {
         `;
     //remove btn
     const rmBtn = document.createElement("button");
-    rmBtn.classList.add("rm-btn");
+    rmBtn.classList.add("note-btn","rm-btn");
     if (array[i].removed) {
       rmBtn.innerHTML = "DELETE";
       li.classList.add("removed");
