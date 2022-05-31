@@ -260,10 +260,15 @@ const notRemovedFilter = (array) => {
 
 
 
-//add function to sort notes by name A-Z.
+//add function to sort an array of objects based on its title from A-Z / Z-A.
 const sortByTitle = (array) => {
   console.log("array is attempting to sort");
 
+  //stop sorting attempt if there is one or less than one object in the array.
+  if (array.length <= 1) {
+    console.log("nothing to sort, bailing out.. ");
+     return;
+  }
 /*   make tempArray an instance of the array being passed 
   then operate on the instance instead of changing the original array */ 
   let tempArray = notRemovedFilter(array) 
