@@ -305,7 +305,7 @@ const interact = () => {
 //get control panel buttons from index.html
 const delBtn = document.getElementById("render-deleted");
 const impBtn = document.getElementById("render-important");
-const oldBtn = document.getElementById("render-old-first");
+const oldBtn = document.getElementById("my-notes");
 
 //click function that removes any duplicates and then renders them
 delBtn.addEventListener("click", () => {
