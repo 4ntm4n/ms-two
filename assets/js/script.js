@@ -263,20 +263,28 @@ const notRemovedFilter = (array) => {
 
 //add function to sort notes by name A-Z.
 const sortByTitle = (array) => {
+
+
+  //set array to a temp array
+  let tempArray = [];
+
+  // add function to push each note to tempArray.
+
+  
   // note.sorted has note been added? add it, set it to false and continue
-  if (array[0].sorted === null) {
-    array.forEach((note) => (note.sorted = false));
+  if (tempArray[0].sorted === null) {
+    tempArray.forEach((note) => (note.sorted = false));
   }
   /* is note.sorted false? sort note.title A-Z, set .sorted to true and renderNotes, 
   else sort .title Z-A set .sorted to false and render notes */
-  if (array[0].sorted === false) {
-    array.sort((a, b) => (a.title > b.title ? -1 : 1));
-    array.forEach((note) => (note.sorted = true)); // add a sorted key that is set to true.
-    renderNotes(array);
+  if (tempArray[0].sorted === false) {
+    tempArray.sort((a, b) => (a.title > b.title ? -1 : 1));
+    tempArray.forEach((note) => (note.sorted = true)); // add a sorted key that is set to true.
+    renderNotes(tempArray);
   } else {
-    array.sort((a, b) => (a.title > b.title ? 1 : -1));
-    array.forEach((note) => (note.sorted = false)); // add a sorted key that is set to false.
-    renderNotes(array);
+    tempArray.sort((a, b) => (a.title > b.title ? 1 : -1));
+    tempArray.forEach((note) => (note.sorted = false)); // add a sorted key that is set to false.
+    renderNotes(tempArray);
   }
 };
 
@@ -315,3 +323,6 @@ oldBtn.addEventListener("click", () => renderNotes(notRemovedFilter(myNotes)));
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
+
+const sort = document.getElementById('sort-btn');
+sort.addEventListener("click", () => sortByTitle(myNotes));
