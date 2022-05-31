@@ -19,9 +19,19 @@
 
 <body>
 
-    <head>
-        <h1>Notes</h1>
 
+    <header>
+        <div id="controlpanel" class="flexbox">
+            <h1>Notes</h1>
+            <ul id="controls" class="flexbox">
+                <li><button class="btn" id="render-deleted"><i class="fa-solid fa-ghost"></i> </button></li>
+                <li><button class="btn" id="render-important"> <i class="fa-regular fa-star"></i> </button>
+                </li>
+                <li><button class="btn" id="render-old-first"> <i class="fa-solid fa-person-hiking"></i> </button></li>
+                <li><button class="btn" id="sort-btn"> A-Z </button></li>
+            </ul>
+        </div>
+        
         <form id="notes-input" class="flexbox" type="POST">
 
             <fieldset class="flexbox">
@@ -42,16 +52,8 @@
                 <input id="input-submit" type="submit" value="create a sticky note">
             </fieldset>
         </form>
-        <div id="controlPanel">
-            <ul id="controls" class="flexbox">
-                <li><button class="btn" id="render-deleted"><i class="fa-solid fa-ghost"></i> Deleted</button></li>
-                <li><button class="btn" id="render-important"> <i class="fa-regular fa-star"></i> Important</button>
-                </li>
-                <li><button class="btn" id="render-old-first"> <i class="fa-solid fa-person-hiking"></i> home</button></li>
-                <li><button class="btn" id="sort-btn"> A-Z </button></li>
-            </ul>
-        </div>
-    </head>
+       
+    </header>
     <section id="notes-section" class="flexbox">
         <h2>your sticky notes lands here</h2>
         <ul id="notes-list" class="flexbox flex-container">

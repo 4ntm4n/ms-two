@@ -52,6 +52,34 @@ legend {
     outline: none;
 
 }
+/* Header ------------------------------------------------> */
+#controlpanel {
+    top: 0;
+    border:2px solid black;
+    position: fixed;
+    width: 100vw;
+    background-color: rgb(111, 245, 205);;
+    /* mobile specific */
+    justify-content: center;
+}
+
+#controls {
+    /* mobile specific */
+    flex-direction: row;
+    background: blue;
+    flex-wrap: ;
+}
+
+#controls button {
+    height:40px;
+    width:40px;
+    background-color: white;
+    border: 2px solid black;
+    align-self: center;
+    cursor: pointer;
+    box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
+}
+
 
 
 #notes-input {
@@ -59,6 +87,10 @@ legend {
     margin:auto;
     flex-direction: column;
     align-items: center;;
+    background-color: red;
+
+    /* mobile specific */
+    margin-top:50px;
 }
 
 #notes-input fieldset{
@@ -66,13 +98,13 @@ legend {
     flex-direction: column;
     height:100%;
     margin: 10px;
-
     border: 3px solid black;
 }
 
 #content-input {
     height: 100px;
     resize: none;
+
 }
 
 #prio-box {
@@ -140,6 +172,7 @@ legend {
     flex-direction: column;
     z-index: 1;
     transition: all 0.6s;
+    transition-timing-function: ease-in;
 }
 
 

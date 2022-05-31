@@ -5,12 +5,11 @@ const reverse = "R"
 const prioIcon = "P"
 const notPrioIcon = "!P" */
 
-
-const ghost = `<i class="fa-solid fa-ghost"></i>`
-const skull = `<i class="fa-solid fa-skull"></i>`
-const reverse = `<i class="fa-solid fa-arrow-rotate-left"></i>`
-const prioIcon = `<i class="fa-solid fa-star"></i>`
-const notPrioIcon = `<i class="fa-regular fa-star"></i>`
+const ghost = `<i class="fa-solid fa-ghost"></i>`;
+const skull = `<i class="fa-solid fa-skull"></i>`;
+const reverse = `<i class="fa-solid fa-arrow-rotate-left"></i>`;
+const prioIcon = `<i class="fa-solid fa-star"></i>`;
+const notPrioIcon = `<i class="fa-regular fa-star"></i>`;
 
 //store objects from noteMaker in array
 let myNotes = [];
@@ -74,7 +73,6 @@ const renderNotes = (array) => {
   notesList.innerHTML = "";
 
   for (let i = 0; i < array.length; i++) {
-    
     const impNoteBtn = document.createElement("button");
     const restBtn = document.createElement("button");
     const rmBtn = document.createElement("button");
@@ -89,8 +87,7 @@ const renderNotes = (array) => {
             <span class="note-id"> ${array[i]._id} </span>
         `;
     //remove btn
-    
-    
+
     if (array[i].removed) {
       rmBtn.setAttribute("class", "note-btn del-btn");
       rmBtn.innerHTML = skull;
@@ -101,7 +98,7 @@ const renderNotes = (array) => {
     }
 
     // add hidden restore button and display block in css 2, add sort button in html
-    
+
     restBtn.classList.add("note-btn", "rest-btn");
     if (array[i].removed) {
       restBtn.innerHTML = reverse;
@@ -116,7 +113,7 @@ const renderNotes = (array) => {
       impNoteBtn.classList.add("imp-btn", "note-btn", "mk-prio");
       li.classList.add("prio");
     } else {
-      impNoteBtn.classList.add("imp-btn","note-btn", "mkn-prio");
+      impNoteBtn.classList.add("imp-btn", "note-btn", "mkn-prio");
       impNoteBtn.innerHTML = prioIcon;
     }
 
@@ -261,30 +258,31 @@ const notRemovedFilter = (array) => {
   });
 };
 
+
+
 //add function to sort notes by name A-Z.
 const sortByTitle = (array) => {
+  console.log("array is attempting to sort");
 
-
-  //set array to a temp array
-  let tempArray = [];
-
-  // add function to push each note to tempArray.
-
-  
+/*   make tempArray an instance of the array being passed 
+  then operate on the instance instead of changing the original array */ 
+  let tempArray = notRemovedFilter(array) 
   // note.sorted has note been added? add it, set it to false and continue
   if (tempArray[0].sorted === null) {
     tempArray.forEach((note) => (note.sorted = false));
   }
   /* is note.sorted false? sort note.title A-Z, set .sorted to true and renderNotes, 
-  else sort .title Z-A set .sorted to false and render notes */
+    else sort .title Z-A set .sorted to false and render notes */
   if (tempArray[0].sorted === false) {
     tempArray.sort((a, b) => (a.title > b.title ? -1 : 1));
     tempArray.forEach((note) => (note.sorted = true)); // add a sorted key that is set to true.
     renderNotes(tempArray);
+    console.log(`notes has been sorted a-z based on its title`)
   } else {
     tempArray.sort((a, b) => (a.title > b.title ? 1 : -1));
     tempArray.forEach((note) => (note.sorted = false)); // add a sorted key that is set to false.
     renderNotes(tempArray);
+    console.log(`notes has been sorted z-a based on its title`)
   }
 };
 
@@ -324,5 +322,5 @@ oldBtn.addEventListener("click", () => renderNotes(notRemovedFilter(myNotes)));
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
 
-const sort = document.getElementById('sort-btn');
+const sort = document.getElementById("sort-btn");
 sort.addEventListener("click", () => sortByTitle(myNotes));
