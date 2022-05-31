@@ -13,6 +13,9 @@ h1, h2, h3, legend {
     font-family: 'Ubuntu Condensed', sans-serif;
 }
 
+button > i {
+    pointer-events: none;
+} 
 
 * {
     margin: 0;

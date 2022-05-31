@@ -8,6 +8,8 @@
     <meta name="description" content="create sticky-notes, digital sticky-notes, organize, post-it, agile ,create">
     <link rel="stylesheet" href="assets/css/style.css">
 
+    
+
     <!-- script in head uses defer attr, to load after html content to increase speed by parallel load, see: https://www.w3schools.com/tags/att_script_defer.asp-->
     <script async src="https://kit.fontawesome.com/2759c1d447.js" crossorigin="anonymous"></script>
     <script defer src="assets/js/script.js" ></script>
@@ -20,16 +22,6 @@
     <head>
         <h1>Notes</h1>
 
-        <div id="controlPanel">
-            <ul id="controls" class="flexbox">
-                <li><button class="btn" id="render-deleted"><i class="fa-solid fa-ghost"></i> Deleted</button></li>
-                <li><button class="btn" id="render-important"> <i class="fa-regular fa-star"></i> Important</button>
-                </li>
-                <li><button class="btn" id="render-old-first"> <i class="fa-solid fa-person-hiking"></i> oldest
-                        first</button></li>
-            </ul>
-        </div>
-
         <form id="notes-input" class="flexbox" type="POST">
 
             <fieldset class="flexbox">
@@ -40,7 +32,7 @@
 
                 <label for="content-input">Content</label>
                 <textarea class="input-fields" name="" id="content-input" placeholder="add your content here"
-                    maxlength="99" required></textarea>
+                    maxlength="99"></textarea>
 
                 <div id="prio-box">
                     <label for="input-checkbox">prioritize this sticky</label>
@@ -49,8 +41,15 @@
 
                 <input id="input-submit" type="submit" value="create a sticky note">
             </fieldset>
-
         </form>
+        <div id="controlPanel">
+            <ul id="controls" class="flexbox">
+                <li><button class="btn" id="render-deleted"><i class="fa-solid fa-ghost"></i> Deleted</button></li>
+                <li><button class="btn" id="render-important"> <i class="fa-regular fa-star"></i> Important</button>
+                </li>
+                <li><button class="btn" id="render-old-first"> <i class="fa-solid fa-person-hiking"></i> home</button></li>
+            </ul>
+        </div>
     </head>
     <section id="notes-section" class="flexbox">
         <h2>your sticky notes lands here</h2>

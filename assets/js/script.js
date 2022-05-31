@@ -1,9 +1,16 @@
 //fontAwesome Icons
-const ghost = "G"
+/* const ghost = "G"
 const skull = "D"
 const reverse = "R"
 const prioIcon = "P"
-const notPrioIcon = "!P"
+const notPrioIcon = "!P" */
+
+
+const ghost = `<i class="fa-solid fa-ghost"></i>`
+const skull = `<i class="fa-solid fa-skull"></i>`
+const reverse = `<i class="fa-solid fa-arrow-rotate-left"></i>`
+const prioIcon = `<i class="fa-solid fa-star"></i>`
+const notPrioIcon = `<i class="fa-regular fa-star"></i>`
 
 //store objects from noteMaker in array
 let myNotes = [];
