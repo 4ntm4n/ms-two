@@ -1,20 +1,19 @@
-//fontAwesome Icons
-/* const ghost = "G"
-const skull = "D"
-const reverse = "R"
-const prioIcon = "P"
-const notPrioIcon = "!P" */
+//store objects from noteMaker in array
+let myNotes = [];
 
+//fontAwesome icons
 const ghost = `<i class="fa-solid fa-ghost"></i>`;
 const skull = `<i class="fa-solid fa-skull"></i>`;
 const reverse = `<i class="fa-solid fa-arrow-rotate-left"></i>`;
 const prioIcon = `<i class="fa-solid fa-star"></i>`;
 const notPrioIcon = `<i class="fa-regular fa-star"></i>`;
 
-//store objects from noteMaker in array
-let myNotes = [];
+//store notes section h2 to use it for user feedback
+let feedback = document.getElementById("note-section-heading");
 
-//let myDelNotes = [];
+//lightswitch for stared button. will be 1 if stared is clicked will be 0 if other button is clicked.
+let stared = 0;
+
 let nonPrioCount = 1000; // non-prio notes ID origin.
 let prioCount = 1000; //PRIO notes ID origin.
 
@@ -52,6 +51,7 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
     },
   };
 
+  //make the prio note land first in the array, and non-prio notes last.
   if (note.prio) {
     prioCount--;
     note.id = prioCount;
@@ -62,12 +62,11 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
     myNotes.push(note);
   }
 
-  interact();
   renderNotes(notRemovedFilter(myNotes));
+  interact();
 };
 
 // this function takes an array as argument and loops through it and append it to the DOM.
-
 const renderNotes = (array) => {
   const notesList = document.getElementById("notes-list");
   notesList.innerHTML = "";
@@ -86,8 +85,8 @@ const renderNotes = (array) => {
             <p class="note-content">${array[i].content}</p>
             <span class="note-id"> ${array[i]._id} </span>
         `;
-    //remove btn
 
+    //remove btn
     if (array[i].removed) {
       rmBtn.setAttribute("class", "note-btn del-btn");
       rmBtn.innerHTML = skull;
@@ -98,7 +97,6 @@ const renderNotes = (array) => {
     }
 
     // add hidden restore button and display block in css 2, add sort button in html
-
     restBtn.classList.add("note-btn", "rest-btn");
     if (array[i].removed) {
       restBtn.innerHTML = reverse;
@@ -145,28 +143,18 @@ const removeNote = (i) => {
     return note._id === domNoteId;
   });
 
-  //is note already removed? delete it! else set removed to true.
-  if (myNotes[index].removed === true) {
-    if (window.event.ctrlKey) {
-      // nested else if to restore removed
-      const domNoteId = Number(i.target.parentNode.id);
+  //is note already removed? delete it permanently, else set removed to true.
+ 
 
-      //find the clicked note in the myNotes array by filtering its id.
-      const index = myNotes.findIndex((note) => {
-        return note._id === domNoteId;
-      });
-
-      if (myNotes[index].removed) {
+ if (myNotes[index].removed) {
         myNotes[index].removed = false;
         renderNotes(removedFilter(myNotes));
-      }
-    } else {
       myNotes.splice([index], 1);
       renderNotes(removedFilter(myNotes)); //render removed notes
-    }
-  } else {
+    } else {
     myNotes[index].removed = true;
     renderNotes(notRemovedFilter(myNotes)); //render all notes - removed
+    interact();
   }
 };
 
@@ -179,7 +167,6 @@ const restoreNote = (i) => {
   });
 
   myNotes[index].removed = false;
-
   renderNotes(removedFilter(myNotes));
 };
 
@@ -228,7 +215,7 @@ const findMatch = (baseArr, compArr) => {
   return indexInBaseArr;
 };
 
-//create function to remove duplicates in array.
+/* //create function to remove duplicates in array.
 
 //https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects#:~:text=How%20it%20works%3A-,Array.,duplicates%2C%20it%20is%20using%20Array.
 const deleteDuplies = (array) => {
@@ -237,7 +224,7 @@ const deleteDuplies = (array) => {
     ({ _id }, index) => !ids.includes(_id, index + 1)
   );
   return filtered;
-};
+}; */
 
 //filters that render different types of notes obj. based on obj. keys.
 const impFilter = (array) => {
@@ -258,15 +245,13 @@ const notRemovedFilter = (array) => {
   });
 };
 
-
-
 //add function to sort an array of objects based on its title from A-Z / Z-A.
 const sortByTitle = (array) => {
   console.log("array is attempting to sort");
 
   //stop sorting attempt if there is one or less than one object in the array.
   if (array.length <= 1) {
-    console.log("nothing to sort, bailing out.. ");
+    feedback.innerHTML ="Try this again when you have created at least 2 notes"
      return;
   }
 /*   make tempArray an instance of the array being passed 
@@ -282,50 +267,57 @@ const sortByTitle = (array) => {
     tempArray.sort((a, b) => (a.title > b.title ? -1 : 1));
     tempArray.forEach((note) => (note.sorted = true)); // add a sorted key that is set to true.
     renderNotes(tempArray);
-    console.log(`notes has been sorted a-z based on its title`)
+    feedback.innerHTML = "sorting by title. Z-A"
   } else {
     tempArray.sort((a, b) => (a.title > b.title ? 1 : -1));
     tempArray.forEach((note) => (note.sorted = false)); // add a sorted key that is set to false.
     renderNotes(tempArray);
-    console.log(`notes has been sorted z-a based on its title`)
+    feedback.innerHTML = "sorting by title. A-Z"
   }
 };
 
+//function that gives the user feedback based on number of notes created.
 const interact = () => {
   const numOfNotes = myNotes.length;
-  const h2 = document.getElementsByTagName("h2")[0];
 
   numOfNotes == 1
-    ? (h2.innerHTML = "You have added a note, therefore you are...")
+    ? (feedback.innerHTML = "You have added a note, therefore you are...")
     : numOfNotes == 2
-    ? (h2.innerHTML = "yep that's it...")
+    ? (feedback.innerHTML = "yep that's it...")
     : numOfNotes == 100
-    ? (h2.innerHTML = "All your notes are belong to us!")
+    ? (feedback.innerHTML = "All your notes are belong to us!")
     : numOfNotes >= 999
-    ? (h2.innerHTML =
+    ? (feedback.innerHTML =
         "mother of god.. no one has created this many notes... bailing out, your on your own.... ")
-    : (h2.innerHTML = "All your notes are displayed here");
+    : (feedback.innerHTML = "Your notes are displayed here");
 };
 
 //get control panel buttons from index.html
 const delBtn = document.getElementById("render-deleted");
 const impBtn = document.getElementById("render-important");
-const oldBtn = document.getElementById("my-notes");
+const homeBtn = document.getElementById("my-notes");
 
-//click function that removes any duplicates and then renders them
+//click function that display removed notes
 delBtn.addEventListener("click", () => {
   const removedNotes = removedFilter(myNotes);
   renderNotes(removedNotes);
+  feedback.innerHTML = "Your removed notes are displayed here"
 });
 //click function to filter out and render important notes
 impBtn.addEventListener("click", () => {
   const impNotes = impFilter(myNotes);
-  renderNotes(impNotes);
+  renderNotes(notRemovedFilter(impNotes));
+  feedback.innerHTML = "Your important notes are displayed here"
 });
-oldBtn.addEventListener("click", () => renderNotes(notRemovedFilter(myNotes)));
+homeBtn.addEventListener("click", () =>{ 
+  renderNotes(notRemovedFilter(myNotes))
+  interact();
+});
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
 
 const sort = document.getElementById("sort-btn");
-sort.addEventListener("click", () => sortByTitle(myNotes));
+sort.addEventListener("click", () => {
+  sortByTitle(myNotes)
+});
