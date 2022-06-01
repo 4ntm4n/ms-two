@@ -1,6 +1,5 @@
 //store objects from noteMaker in array
 let myNotes = [];
-
 //fontAwesome icons
 const ghost = `<i class="fa-solid fa-ghost"></i>`;
 const skull = `<i class="fa-solid fa-skull"></i>`;
@@ -144,18 +143,20 @@ const removeNote = (i) => {
   });
 
   //is note already removed? delete it permanently, else set removed to true.
- 
+  if(stared === 1){
+    myNotes[index].removed = true;
+    const rmStared  = impFilter(myNotes)
+    renderNotes(notRemovedFilter(rmStared));
 
- if (myNotes[index].removed) {
-        myNotes[index].removed = false;
-        renderNotes(removedFilter(myNotes));
-      myNotes.splice([index], 1);
-      renderNotes(removedFilter(myNotes)); //render removed notes
-    } else {
+  }else if (myNotes[index].removed) {
+    myNotes.splice([index], 1);
+    renderNotes(removedFilter(myNotes)); //render removed notes
+  }else {
     myNotes[index].removed = true;
     renderNotes(notRemovedFilter(myNotes)); //render all notes - removed
     interact();
   }
+
 };
 
 const restoreNote = (i) => {
@@ -245,6 +246,8 @@ const notRemovedFilter = (array) => {
   });
 };
 
+
+
 //add function to sort an array of objects based on its title from A-Z / Z-A.
 const sortByTitle = (array) => {
   console.log("array is attempting to sort");
@@ -297,20 +300,24 @@ const delBtn = document.getElementById("render-deleted");
 const impBtn = document.getElementById("render-important");
 const homeBtn = document.getElementById("my-notes");
 
+
 //click function that display removed notes
 delBtn.addEventListener("click", () => {
   const removedNotes = removedFilter(myNotes);
   renderNotes(removedNotes);
+  stared = 0;
   feedback.innerHTML = "Your removed notes are displayed here"
 });
 //click function to filter out and render important notes
 impBtn.addEventListener("click", () => {
   const impNotes = impFilter(myNotes);
   renderNotes(notRemovedFilter(impNotes));
+  stared = 1;
   feedback.innerHTML = "Your important notes are displayed here"
 });
 homeBtn.addEventListener("click", () =>{ 
   renderNotes(notRemovedFilter(myNotes))
+  stared = 0;
   interact();
 });
 
@@ -319,5 +326,6 @@ form.addEventListener("submit", handleSubmit);
 
 const sort = document.getElementById("sort-btn");
 sort.addEventListener("click", () => {
+  stared = 0;
   sortByTitle(myNotes)
 });
