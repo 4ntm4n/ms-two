@@ -253,9 +253,11 @@ const sortByTitle = (array) => {
   console.log("array is attempting to sort");
 
   //stop sorting attempt if there is one or less than one object in the array.
-  if (array.length <= 1) {
+  if (notRemovedFilter(array).length <= 1) {
     feedback.innerHTML ="Try this again when you have created at least 2 notes"
+    renderNotes(notRemovedFilter(array));
      return;
+     
   }
 /*   make tempArray an instance of the array being passed 
   then operate on the instance instead of changing the original array */ 
@@ -286,7 +288,7 @@ const interact = () => {
   numOfNotes == 1
     ? (feedback.innerHTML = "You have added a note, therefore you are...")
     : numOfNotes == 2
-    ? (feedback.innerHTML = "yep that's it...")
+    ? (feedback.innerHTML = "why not add another note while you're here?")
     : numOfNotes == 100
     ? (feedback.innerHTML = "All your notes are belong to us!")
     : numOfNotes >= 999
