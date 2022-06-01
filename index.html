@@ -45,13 +45,13 @@
         <form id="notes-input" class="flexbox" type="POST">
 
             <fieldset class="flexbox">
-                <legend>Sticky Note Generator</legend>
+                <legend>Note Generator</legend>
 
                 <label for="tite-input">Title</label>
                 <input class="input-fields" placeholder="name your sticky note" type="text" id="title-input" required>
 
                 <label for="content-input">Content</label>
-                <textarea class="input-fields" name="" id="content-input" placeholder="add your content here"
+                <textarea class="input-fields" name="" id="content-input" placeholder=" you can add additional content to your note by using this box. After you have created a note, you can view them in various different ways by clicking the buttons above. Try them out!"
                     maxlength="99"></textarea>
 
                 <div id="prio-box">
@@ -68,11 +68,9 @@
         <h2>your sticky notes lands here</h2>
         <ul id="notes-list" class="flexbox flex-container">
             <li class="note">
-                <h3 class="note-title">example sticky note</h3>
-                <p class="note-content">Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Tenetur quisquam iusto, maiores
-                    perspiciatis quos, nesciunt sed qui officia nisi eligendi eum sapiente quidem enim molestiae! Maxime
-                    saepe nostrum libero eos.</p>
+                <h3 class="note-title">Normal stickynote</h3>
+                <p class="note-content">When you have added a stickynote it will show up here and look like this. <br> If you hover a note, 2 new buttons will appear. <br><br>  Click the ghost <i class="fa-solid fa-ghost"></i> to remove a note. <br> Click the <i class="fa-regular fa-star"></i> to make it important.</p>
+              
                     <button class="note-btn rm-btn"><i class="fa-solid fa-ghost"></i></button>
                     <button class="note-btn mk-prio"><i class="fa-regular fa-star"></i></button>    
 
@@ -80,11 +78,8 @@
             </li>
 
             <li class="note prio">
-                <h3 class="note-title">example sticky note</h3>
-                <p class="note-content">Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Tenetur quisquam iusto, maiores
-                    perspiciatis quos, nesciunt sed qui officia nisi eligendi eum sapiente quidem enim molestiae! Maxime
-                    saepe nostrum libero eos.</p>
+                <h3 class="note-title">Important stickynote</h3>
+                <p class="note-content">If you want to make an important note when you create it, tick the checkbox in the "note generator"  <br> If you hover a note, 2 new buttons will appear: <br><br>  Click the ghost <i class="fa-solid fa-ghost"></i> to remove a note. <br> Click the <i class="fa-solid fa-star"></i> to make it a normal note</p>
 
                     <button class="note-btn rm-btn"><i class="fa-solid fa-ghost"></i></button>
                     <button class="note-btn mkn-prio"><i class="fa-solid fa-star"></i></button>
@@ -92,12 +87,9 @@
                 <span class="note-id">1002</span>
             </li>
 
-            <li class="note removed" style="background-color: red;">
-                <h3 class="note-title">example sticky note</h3>
-                <p class="note-content">Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Tenetur quisquam iusto, maiores
-                    perspiciatis quos, nesciunt sed qui officia nisi eligendi eum sapiente quidem enim molestiae! Maxime
-                    saepe nostrum libero eos.</p>
+            <li class="note removed">
+                <h3 class="note-title">removed stickyNote</h3>
+                <p class="note-content">your removed notes can be reviewd by clicking the "Deleted" button near the top of the screen <br><br> you can restore a note by clicking on the restore arrow <i class="fa-solid fa-arrow-rotate-left"></i> <br> you can permanentally delete it by clicking the skull <i class="fa-solid fa-skull"></i></p>
                 <button class="note-btn rest-btn"><i class="fa-solid fa-arrow-rotate-left"></i></button>
                 <button class="note-btn del-btn"><i class="fa-solid fa-skull"></i></button>
      
