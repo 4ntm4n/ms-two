@@ -12,6 +12,7 @@
 
     <!-- script in head uses defer attr, to load after html content to increase speed by parallel load, see: https://www.w3schools.com/tags/att_script_defer.asp-->
     <script async src="https://kit.fontawesome.com/2759c1d447.js" crossorigin="anonymous"></script>
+    <script defer src="assets/js/style.js"></script>
     <script defer src="assets/js/script.js" ></script>
 
     <title>Document</title>
@@ -42,27 +43,30 @@
             </ul>
         </div>
         
-        <form id="notes-input" class="flexbox" type="POST">
+        <div id="header-container" class="container flexbox">
+            <form id="notes-input" class="flexbox" type="POST">
 
-            <fieldset class="flexbox">
-                <legend>Note Generator</legend>
-
-                <label for="tite-input">Title</label>
-                <input class="input-fields" placeholder="name your sticky note" type="text" id="title-input" required>
-
-                <label for="content-input">Content</label>
-                <textarea class="input-fields" name="" id="content-input" placeholder=" you can add additional content to your note by using this box. After you have created a note, you can view them in various different ways by clicking the buttons above. Try them out!"
-                    maxlength="99"></textarea>
-
-                <div id="prio-box">
-                    <label for="input-checkbox">prioritize this sticky</label>
-                    <input id="input-checkbox" type="checkbox">
-                </div>
-
-                <input id="input-submit" type="submit" value="create a sticky note">
-            </fieldset>
-        </form>
-       
+                <fieldset class="flexbox">
+                    <legend>Note Generator</legend>
+    
+                    <label for="tite-input">Title</label>
+                    <input class="input-fields" placeholder="name your sticky note" type="text" id="title-input" required>
+    
+                    <label for="content-input">Content</label>
+                    <textarea class="input-fields" name="" id="content-input" placeholder=" you can add additional content to your note by using this box. After you have created a note, you can view them in various different ways by clicking the buttons above. Try them out!"
+                        maxlength="99"></textarea>
+    
+                    <div id="prio-box">
+                        <label for="input-checkbox">prioritize this sticky</label>
+                        <input id="input-checkbox" type="checkbox">
+                    </div>
+    
+                    <input id="input-submit" type="submit" value="create a sticky note">
+                </fieldset>
+            </form>
+           <img src="assets/img/missery.webp" alt="poor helpless man covered in analog sticky notes">
+        </div>
+        
     </header>
     <section id="notes-section" class="flexbox">
         <h2 id="note-section-heading">your sticky notes lands here</h2>

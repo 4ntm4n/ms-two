@@ -117,7 +117,7 @@ const renderNotes = (array) => {
     li.appendChild(rmBtn);
     li.appendChild(impNoteBtn);
     notesList.appendChild(li);
-
+    
     //event listeners to buttons inside the notes
     rmBtn.addEventListener("click", (i) => {
       removeNote(i);
@@ -288,7 +288,7 @@ const interact = () => {
   numOfNotes == 1
     ? (feedback.innerHTML = "You have added a note, therefore you are...")
     : numOfNotes == 2
-    ? (feedback.innerHTML = "why not add another note while you're here?")
+    ? (feedback.innerHTML = "what's better than 2 notes..? ah yes, 3 notes..")
     : numOfNotes == 100
     ? (feedback.innerHTML = "All your notes are belong to us!")
     : numOfNotes >= 999
