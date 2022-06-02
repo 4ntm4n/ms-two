@@ -50,7 +50,7 @@
                     <legend>Note Generator</legend>
     
                     <label for="tite-input">Title</label>
-                    <input class="input-fields" placeholder="name your sticky note" type="text" id="title-input" required>
+                    <input class="input-fields" placeholder="name your sticky note" type="text" id="title-input" required pattern="\S+.*" />
     
                     <label for="content-input">Content</label>
                     <textarea class="input-fields" name="" id="content-input" placeholder=" you can add additional content to your note by using this box. After you have created a note, you can view them in various different ways by clicking the buttons above. Try them out!"
@@ -64,7 +64,10 @@
                     <input id="input-submit" type="submit" value="create a sticky note">
                 </fieldset>
             </form>
-           <img src="assets/img/missery.webp" alt="poor helpless man covered in analog sticky notes">
+            <div class="imgbox flexbox">
+                <img src="assets/img/missery.webp" alt="poor helpless man covered in analog sticky notes">
+                <p>Is this you? Please concider using Notes.</p>
+            </div>
         </div>
         
     </header>
