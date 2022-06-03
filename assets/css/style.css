@@ -125,15 +125,7 @@ h1{
 }
 
 #header-container > .imgbox {
-    margin-bottom: 40px;
-    align-self: center;
-    position: relative;
-    border: 3px solid black;
-    box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
     display: none;
-    top: 20px;
-    background-color: beige;
-    text-align: center;
 }
 
 #notes-input {
@@ -316,15 +308,23 @@ footer {
 @media only screen and (min-width: 768px) {
    #header-container > .imgbox {
         display: block;
+        margin-bottom: 40px;
+        align-self: center;
+        position: relative;
+        border: 3px solid black;
+        box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
+        top: 20px;
+        background-color: beige;
+        text-align: center;
    }
 
+
    #notes-input fieldset{
-   
     flex-direction: column;
     margin: 10px;
     border: 3px solid black;
+    width: 250px;
 }
-
 
 .note-title {
     font-family: 'Permanent Marker', cursive;
