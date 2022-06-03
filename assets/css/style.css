@@ -14,6 +14,8 @@ h1, h2, h3, legend {
 .note-title {
     font-family: 'Permanent Marker', cursive;
     font-size: 1.2em;
+    position: relative;
+    top: 20px;
 }
 
 .note-content, label, input, textarea, p {
@@ -229,13 +231,13 @@ h1{
     border: 2px solid black;
     flex-direction: column;
     z-index: 1;
-    transition: all 0.6s;
+    transition: all 0.25s;
     transition-timing-function: ease-in;
     position: relative;
 }
 
 
-.note:hover {
+.note:active {
     box-shadow: 4px 8px 1px 1px rgb(0, 0, 0);
 }
 
@@ -249,49 +251,30 @@ h1{
     position: absolute;
     font-size: 10px;
     z-index: 2;
-}
-
-.note-btn-list {
-    box-sizing: border-box;
-    width: 100%;
-    list-style: none;
-    gap: 30px;
-    display: none;
-    z-index: 2;
-    justify-content: center;
-}
-
-.note:hover .note-title {
-    visibility: hidden;
-}
-.note:hover .note-content {
-    visibility: hidden;
-}
-
-.note:hover .note-btn {
-    display: block;
-
+    left:100px;
+    text-align: center;
 }
 
 .note-btn{
-    position: relative;
+    position: absolute;
     display: block;  
 }
 
  .rm-btn, .rest-btn{
-    top: -40%;
-    left: 60px;    
+     top: 5px;
+    left: 5px;    
 }
 
 
 .del-btn, .mkn-prio, .mk-prio {
- left: 150px;
- top: -53%;
+ top: 5px;
+ right: 5px;
+ 
 }
 
 .note button {
-    background-color: rgba(255, 255, 255, 0.651) !important;
-    border:2px solid black;
+    background-color:  transparent;
+    border: none;
     cursor: pointer;
     height: 45px;
     width: 45px;
@@ -300,9 +283,9 @@ h1{
     transition: all 0.3s;
 }
 
-.note button:hover {
-    background-color: black !important;
-    color: #bdbdbd;
+.note button:active {
+    background-color: hsla(0, 0%, 100%, 0.349);
+    color: black;
     
 }
 
@@ -342,19 +325,61 @@ footer {
     border: 3px solid black;
 }
 
+
+.note button {
+    background-color: rgba(255, 255, 255, 0.651) !important;
+    border:2px solid black;
+    cursor: pointer;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    font-size: large;
+    transition: all 0.3s;
+}
+
+.note:hover {
+    box-shadow: 4px 8px 1px 1px rgb(0, 0, 0);
+}
+
+
+.note button:hover {
+    background-color: black !important;
+    color: #bdbdbd;
+  
+}
 .note-btn{
     position: absolute;
-    display: none;  
+    display: none ;  
+}
+
+.note:hover .note-title {
+    visibility: hidden;
+}
+.note:hover .note-content {
+    visibility: hidden;
+}
+
+.note:hover .note-btn {
+    display: block;
+
 }
 
  .rm-btn, .rest-btn{
     top: 40%;
     left: 60px;    
 }
-
-
 .del-btn, .mkn-prio, .mk-prio {
- left: 150px;
- top: 40%;
+    left: 150px;
+    top: 40%;
+   }
+
+
+.note-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2em;
+    position: relative;
+    top: 5px;
 }
+
+
 }
