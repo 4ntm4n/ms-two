@@ -126,7 +126,7 @@ h2{
 /* header > container --------------------------- */
 
 #header-container {
-  margin: 70px auto;
+  margin: 12vh auto;
   min-height: 480px;
   background-color: rgb(243, 157, 157);
   justify-content: space-around;
@@ -141,8 +141,6 @@ h2{
 #notes-input {
   flex-direction: column;
   align-items: center;
-
-  /* mobile specific */
 }
 
 #notes-input fieldset {
@@ -208,7 +206,7 @@ h2{
 /* notes-section -------------------------------------- */
 
 #notes-section {
-  width: 100%;
+  width: 100%;git 
   margin: auto;
   flex-direction: column;
   align-items: center;
@@ -315,6 +313,62 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
+    body{
+        margin-right: 14.5vh;
+    }
+
+    #header-container{
+        padding-top: 4vh;
+    }
+
+    /* controlpanel ------------ */
+h1 {
+    margin-left: 10px;
+  }
+
+  
+  
+  #controlpanel {
+    z-index: 3;
+    top: 0;
+    right:0;
+    border: 2px solid black;
+    position: fixed;
+    background-color: rgb(190, 240, 183);
+    /* large-screen specific */
+    width: 10vw;
+    height:100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+  
+  #controls {
+    /* large screen specific */
+    flex-direction: column;
+    top:0;
+    right:160px;
+    gap: 3vh;
+    justify-content: space-around;
+  }
+  
+  #controls li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #controls button {
+    height: 40px;
+    width: 70px;
+    background-color: white;
+    border: 2px solid black;
+    align-self: center;
+    cursor: pointer;
+    box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
+    transition: ease 0.1s;
+  }
+
   #header-container > .imgbox {
     display: block;
     margin-bottom: 40px;
