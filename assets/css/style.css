@@ -326,60 +326,59 @@ footer {
 }
 
 
-.note button {
-    background-color: rgba(255, 255, 255, 0.651) !important;
-    border:2px solid black;
-    cursor: pointer;
-    height: 45px;
-    width: 45px;
-    border-radius: 50%;
-    font-size: large;
-    transition: all 0.3s;
-}
-
-.note:hover {
-    box-shadow: 4px 8px 1px 1px rgb(0, 0, 0);
-}
-
-
-.note button:hover {
-    background-color: black !important;
-    color: #bdbdbd;
-  
-}
-.note-btn{
-    position: absolute;
-    display: none ;  
-}
-
-.note:hover .note-title {
-    visibility: hidden;
-}
-.note:hover .note-content {
-    visibility: hidden;
-}
-
-.note:hover .note-btn {
-    display: block;
-
-}
-
- .rm-btn, .rest-btn{
-    top: 40%;
-    left: 60px;    
-}
-.del-btn, .mkn-prio, .mk-prio {
-    left: 150px;
-    top: 40%;
-   }
-
-
 .note-title {
     font-family: 'Permanent Marker', cursive;
     font-size: 1.2em;
     position: relative;
     top: 5px;
 }
+}
 
+@media only screen and (min-width: 992px) {
+    .note button {
+        background-color: rgba(255, 255, 255, 0.651) !important;
+        border:2px solid black;
+        cursor: pointer;
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        font-size: large;
+        transition: all 0.3s;
+    }
+    
+    .note:hover {
+        box-shadow: 4px 8px 1px 1px rgb(0, 0, 0);
+    }
+    
+    
+    .note button:hover {
+        background-color: black !important;
+        color: #bdbdbd;
+      
+    }
+    .note-btn{
+        display: none;  
+    }
+    
+    .note:hover .note-title {
+        visibility: hidden;
+    }
+    .note:hover .note-content {
+        visibility: hidden;
+    }
+    
+    .note:hover .note-btn {
+        display: block;
+    
+    }
+    
+     .rm-btn, .rest-btn{
+        top: 40%;
+        left: 60px;    
+    }
+    .del-btn, .mkn-prio, .mk-prio {
+        left: 150px;
+        top: 40%;
+       }
 
 }
