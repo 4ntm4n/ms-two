@@ -1,110 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="create sticky-notes, digital sticky-notes, organize, post-it, agile ,create">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="create sticky-notes, digital sticky-notes, organize, post-it, agile ,create"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- script in head uses defer / async attr, to load after html content to increase speed by parallel load, see: https://www.w3schools.com/tags/att_script_defer.asp-->
-    <script async src="https://kit.fontawesome.com/2759c1d447.js" crossorigin="anonymous"></script>
+    <script
+      async
+      src="https://kit.fontawesome.com/2759c1d447.js"
+      crossorigin="anonymous"
+    ></script>
     <script defer src="assets/js/style.js"></script>
-    <script defer src="assets/js/script.js" ></script>
+    <script defer src="assets/js/script.js"></script>
 
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div id="controlpanel" class="flexbox">
-            <h1>Notes</h1>
-            <ul id="controls" class="flexbox">
-                <li> 
-                    <label for="rendered-deleted">Deleted</label> 
-                    <button class="btn" id="render-deleted"><i class="fa-solid fa-ghost"></i> </button>
-                </li>
-                <li>
-                    <label for="render-deleted">Stared</label>
-                    <button class="btn" id="render-important"><i class="fa-solid fa-star"></i> </button>
-                </li>
-                <li>
-                    <label for="render-deleted">Sort</label>
-                    <button class="btn" id="sort-btn"> <i class="fa-solid fa-up-down"></i> </button>
-                </li>
-                <li>
-                    <label for="render-deleted">Home</label>
-                    <button class="btn" id="my-notes"><i class="fa-solid fa-note-sticky"></i></button></li>
-            </ul>
-        </div>
-        
-        <div id="header-container" class="container flexbox">
-            <form id="notes-input" class="flexbox" type="POST">
+      <div id="controlpanel" class="flexbox">
+        <h1>Notes</h1>
+        <ul id="controls" class="flexbox">
+          <li>
+            <label for="rendered-deleted">Deleted</label>
+            <button class="btn" id="render-deleted">
+              <i class="fa-solid fa-ghost"></i>
+            </button>
+          </li>
+          <li>
+            <label for="render-deleted">Stared</label>
+            <button class="btn" id="render-important">
+              <i class="fa-solid fa-star"></i>
+            </button>
+          </li>
+          <li>
+            <label for="render-deleted">Sort</label>
+            <button class="btn" id="sort-btn">
+              <i class="fa-solid fa-up-down"></i>
+            </button>
+          </li>
+          <li>
+            <label for="render-deleted">Home</label>
+            <button class="btn" id="my-notes">
+              <i class="fa-solid fa-note-sticky"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
 
-                <fieldset class="flexbox">
-                    <legend>Note Generator</legend>
-    
-                    <label for="tite-input">Title</label>
-                    <input class="input-fields" placeholder="name your sticky note" type="text" id="title-input" required pattern="\S+.*" maxlength="99"/>
-    
-                    <label for="content-input">Content</label>
-                    <textarea class="input-fields" name="" id="content-input" placeholder=" you can add additional content to your note by using this box. After you have created a note, you can view them in various different ways by clicking the buttons above. Try them out!"
-                        maxlength="99"></textarea>
-    
-                    <div id="prio-box">
-                        <label for="input-checkbox">prioritize this sticky</label>
-                        <input id="input-checkbox" type="checkbox">
-                    </div>
-    
-                    <input id="input-submit" type="submit" value="create a sticky note">
-                </fieldset>
-            </form>
-            <div class="imgbox flexbox">
-                <img src="assets/img/missery.webp" alt="poor helpless man covered in analog sticky notes">
-                <p>Is this you? Please concider using Notes.</p>
+      <div id="header-container" class="container flexbox">
+        <form id="notes-input" class="flexbox" type="POST">
+          <fieldset class="flexbox">
+            <legend>Note Generator</legend>
+
+            <label for="tite-input">Title</label>
+            <input
+              class="input-fields"
+              placeholder="name your sticky note"
+              type="text"
+              id="title-input"
+              required
+              pattern="\S+.*"
+              maxlength="99"
+            />
+
+            <label for="content-input">Content</label>
+            <textarea
+              class="input-fields"
+              name=""
+              id="content-input"
+              placeholder=" you can add additional content to your note by using this box. After you have created a note, you can view them in various different ways by clicking the buttons above. Try them out!"
+              maxlength="99"
+            ></textarea>
+
+            <div id="prio-box">
+              <label for="input-checkbox">prioritize this sticky</label>
+              <input id="input-checkbox" type="checkbox" />
             </div>
+
+            <input
+              id="input-submit"
+              type="submit"
+              value="create a sticky note"
+            />
+          </fieldset>
+        </form>
+        <div class="imgbox flexbox">
+          <img
+            src="assets/img/missery.webp"
+            alt="poor helpless man covered in analog sticky notes"
+          />
+          <p>Is this you? Please concider using Notes.</p>
         </div>
-        
+      </div>
     </header>
     <section id="notes-section" class="flexbox">
-        <h2 id="note-section-heading">your sticky notes lands here</h2>
-        <ul id="notes-list" class="flexbox flex-container">
-            <li class="note">
-                <h3 class="note-title">Normal stickynote</h3>
-                <p class="note-content">When you have added a stickynote it will show up here and look like this. <br> If you hover a note, 2 new buttons will appear. <br><br>  Click the ghost <i class="fa-solid fa-ghost"></i> to remove a note. <br> Click the <i class="fa-regular fa-star"></i> to make it important.</p>
-              
-                    <button class="note-btn rm-btn"><i class="fa-solid fa-ghost"></i></button>
-                    <button class="note-btn mk-prio"><i class="fa-regular fa-star"></i></button>    
+      <h2 id="note-section-heading">your sticky notes lands here</h2>
+      <ul id="notes-list" class="flexbox flex-container">
+        <li class="note">
+          <h3 class="note-title">Normal stickynote</h3>
+          <p class="note-content">
+            When you have added a stickynote it will show up here and look like
+            this. <br />
+            If you hover a note, 2 new buttons will appear. <br /><br />
+            Click the ghost <i class="fa-solid fa-ghost"></i> to remove a note.
+            <br />
+            Click the <i class="fa-regular fa-star"></i> to make it important.
+          </p>
 
-                <span class="note-id">1002</span>
-            </li>
+          <button class="note-btn rm-btn">
+            <i class="fa-solid fa-ghost"></i>
+          </button>
+          <button class="note-btn mk-prio">
+            <i class="fa-regular fa-star"></i>
+          </button>
 
-            <li class="note prio">
-                <h3 class="note-title">Important stickynote</h3>
-                <p class="note-content">If you want to make an important note when you create it, tick the checkbox in the "note generator"  <br> If you hover a note, 2 new buttons will appear: <br><br>  Click the ghost <i class="fa-solid fa-ghost"></i> to remove a note. <br> Click the <i class="fa-solid fa-star"></i> to make it a normal note</p>
+          <span class="note-id">1002</span>
+        </li>
 
-                    <button class="note-btn rm-btn"><i class="fa-solid fa-ghost"></i></button>
-                    <button class="note-btn mkn-prio"><i class="fa-solid fa-star"></i></button>
-                        
-                <span class="note-id">1002</span>
-            </li>
+        <li class="note prio">
+          <h3 class="note-title">Important stickynote</h3>
+          <p class="note-content">
+            If you want to make an important note when you create it, tick the
+            checkbox in the "note generator" <br />
+            If you hover a note, 2 new buttons will appear: <br /><br />
+            Click the ghost <i class="fa-solid fa-ghost"></i> to remove a note.
+            <br />
+            Click the <i class="fa-solid fa-star"></i> to make it a normal note
+          </p>
 
-            <li class="note removed">
-                <h3 class="note-title">removed stickyNote</h3>
-                <p class="note-content">your removed notes can be reviewd by clicking the "Deleted" button near the top of the screen <br><br> you can restore a note by clicking on the restore arrow <i class="fa-solid fa-arrow-rotate-left"></i> <br> you can permanentally delete it by clicking the skull <i class="fa-solid fa-skull"></i></p>
-                <button class="note-btn rest-btn"><i class="fa-solid fa-arrow-rotate-left"></i></button>
-                <button class="note-btn del-btn"><i class="fa-solid fa-skull"></i></button>
-     
-                <span class="note-id">1002</span>
-            </li>
-        </ul>
+          <button class="note-btn rm-btn">
+            <i class="fa-solid fa-ghost"></i>
+          </button>
+          <button class="note-btn mkn-prio">
+            <i class="fa-solid fa-star"></i>
+          </button>
+
+          <span class="note-id">1002</span>
+        </li>
+
+        <li class="note removed">
+          <h3 class="note-title">removed stickyNote</h3>
+          <p class="note-content">
+            your removed notes can be reviewd by clicking the "Deleted" button
+            near the top of the screen <br /><br />
+            you can restore a note by clicking on the restore arrow
+            <i class="fa-solid fa-arrow-rotate-left"></i> <br />
+            you can permanentally delete it by clicking the skull
+            <i class="fa-solid fa-skull"></i>
+          </p>
+          <button class="note-btn rest-btn">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+          </button>
+          <button class="note-btn del-btn">
+            <i class="fa-solid fa-skull"></i>
+          </button>
+
+          <span class="note-id">1002</span>
+        </li>
+      </ul>
     </section>
     <footer>
-        <p>copyright &copy; Anton Askling 2022</p>
+      <p>copyright &copy; Anton Askling 2022</p>
     </footer>
-</body>
-
+  </body>
 </html>

@@ -1,384 +1,383 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Madurai:wght@300;400&family=Permanent+Marker&family=Ubuntu+Condensed&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Madurai:wght@300;400&family=Permanent+Marker&family=Ubuntu+Condensed&display=swap");
 * {
-    margin: 0;
+  margin: 0;
 }
 
 body {
-    background-color: beige;
+  background-color: beige;
 }
 
-h1, h2, h3, legend {
-    font-family: 'Bebas Neue', cursive;
+h1,
+h2,
+h3,
+legend {
+  font-family: "Bebas Neue", cursive;
 }
 
 .note-title {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.2em;
-    position: relative;
-    top: 20px;
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.2em;
+  position: relative;
+  top: 20px;
 }
 
-.note-content, label, input, textarea, p {
-    font-family: 'Ubuntu Condensed', sans-serif;
+.note-content,
+label,
+input,
+textarea,
+p {
+  font-family: "Ubuntu Condensed", sans-serif;
 }
 
 button > i {
-    pointer-events: none;
-} 
-
-
+  pointer-events: none;
+}
 
 li {
-    box-sizing: border-box;
-    display: flex;
+  box-sizing: border-box;
+  display: flex;
 }
 
 legend {
-    float: left;
-    text-align: center;
-    font-size: x-large;
-    margin-bottom: 1em;
+  float: left;
+  text-align: center;
+  font-size: x-large;
+  margin-bottom: 1em;
 }
 
 .flexbox {
-    display: flex;
+  display: flex;
 }
 
-.flex-container{
-    max-width: 950px;
+.flex-container {
+  max-width: 950px;
 
-    flex-flow: row wrap;
-    gap: 20px;
+  flex-flow: row wrap;
+  gap: 20px;
 }
 
 .input-fields {
-    margin: 0.3em 0 .7em 0;
-    border: 2px solid black;
+  margin: 0.3em 0 0.7em 0;
+  border: 2px solid black;
 }
 .input-fields:focus {
-    outline: none;
-
+  outline: none;
 }
 /* Header ------------------------------------------------> */
 
 /* controlpanel ------------ */
-h1{
-    position: relative;
-    margin-left:10px;
-    right:10px;
-    align-self: center;
+h1 {
+  position: relative;
+  margin-left: 10px;
+  right: 10px;
+  align-self: center;
 }
 
 #controlpanel {
-    z-index: 3;
-    top: 0;
-    border:2px solid black;
-    position: fixed;
-    width: 100vw;
-    background-color: rgb(190, 240, 183);
-    /* mobile specific */
-    justify-content: center;
+  z-index: 3;
+  top: 0;
+  border: 2px solid black;
+  position: fixed;
+  width: 100vw;
+  background-color: rgb(190, 240, 183);
+  /* mobile specific */
+  justify-content: center;
 }
 
 #controls {
-    /* mobile specific */
-    flex-direction: row;
-    position: relative;
-    right:40px;
-    width: 300px;
-    justify-content: space-around;
-
+  /* mobile specific */
+  flex-direction: row;
+  position: relative;
+  right: 40px;
+  width: 300px;
+  justify-content: space-around;
 }
 
 #controls li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #controls button {
-    height:40px;
-    width:40px;
-    background-color: white;
-    border: 2px solid black;
-    align-self: center;
-    cursor: pointer;
-    box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
-    transition: ease 0.1s;
-
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border: 2px solid black;
+  align-self: center;
+  cursor: pointer;
+  box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
+  transition: ease 0.1s;
 }
 
 #controls button:active {
-    background-color: rgb(207, 207, 207);
-    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
-
+  background-color: rgb(207, 207, 207);
+  box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
 }
 
 /* header > container --------------------------- */
 
 #header-container {
-    margin: 70px auto;
-    background-color: rgb(243, 157, 157);
-    justify-content: space-around;
-    max-width: 960px;
-    border: 4px solid black;
+  margin: 70px auto;
+  min-height: 480px;
+  background-color: rgb(243, 157, 157);
+  justify-content: space-around;
+  max-width: 960px;
+  border: 4px solid black;
 }
 
 #header-container > .imgbox {
-    display: none;
+  display: none;
 }
 
 #notes-input {
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
 
-    /* mobile specific */
-
+  /* mobile specific */
 }
 
-#notes-input fieldset{
-    flex-direction: column;
-    height:100%;
-    margin: 10px;
-    border: 3px solid black;
-    background-color: rgb(194, 243, 187);
+#notes-input fieldset {
+  flex-direction: column;
+  height: 100%;
+  min-width:260px;
+  margin: 10px;
+  border: 3px solid black;
+  background-color: rgb(194, 243, 187);
 }
 
 #title-input {
-    font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 #content-input {
-    height: 100px;
-    font-size: .8em;
-    resize: none;
-
+  height: 100px;
+  font-size: 0.8em;
+  resize: none;
 }
 
 #prio-box {
-    position:relative;
-    margin-bottom: 1em;
-    display: flex;
-    align-items: center;
-    left: 30px;
+  position: relative;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  left: 30px;
 }
 
 #prio-box label {
-    cursor: pointer;
-    margin: 15px;
+  cursor: pointer;
+  margin: 15px;
 }
 
-#input-checkbox{
-    cursor: pointer;
-    height: 25px;
-    width: 25px;
+#input-checkbox {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
 
-    outline: none;
+  outline: none;
 }
 
-#input-checkbox:focus{
-    outline: none;
+#input-checkbox:focus {
+  outline: none;
 }
 
 #input-submit {
-    background-color: white;
-    border: 2px solid black;
-    height: 2.5em;
-    width: 120px;
-    align-self: center;
-    cursor: pointer;
-    box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
-    transition: ease 0.1s;
+  background-color: white;
+  border: 2px solid black;
+  height: 3.5em;
+  align-self: center;
+  cursor: pointer;
+  box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
+  transition: ease 0.1s;
+  font-size: 1.2em;
 }
 
 #input-submit:active {
-    background-color: rgb(207, 207, 207);
-    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
+  background-color: rgb(207, 207, 207);
+  box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
 }
-
 
 /* notes-section -------------------------------------- */
 
 #notes-section {
-    width: 100%;
-    margin: auto;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    margin-bottom: 9vh;
+  width: 100%;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 9vh;
 }
 
 #notes-list {
-    justify-content: center;
-    position: relative;
-    right:15px;
+  justify-content: center;
+  position: relative;
+  right: 15px;
 }
 
 .note {
-    width: 250px;
-    min-height: 250px;
-    background-color: #e0e075;
-    text-align: center;
-    list-style-type: none;
-    border: 2px solid black;
-    flex-direction: column;
-    z-index: 1;
-    transition: all 0.25s;
-    transition-timing-function: ease-in;
-    position: relative;
+  width: 250px;
+  min-height: 250px;
+  background-color: #e0e075;
+  text-align: center;
+  list-style-type: none;
+  border: 2px solid black;
+  flex-direction: column;
+  z-index: 1;
+  transition: all 0.25s;
+  transition-timing-function: ease-in;
+  position: relative;
 }
-
 
 .note:active {
-    box-shadow: 4px 8px 1px 1px rgb(0, 0, 0);
+  box-shadow: 4px 8px 1px 1px rgb(0, 0, 0);
 }
 
-
-.note h3, p ,span {
-    margin: 1em;
+.note h3,
+p,
+span {
+  margin: 1em;
 }
 
 .note-id {
-    color: rgba(43, 42, 42, 0.288);
-    position: absolute;
-    font-size: 10px;
-    z-index: 2;
-    left:100px;
-    text-align: center;
+  color: rgba(43, 42, 42, 0.288);
+  position: absolute;
+  font-size: 10px;
+  z-index: 2;
+  left: 100px;
+  text-align: center;
 }
 
-.note-btn{
-    position: absolute;
-    display: block;  
+.note-btn {
+  position: absolute;
+  display: block;
 }
 
- .rm-btn, .rest-btn{
-     top: 5px;
-    left: 5px;    
+.rm-btn,
+.rest-btn {
+  top: 5px;
+  left: 5px;
 }
 
-
-.del-btn, .mkn-prio, .mk-prio {
- top: 5px;
- right: 5px;
- 
+.del-btn,
+.mkn-prio,
+.mk-prio {
+  top: 5px;
+  right: 5px;
 }
 
 .note button {
-    background-color:  transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  font-size: large;
+  transition: all 0.3s;
+}
+
+.note button:active {
+  background-color: hsla(0, 0%, 100%, 0.349);
+  color: black;
+}
+
+.prio {
+  background-color: rgb(245, 128, 82);
+}
+
+.removed,
+.removed.prio {
+  background-color: rgb(197, 197, 197);
+}
+
+.removed .imp-btn {
+  display: none;
+}
+
+/* footer ----------------------------------- */
+
+footer {
+  background-color: rgb(224, 99, 99);
+  position: fixed;
+  height: 8vh;
+  width: 100%;
+  bottom: 0px;
+  text-align: center;
+  z-index: 3;
+}
+
+@media only screen and (min-width: 768px) {
+  #header-container > .imgbox {
+    display: block;
+    margin-bottom: 40px;
+    align-self: center;
+    position: relative;
+    border: 3px solid black;
+    box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
+    top: 20px;
+    background-color: beige;
+    text-align: center;
+  }
+
+  #notes-input fieldset {
+    flex-direction: column;
+    margin: 10px;
+    border: 3px solid black;
+    width: 250px;
+  }
+
+  .note-title {
+    font-family: "Permanent Marker", cursive;
+    font-size: 1.2em;
+    position: relative;
+    top: 5px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .note button {
+    background-color: rgba(255, 255, 255, 0.651) !important;
+    border: 2px solid black;
     cursor: pointer;
     height: 45px;
     width: 45px;
     border-radius: 50%;
     font-size: large;
     transition: all 0.3s;
-}
+  }
 
-.note button:active {
-    background-color: hsla(0, 0%, 100%, 0.349);
-    color: black;
-    
-}
+  .note:hover {
+    box-shadow: 4px 8px 1px 1px rgb(0, 0, 0);
+  }
 
-.prio {
-    background-color: rgb(245, 128, 82);
-}
-
-.removed, .removed.prio {
-    background-color: rgb(197, 197, 197);
-}
-
-.removed .imp-btn{
+  .note button:hover {
+    background-color: black !important;
+    color: #bdbdbd;
+  }
+  .note-btn {
     display: none;
-}
+  }
 
-/* footer ----------------------------------- */
+  .note:hover .note-title {
+    visibility: hidden;
+  }
+  .note:hover .note-content {
+    visibility: hidden;
+  }
 
-footer {
-    background-color: rgb(224, 99, 99);
-    position:fixed;
-    height: 8vh;
-    width: 100%;
-    bottom: 0px;
-    text-align: center;
-    z-index: 3;
-}
+  .note:hover .note-btn {
+    display: block;
+  }
 
-@media only screen and (min-width: 768px) {
-   #header-container > .imgbox {
-        display: block;
-        margin-bottom: 40px;
-        align-self: center;
-        position: relative;
-        border: 3px solid black;
-        box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
-        top: 20px;
-        background-color: beige;
-        text-align: center;
-   }
-
-
-   #notes-input fieldset{
-    flex-direction: column;
-    margin: 10px;
-    border: 3px solid black;
-    width: 250px;
-}
-
-.note-title {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.2em;
-    position: relative;
-    top: 5px;
-}
-}
-
-@media only screen and (min-width: 992px) {
-    .note button {
-        background-color: rgba(255, 255, 255, 0.651) !important;
-        border:2px solid black;
-        cursor: pointer;
-        height: 45px;
-        width: 45px;
-        border-radius: 50%;
-        font-size: large;
-        transition: all 0.3s;
-    }
-    
-    .note:hover {
-        box-shadow: 4px 8px 1px 1px rgb(0, 0, 0);
-    }
-    
-    
-    .note button:hover {
-        background-color: black !important;
-        color: #bdbdbd;
-      
-    }
-    .note-btn{
-        display: none;  
-    }
-    
-    .note:hover .note-title {
-        visibility: hidden;
-    }
-    .note:hover .note-content {
-        visibility: hidden;
-    }
-    
-    .note:hover .note-btn {
-        display: block;
-    
-    }
-    
-     .rm-btn, .rest-btn{
-        top: 40%;
-        left: 60px;    
-    }
-    .del-btn, .mkn-prio, .mk-prio {
-        left: 150px;
-        top: 40%;
-       }
-
+  .rm-btn,
+  .rest-btn {
+    top: 40%;
+    left: 60px;
+  }
+  .del-btn,
+  .mkn-prio,
+  .mk-prio {
+    left: 150px;
+    top: 40%;
+  }
 }
