@@ -318,6 +318,14 @@ impBtn.addEventListener("click", () => {
   feedback.innerHTML = "Your important notes are displayed here"
   feedback.scrollIntoView({behavior: "smooth"});
 });
+
+const sort = document.getElementById("sort-btn");
+sort.addEventListener("click", () => {
+  stared = 0;
+  sortByTitle(myNotes)
+  feedback.scrollIntoView({behavior: "smooth"});
+});
+
 homeBtn.addEventListener("click", () =>{ 
   renderNotes(notRemovedFilter(myNotes))
   stared = 0;
@@ -325,11 +333,21 @@ homeBtn.addEventListener("click", () =>{
   feedback.scrollIntoView({behavior: "smooth"});
 });
 
+const scrlElem = document.getElementById('scroll-elem')
+const createNoteBtn = document.getElementById('create-note-btn')
+
+const scrollFunction = () => {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    scrlElem.style.display = "flex";
+    
+  } else {
+    scrlElem.style.display = "none";
+  }
+};
+document.body.scrollTop = 0;
+window.onscroll = () => {scrollFunction()};
+
+
+
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
-
-const sort = document.getElementById("sort-btn");
-sort.addEventListener("click", () => {
-  stared = 0;
-  sortByTitle(myNotes)
-});
