@@ -334,7 +334,7 @@ homeBtn.addEventListener("click", () =>{
 });
 
 const scrlElem = document.getElementById('scroll-elem')
-const createNoteBtn = document.getElementById('create-note-btn')
+
 
 const scrollFunction = () => {
   if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -347,7 +347,11 @@ const scrollFunction = () => {
 document.body.scrollTop = 0;
 window.onscroll = () => {scrollFunction()};
 
-
+// silent function on click that takes user to the top of the page.
+const createNoteBtn = document.getElementById('create-note-btn')
+createNoteBtn.addEventListener('click', () => {
+  document.body.scrollIntoView({behavior: "smooth"}); // For Safari
+})
 
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);
