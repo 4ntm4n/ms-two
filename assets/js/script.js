@@ -34,6 +34,7 @@ const handleSubmit = (event) => {
   }
   noteMaker(formTitle.value, formContent.value, isPrio);
   form.reset();
+  feedback.scrollIntoView({behavior: "smooth"});
 };
 
 //create a note object and push it to the myNotes array.
@@ -284,7 +285,6 @@ const sortByTitle = (array) => {
 //function that gives the user feedback based on number of notes created.
 const interact = () => {
   const numOfNotes = myNotes.length;
-
   numOfNotes == 1
     ? (feedback.innerHTML = "You have added a note, therefore you are...")
     : numOfNotes == 2
@@ -302,13 +302,13 @@ const delBtn = document.getElementById("render-deleted");
 const impBtn = document.getElementById("render-important");
 const homeBtn = document.getElementById("my-notes");
 
-
 //click function that display removed notes
 delBtn.addEventListener("click", () => {
   const removedNotes = removedFilter(myNotes);
-  renderNotes(removedNotes);
+  renderNotes(removedNotes)
   stared = 0;
   feedback.innerHTML = "Your removed notes are displayed here"
+  feedback.scrollIntoView({behavior: "smooth"});
 });
 //click function to filter out and render important notes
 impBtn.addEventListener("click", () => {
@@ -316,11 +316,13 @@ impBtn.addEventListener("click", () => {
   renderNotes(notRemovedFilter(impNotes));
   stared = 1;
   feedback.innerHTML = "Your important notes are displayed here"
+  feedback.scrollIntoView({behavior: "smooth"});
 });
 homeBtn.addEventListener("click", () =>{ 
   renderNotes(notRemovedFilter(myNotes))
   stared = 0;
   interact();
+  feedback.scrollIntoView({behavior: "smooth"});
 });
 
 const form = document.getElementById("notes-input");
