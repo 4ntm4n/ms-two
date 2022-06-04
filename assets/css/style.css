@@ -18,6 +18,7 @@ legend {
   font-family: "Permanent Marker", cursive;
   font-size: 1.2em;
   position: relative;
+  overflow-wrap: break-word;
   top: 20px;
 }
 
@@ -27,6 +28,7 @@ input,
 textarea,
 p {
   font-family: "Ubuntu Condensed", sans-serif;
+  overflow-wrap: break-word;
 }
 
 button > i {
@@ -403,7 +405,6 @@ h1 {
   .note-title {
     font-family: "Permanent Marker", cursive;
     font-size: 1.2em;
-    position: relative;
     top: 5px;
   }
 }
@@ -437,6 +438,7 @@ h1 {
   }
   .note:hover .note-content {
     visibility: hidden;
+
   }
 
   .note:hover .note-btn {
