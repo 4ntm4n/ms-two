@@ -34,7 +34,13 @@ const handleSubmit = (event) => {
   }
   noteMaker(formTitle.value, formContent.value, isPrio);
   form.reset();
-  feedback.scrollIntoView({behavior: "smooth"});
+
+  //scroll into the first item if the note created is prio, else scroll to the last item in list.
+  const noteArr = document.getElementById("notes-list").children;
+  lastNote = (noteArr.length -1);
+  
+  const theLastNote = document.getElementById(noteArr[lastNote].id.toString());
+  isPrio ? feedback.scrollIntoView({behavior: "smooth"}) : theLastNote.scrollIntoView({behavior: "smooth"});  
 };
 
 //create a note object and push it to the myNotes array.
