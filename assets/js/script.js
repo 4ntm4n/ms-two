@@ -337,7 +337,7 @@ const scrlElem = document.getElementById('scroll-elem')
 
 
 const scrollFunction = () => {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
     scrlElem.style.display = "flex";
     
   } else {
@@ -350,7 +350,7 @@ window.onscroll = () => {scrollFunction()};
 // silent function on click that takes user to the top of the page.
 const createNoteBtn = document.getElementById('create-note-btn')
 createNoteBtn.addEventListener('click', () => {
-  document.body.scrollIntoView({behavior: "smooth"}); // For Safari
+  window.scrollTo({ top: 0, behavior: "smooth", block: 'start'}); // For Safari
 })
 
 const form = document.getElementById("notes-input");
