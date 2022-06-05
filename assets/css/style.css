@@ -367,7 +367,7 @@ footer > p {
 
 @media only screen and (min-width: 768px) {
     body{
-        margin-right: 11vW ;
+        margin-right: 13vW;
     }
 
     footer > p, footer > a{
@@ -376,7 +376,7 @@ footer > p {
 
 
     #header-container{
-        padding-top: 4vh;
+        padding-top: 1vh;
     }
 
     /* controlpanel ------------ */
