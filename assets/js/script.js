@@ -201,7 +201,7 @@ const NoteImpStatus = (i) => {
   renderNotes(notRemovedFilter(myNotes));
 };
 
-//function that compares two arrays and find index of their matches
+/* //function that compares two arrays and find index of their matches
 const findMatch = (baseArr, compArr) => {
   // 1. filter out matches in baseArr and compArr and store it as an array (matches)
   matches = baseArr.filter((noteId) => compArr.includes(noteId));
@@ -223,7 +223,7 @@ const findMatch = (baseArr, compArr) => {
   return indexInBaseArr;
 };
 
-/* //create function to remove duplicates in array.
+ //create function to remove duplicates in array.
 
 //https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects#:~:text=How%20it%20works%3A-,Array.,duplicates%2C%20it%20is%20using%20Array.
 const deleteDuplies = (array) => {
@@ -232,7 +232,7 @@ const deleteDuplies = (array) => {
     ({ _id }, index) => !ids.includes(_id, index + 1)
   );
   return filtered;
-}; */
+}; */ 
 
 //filters that render different types of notes obj. based on obj. keys.
 const impFilter = (array) => {
@@ -341,7 +341,7 @@ homeBtn.addEventListener("click", () =>{
 
 const scrlElem = document.getElementById('scroll-elem')
 
-
+//scroll function 
 const scrollFunction = () => {
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
     scrlElem.style.display = "flex";
@@ -353,7 +353,7 @@ const scrollFunction = () => {
 document.body.scrollTop = 0;
 window.onscroll = () => {scrollFunction()};
 
-// silent function on click that takes user to the top of the page.
+// click-function that takes user to the top of the page.
 const createNoteBtn = document.getElementById('create-note-btn')
 createNoteBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: "smooth", block: 'start'}); // For Safari
