@@ -38,7 +38,6 @@ const handleSubmit = (event) => {
   //scroll into the first item if the note created is prio, else scroll to the last item in list.
   const noteArr = document.getElementById("notes-list").children;
   lastNote = (noteArr.length -1);
-  
   const theLastNote = document.getElementById(noteArr[lastNote].id.toString());
   isPrio ? feedback.scrollIntoView({behavior: "smooth"}) : theLastNote.scrollIntoView({behavior: "smooth"});  
 };
@@ -201,39 +200,6 @@ const NoteImpStatus = (i) => {
   renderNotes(notRemovedFilter(myNotes));
 };
 
-/* //function that compares two arrays and find index of their matches
-const findMatch = (baseArr, compArr) => {
-  // 1. filter out matches in baseArr and compArr and store it as an array (matches)
-  matches = baseArr.filter((noteId) => compArr.includes(noteId));
-  console.log(matches); //log name
-  console.log(baseArr.indexOf(matches)); //log index
-
-  delIndex = baseArr.indexOf(matches[0]);
-  //4. store index of found match in baseArr
-  const indexInBaseArr = [];
-
-  //2. loop through matches array
-  for (notes of matches) {
-    //3. push index of matches to indexInBaseArr
-    indexInBaseArr.push(baseArr.indexOf(notes));
-  }
-
-  //5. return array containing index of matches.
-  console.log(indexInBaseArr);
-  return indexInBaseArr;
-};
-
- //create function to remove duplicates in array.
-
-//https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects#:~:text=How%20it%20works%3A-,Array.,duplicates%2C%20it%20is%20using%20Array.
-const deleteDuplies = (array) => {
-  const ids = array.map((note) => note._id);
-  const filtered = array.filter(
-    ({ _id }, index) => !ids.includes(_id, index + 1)
-  );
-  return filtered;
-}; */ 
-
 //filters that render different types of notes obj. based on obj. keys.
 const impFilter = (array) => {
   return array.filter((note) => {
@@ -252,8 +218,6 @@ const notRemovedFilter = (array) => {
     return note.removed === false;
   });
 };
-
-
 
 //add function to sort an array of objects based on its title from A-Z / Z-A.
 const sortByTitle = (array) => {
