@@ -27,6 +27,8 @@ legend, label {
     
 }
 
+
+
 .note-title {
   font-family: "Permanent Marker", cursive;
   font-size: 1.2em;
@@ -138,11 +140,20 @@ h2{
   cursor: pointer;
   box-shadow: 3px 4px 1px 0px rgb(0, 0, 0);
   transition: ease 0.1s;
+  position:relative;
+  overflow: hidden;
 }
 
 #controls button:active {
   background-color: rgb(207, 207, 207) !important;
   box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
+}
+
+/* text inside buttons for screen readers only */
+.hidden {
+  position: absolute;
+  right: -99px;
+  visibility: hidden;
 }
 
 
