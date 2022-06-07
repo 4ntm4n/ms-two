@@ -18,6 +18,10 @@ legend {
   font-family: "Bebas Neue", cursive;
 }
 
+legend, label {
+    color:whitesmoke;
+}
+
 #controlpanel button:hover, #controlpanel button:active {
     background-color: #FFDD99 !important;
     
@@ -71,7 +75,7 @@ legend {
 .input-fields {
   margin: 0.3em 0 0.7em 0;
   border: 2px solid black;
-  background-color: #FFDD !important;
+  background-color: #fffff3 !important;
 }
 .input-fields:focus {
   outline: none;

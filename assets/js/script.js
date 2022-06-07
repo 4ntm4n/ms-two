@@ -1,31 +1,34 @@
 //store objects from noteMaker in array
 let myNotes = [];
-//fontAwesome icons
+
+// declare fontAwesome icons
 const ghost = `<i class="fa-solid fa-ghost"></i>`;
 const skull = `<i class="fa-solid fa-skull"></i>`;
 const reverse = `<i class="fa-solid fa-arrow-rotate-left"></i>`;
 const prioIcon = `<i class="fa-solid fa-star"></i>`;
 const notPrioIcon = `<i class="fa-regular fa-star"></i>`;
 
-//store notes section h2 to use it for user feedback
+//declare 'feedback' and store the note section h2 in it, this will be used for user feedback through out.
 let feedback = document.getElementById("note-section-heading");
 
-//lightswitch for stared button. will be 1 if stared is clicked will be 0 if other button is clicked.
-let stared = 0;
+//light-switch for starred button. will be 1 if starred is clicked will be 0 if other control button is clicked.
+let starred = 0;
 
+//initiate ID counter for important and normal notes.
 let nonPrioCount = 1000; // non-prio notes ID origin.
 let prioCount = 1000; //PRIO notes ID origin.
 
+
+//function that stores user input from the note generator form. 
 const handleSubmit = (event) => {
-  //prevent default value and save form input data
   event.preventDefault();
 
-  console.log("form was submitted");
+  // store form input fields in variables.  
   const formTitle = document.getElementById("title-input");
   const formContent = document.getElementById("content-input");
   const formCheckbox = document.getElementById("input-checkbox");
 
-  //control if checkbox is checked  and sends input data to the noteMaker()=>
+  //control if checkbox is checked  and store it in isPrio variable.
   let isPrio = false;
   if (formCheckbox.checked) {
     isPrio = true;
@@ -67,7 +70,9 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
     myNotes.push(note);
   }
 
+  // call the renderNotesFunction with the not removed notes filtered out.
   renderNotes(notRemovedFilter(myNotes));
+  //interact with the user
   interact();
 };
 
@@ -77,6 +82,7 @@ const renderNotes = (array) => {
   notesList.innerHTML = "";
 
   for (let i = 0; i < array.length; i++) {
+    // create the 3 different buttons for each object in the array.
     const impNoteBtn = document.createElement("button");
     const restBtn = document.createElement("button");
     const rmBtn = document.createElement("button");
@@ -106,8 +112,7 @@ const renderNotes = (array) => {
     if (array[i].removed) {
       restBtn.innerHTML = reverse;
       li.appendChild(restBtn);
-
-      impNoteBtn.style.display = "none";
+      impNoteBtn.style.display = "none"; //hide star-button if note has been removed
     }
 
     //important button
@@ -149,10 +154,10 @@ const removeNote = (i) => {
   });
 
   //is note already removed? delete it permanently, else set removed to true.
-  if(stared === 1){
+  if(starred === 1){
     myNotes[index].removed = true;
-    const rmStared  = impFilter(myNotes)
-    renderNotes(notRemovedFilter(rmStared));
+    const rmStarred  = impFilter(myNotes)
+    renderNotes(notRemovedFilter(rmStarred));
 
   }else if (myNotes[index].removed) {
     myNotes.splice([index], 1);
@@ -162,7 +167,6 @@ const removeNote = (i) => {
     renderNotes(notRemovedFilter(myNotes)); //render all notes - removed
     interact();
   }
-
 };
 
 const restoreNote = (i) => {
@@ -196,7 +200,7 @@ const NoteImpStatus = (i) => {
     tempArr = myNotes.splice([index], 1);
     myNotes = tempArr.concat(myNotes);
   }
-
+  //render notes but only notes that have a removed value of false
   renderNotes(notRemovedFilter(myNotes));
 };
 
@@ -266,46 +270,9 @@ const interact = () => {
         "mother of god.. no one has created this many notes... bailing out, your on your own.... ")
     : (feedback.innerHTML = "Your notes are displayed here");
 };
-
-//get control panel buttons from index.html
-const delBtn = document.getElementById("render-deleted");
-const impBtn = document.getElementById("render-important");
-const homeBtn = document.getElementById("my-notes");
-
-//click function that display removed notes
-delBtn.addEventListener("click", () => {
-  const removedNotes = removedFilter(myNotes);
-  renderNotes(removedNotes)
-  stared = 0;
-  feedback.innerHTML = "Your removed notes are displayed here"
-  feedback.scrollIntoView({behavior: "smooth"});
-});
-//click function to filter out and render important notes
-impBtn.addEventListener("click", () => {
-  const impNotes = impFilter(myNotes);
-  renderNotes(notRemovedFilter(impNotes));
-  stared = 1;
-  feedback.innerHTML = "Your important notes are displayed here"
-  feedback.scrollIntoView({behavior: "smooth"});
-});
-
-const sort = document.getElementById("sort-btn");
-sort.addEventListener("click", () => {
-  stared = 0;
-  sortByTitle(myNotes)
-  feedback.scrollIntoView({behavior: "smooth"});
-});
-
-homeBtn.addEventListener("click", () =>{ 
-  renderNotes(notRemovedFilter(myNotes))
-  stared = 0;
-  interact();
-  feedback.scrollIntoView({behavior: "smooth"});
-});
-
+ 
+//scroll function credit: ispired by w3school 
 const scrlElem = document.getElementById('scroll-elem')
-
-//scroll function 
 const scrollFunction = () => {
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
     scrlElem.style.display = "flex";
@@ -317,11 +284,49 @@ const scrollFunction = () => {
 document.body.scrollTop = 0;
 window.onscroll = () => {scrollFunction()};
 
+//get control panel buttons from index.html
+const delBtn = document.getElementById("render-deleted");
+const impBtn = document.getElementById("render-important");
+const homeBtn = document.getElementById("my-notes");
+
+//click function for deleted button that display removed notes
+delBtn.addEventListener("click", () => {
+  const removedNotes = removedFilter(myNotes);
+  renderNotes(removedNotes)
+  starred = 0;
+  feedback.innerHTML = "Your removed notes are displayed here"
+  feedback.scrollIntoView({behavior: "smooth"});
+});
+//click function for the starred button to filter out and render important notes
+impBtn.addEventListener("click", () => {
+  const impNotes = impFilter(myNotes);
+  renderNotes(notRemovedFilter(impNotes));
+  starred = 1;
+  feedback.innerHTML = "Your important notes are displayed here"
+  feedback.scrollIntoView({behavior: "smooth"});
+});
+//click function that call the sort function
+const sort = document.getElementById("sort-btn");
+sort.addEventListener("click", () => {
+  starred = 0;
+  sortByTitle(myNotes)
+  feedback.scrollIntoView({behavior: "smooth"});
+});
+
+//click function that renders all notes that have a removed value of false
+homeBtn.addEventListener("click", () =>{ 
+  renderNotes(notRemovedFilter(myNotes))
+  starred = 0;
+  interact();
+  feedback.scrollIntoView({behavior: "smooth"});
+});
+
 // click-function that takes user to the top of the page.
 const createNoteBtn = document.getElementById('create-note-btn')
 createNoteBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: "smooth", block: 'start'}); // For Safari
 })
 
+//call the handleSubmit function when submit button is clicked.
 const form = document.getElementById("notes-input");
 form.addEventListener("submit", handleSubmit);

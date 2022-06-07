@@ -1,291 +1,473 @@
-# FlexGrid Yoga
+# Notes
 
-![FlexGrid on different screen sizes and devices](assets/img/readme/screenshot%20from%202022-04-18%2011-50-26.png)
+![Notes on different screen sizes and devices](assets/img/readme/responsive.png)
 
-[**Have a look on your own device**](https://4ntm4n.github.io/ms-one/index.html)
+[**Have a look on your own device**](https://4ntm4n.github.io/ms-two/index.html)
 
 ## Project outline
 
 ### **user stories:**
 
-> Typical users are interested in getting involved with online-classes and tutorship in yoga.
+> Typical users are interested in getting similar functionality as they get from physical stickyNotes, but in a digital format.
 
-- **The typical end user wants to:**
+- **The typical end user wants to have the ability to:**
 
-  - know more about site and yoga instructor
-  - be able to subscribe to news coming from community regarding techniques and upcoming yoga sessions
-  - get a hint about what is expected inside the paid members area
-  - be able to sign up and become a full member, attending live- and pre recorded -yoga sessions
-  - connect to community on social medias
-
-- **a typical returning user wants to:**
-  - sign in to their account and conduct yoga sessions.
-
-> site owner wants to inspire potential end users who wants to learn yoga and market the benefits of yoga and let users connect with her community and sign up to engage in live and pre-recorded yoga sessions.
-
-- **in short, the site owner wants to:**
-
-  - educate new site visitors about herself
-  - give brief overview of the benefits of yoga
-  - let new users sign up to newsletter to keep them in the loop of what is happening in the community
-  - let users know how they can engage in social media.
-  - let existing users log in to view the paid-for content.
-  - Give a hint about what is expected inside the paid members area
-  - Let new users sign up and become full members
+  - create new sticky notes.
+  - remove completed / irrelevant notes from the view.
+  - sort notes by title name from A-Z or Z-A
+  - make notes prioritized and have them showed up first in the list of notes.
+  - have a view for the prioritized notes only. 
+  - toggle between priority status on a note AFTER it has been created.
+  - restore notes that has been removed.
+  - delete notes permanently.
+  - click a button that takes them to the note generator, instead of having to scroll up and down if many notes have been created.
+  
 
 ## Approach
 
 ### Wireframes
-The wireframes for this project focuses on the layout of the different sections to ensure that balance is created within each section, and also to make sure that sections are not repetitive even though similar elements are being used across the website.  
+The wireframes for this project focuses on the layout of the different sections to ensure the functionality of the application came across to the user in a non distracting way. The mindset when creating the wireframes and layout for this app can be summarized like this: Functionality > Design.
 
-These wireframes are created using Adobe Illustrator.
-![FlexGrid Yoga wireframes](assets/img/readme/wireframe.png)
+![Notes wireframes](assets/img/readme/wireframe.png)
 
 ### Design Approach
 
-The design of the website is created with the benefits of yoga in mind. the text should be easy to read and not be distracted by design elements around it. the design features are created to feel relaxed positive and light weight, where elements have room to breath. 
-
+The design of the website is created with the functionality of the application in mind . I did not want to distract the user too much from the core purpose of the application: to have the ability to create and manipulate digital sticky notes. Having that said, I wanted the application to feel retro, lo-tech and incorporate a bit of humor to it. 
+ 
 **Design features**
 
-- Elements that contain no text are **soft and rounded**.
+- Buttons have **universally understandable**  icons inside them.
 
-  - Text areas are **square and light** to stand out from the rest of the website and enhance readability.
+  - layout of buttons are **designed to be reached** by your right thumb, even on larger screens.
 
-  - initially the colors are **few and muted**, as you progress down the site **more colors** are mixed in to keep visitors curious and **enhance positivity**.
+  - **colors are contrasty** and highlights difference in different elements the user creates.
 
-  - Elements have a **lot of space** around them to feel more relaxed.
+  - User is **automatically taken to the relevant place on the screen** depending on what action the user takes.
 
-  - Elements that have animations are **slow and subtle** to make elements feel **relaxing**.
+  - The user receives text **feedback** from within **already existing design elements** within the view when an action is taken.
 
 **Fonts**
 
-> **'Fredoka One'** is a round blocky font that is chosen for the headings on the webpage to blend in with the overall design language.
+> **Permanent Marker** is a "scribbly font" that was chosen for the title of each note rendered in the view. this is to imitate the look and feel of a real sticky note. 
 
-> Paragraphs, anchor tags, and other small text areas have the font set to **Roboto** with a fallback of _Helvetica_ and _Sans-Serif_ to maximize readability while not being a distraction from the rest of the website.
+> Paragraphs, anchor tags, and other small text areas have the font set to **Ubuntu Condensed** with a fallback of _Sans-serif_ and to create a retro vibe while maximize readability.
 
 **Colors**
 
-> The choice of colors are inspired by different colors of yoga mats. these colors are often pastel, so they have been altered slightly along the way to enhance contrast and readability.
+> The choice of colors are inspired by real sticky notes, but more muted / washed out. for the overall color combination I used [this color scheme](https://www.schemecolor.com/city-by-night.php) called night city, since I felt it could add something interesting to my very basic design for this app.
 
 **Animations**
 
-> animations that take place when a user interacts with certain elements on the website are designed to be slightly slower than on an average website to induce a relaxing feeling, which in turn connects back to the overall design approach.
+> only notes, buttons and scroll have a slight subtle animation added to them. App is kept more simple and functions feels lighting fast by having it this way. It ties in to the overall low-tech feel of the design too while it gave me as a developer more time to focus on the functionality. 
 
----
+**Layout**
+> The layot of the app contains of a single page divided into 3 main sections.
 
-### Technical Approach
+1.  > **Header** <br>
+    >   The header contains a form that takes the user input, called note-generator. It also contains a control-panel with the buttons that the user can interact with in order to render it's created notes in different ways.
 
-In order to make the website less cluttered and reduce the amount of scrolling the website is built on two main pages.
+2.  > **Notes section** <br>
+    >   the notes section contains a feedback header that changes depending on how the user interacts with the page. It also contains an empty list that the user will fill with notes. these notes are displayed in a loose grid pattern using CSS's flex-box and row-wrap.
 
-1.  > **an index page** <br>
-        the main page, with a single page layout style where the site owner could present herself and the users could get to learn more about her and about yoga.
-2.  > **a members page** <br>
-        where existing users can sign in and a new user can choose to sing up and become a full member.
+3.  > **Footer**
+    >   The footer contains a link to my GitHub page and a copyright text.
+        
 
 **Framework**
+> No. This project is written in vanilla JS, HTML and CSS, with a mobile first approach to responsive design.
 
-> This website does not take advantage of any framework. Since this is a small project the it instead takes advantage of CSS3's newly added feature of CSS-grids to create rows for each section. Each section is then made into a flexbox.
+---
+<br>
+<br> 
 
-> **this approach has 2 main advantages:**
+### **Technical Approach**
+
+In this section we are going through the javascript functions, how they work with each other and how they respond to the users action in order to get an understanding how the application is working behind the scenes. 
+
+<br>
+<br>
+
+#### **the handleSubmit function**
+> This is the function that handles the user input data collected in the note-generator form. 
+> It starts off by preventing the defult behavior of the form submit, making sure that the user stays on the same page when submit has been triggered. 
+> it continues by collecting the user data, and send it to the noteMaker function where the data will be formatted into an object.
+> 
+>It is also this function that handles a scroll down to the added note. If the note had a prio value of true, it will scroll down to the top of the note section where the prio note will land. otherwise it should find the id of the note created, and scroll down to where that note is displayed. 
+
+``` javaScript
+const handleSubmit = (event) => {
+  event.preventDefault();
+
+  // store form input fields in variables.  
+  const formTitle = document.getElementById("title-input");
+  const formContent = document.getElementById("content-input");
+  const formCheckbox = document.getElementById("input-checkbox");
+
+  //control if checkbox is checked  and store it in isPrio variable.
+  let isPrio = false;
+  if (formCheckbox.checked) {
+    isPrio = true;
+  } else {
+    isPrio = false;
+  }
+  noteMaker(formTitle.value, formContent.value, isPrio);
+  form.reset();
+
+  //scroll into the first item if the note created is prio, else scroll to the last item in list.
+  const noteArr = document.getElementById("notes-list").children;
+  lastNote = (noteArr.length -1);
+  const theLastNote = document.getElementById(noteArr[lastNote].id.toString());
+  isPrio ? feedback.scrollIntoView({behavior: "smooth"}) : theLastNote.scrollIntoView({behavior: "smooth"});  
+};
+
+```
+<br>
+<br>
+
+#### **The noteMaker function**
 >
-> 1. it removes unnecessary code from framework, which can enhance loading speeds.
+> The core of this app is function called "noteMaker" this function takes a couple of different parameters that can be viewed below, and creates an object called "note". The noteMaker then makes sure your note is stored in an array called myNotes. 
 >
-> 2. using CSS-grids reduces the amount of divs in the html which makes the syntax more clean and better for screen readers and assistive technologies.
+> Beneath the note object template, there is some logic that tells the app _how_ it should store the note. is this an important note? Then place it first in the myNotes array, otherwise, push it to the end and place it last.
+> An Id is also set here, if the note was important (aka "prio") an Id below 1000 is set, else an Id above 1000 is set. 
+> 
+>  When the note has been stored, a function that renders the notes in the DOM is called before communicating with the user, using the interact function. 
 
-**Responsive design**
+ ``` javaScript
+const noteMaker = (title, content, prio, _id, removed = false) => {
+  const note = {
+    title,
+    content,
+    prio,
+    _id: 0, //do not set directly, use setter method.
+    removed,
+    set id(idNum) {
+      this._id = idNum;
+    },
+  };
 
-> This website is created with a mobile first approach.
+  //make the prio note land first in the array, and non-prio notes last.
+  if (note.prio) {
+    prioCount--;
+    note.id = prioCount;
+    myNotes.unshift(note);
+  } else {
+    nonPrioCount++;
+    note.id = nonPrioCount;
+    myNotes.push(note);
+  }
+
+  // call the renderNotesFunction with the not removed notes filtered out.
+  renderNotes(notRemovedFilter(myNotes));
+  //interact with the user
+  interact();
+};
+```
+<br>
+<br>
+
+#### **the renderNotes function**
 >
-> Mobile phones usually have less processing power than a tablet, laptop and desktop. By having the CSS load up the mobile design first, the website renders faster on mobile phones since it can ignore styling that is specified lower down in the style.css document that only applies to larger screens.
+>This function takes an array as an argument and itterates through all the object, extracting the data of the object and append the data to an un ordered list that is defined inside index.html. This function is what makes makes the user see what it has stored in myArray, in other words it creates the visual represenation of the myNotes array. 
+> 
+> There is a lot going on inside this function, so I will break it down in smaller sections below.
+
+>The function is declared and the list inside index.html is pinpointed by it's id attribute and the list content is emptied.
+``` javaScript
+const renderNotes = (array) => {
+    const notesList = document.getElementById("notes-list");
+    notesList.innerHTML = "";
+    ...
+```
+> the function then iterates over each object and for each object in the array, it starts off by creating 3 buttons that the user can interact with in order to do specific tasks related to the note the buttons are attached to. 
+> 
+> It then creates then continues to create a list-item containing a header that will display the notes title, a paragraph that will display the notes content and a span tag that shows the ID that noteMaker generated. 
+``` javaScript
+    ...
+    for (let i = 0; i < array.length; i++) {
+    // create the 3 different buttons for each object in the array.
+    const impNoteBtn = document.createElement("button");
+    const restBtn = document.createElement("button");
+    const rmBtn = document.createElement("button");
+
+    li = document.createElement("li"); // create a list element for each object in array.
+    li.classList.add("note");
+    li.setAttribute("id", array[i]._id);
+
+    li.innerHTML = `
+            <h3 class="note-title" >${array[i].title}</h3>
+            <p class="note-content">${array[i].content}</p>
+            <span class="note-id"> ${array[i]._id} </span>
+        `;
+
+```
 >
-> On larger screens, each section takes advantage of the full width of the screen it is being displayed on. But the content inside each section is limited to a width of 1000px. This makes the website look more unified across larger screens and creates a better user experience since the user will have access to all the websites information within 1000px and do not have to pan the head to read.
+> Still inside the loop of the renderNotes function, the note buttons are created and appended to the list item. As you can see there are some logic to determine what text goes in each button depending of how the user has interacted with that note. 
+>For example, an important note should have a button to make it a normal note and vise versa. A removed note should not have an important button but rather a restore button and a 'permanent delete' button.
+``` javaScript
+    ... 
+    //remove btn
+    if (array[i].removed) {
+      rmBtn.setAttribute("class", "note-btn del-btn");
+      rmBtn.innerHTML = skull;
+      li.classList.add("removed");
+    } else {
+      rmBtn.classList.add("note-btn", "rm-btn");
+      rmBtn.innerHTML = ghost;
+    }
 
----
+    // add hidden restore button and display block in css 2, add sort button in html
+    restBtn.classList.add("note-btn", "rest-btn");
+    if (array[i].removed) {
+      restBtn.innerHTML = reverse;
+      li.appendChild(restBtn);
+      impNoteBtn.style.display = "none"; //hide star-button if note has been removed
+    }
 
-## Website Features
+    //important button
+    if (array[i].prio) {
+      impNoteBtn.innerHTML = notPrioIcon;
+      impNoteBtn.classList.add("imp-btn", "note-btn", "mk-prio");
+      li.classList.add("prio");
+    } else {
+      impNoteBtn.classList.add("imp-btn", "note-btn", "mkn-prio");
+      impNoteBtn.innerHTML = prioIcon;
+    }
 
-> ### Header
+    li.appendChild(rmBtn);
+    li.appendChild(impNoteBtn);
+    notesList.appendChild(li);
+```
 
-The header is designed to be large enough to give breathing room to its elements and feel relaxed, while still hint that there are information visible below that you can scroll to.
+> Before the loop ends and the function is complete,  a click-function is declared for each button inside the note. These click-functions in turn call another correlating function declared outside of renderNotes.
+``` javaScript
+    //event listeners to buttons inside the notes
+    rmBtn.addEventListener("click", (i) => {
+      removeNote(i);
+    });
 
-![header section of FlexGridYoga](assets/img/readme/screenshot-index-header.png)
+    restBtn.addEventListener("click", (i) => {
+      restoreNote(i);
+    });
 
-**Contains the following elements:**
+    impNoteBtn.addEventListener("click", (i) => {
+      NoteImpStatus(i);
+    });
+  }
+};
+```
+<br>
+<br>
 
-- an inspiring **background image**
-- a fixed, responsive **navigation menu**
-
-- **a welcome heading** with the company name
-
-- **a textbox** with an introduction text
-
-- a **call-to-action button** that takes the user to the join us page where
-  the user can choose to subscribe to a newsletter through a form or click a link to go to the sign-up form and become a full paying member.
-
-**What it accomplish:**
-
-1.  let users know more about the website.
-2.  give users a shortcut to join section.
-3.  give the user a way to navigate around the site.
-
----
-
-> ### About Section - instructor presentation
-
-In the about section, the yoga instructor get a chance to introduce herself. This section is set higher in the information hierarchy than the other sections below since the _instructor_ really is what sets one community apart from another.
-
-![About section of FlexGridYoga](assets/img/readme/screenshot-index-about.png)
-
-**Contains the following elements:**
-
-- introduction **text-area**
-- selfie **image**
-
-**What it accomplish:**
-
-1.  Let users get to know the instructor.
-2.  Let site owner differentiate herself from competitors
-
----
-
-> ### Benefits section - Why yoga?
-
-This section informs the users of som of the benefits of yoga.
-
-The goal with this is to inspire users interest in the subject. This is done with six interactive cards, each presenting one unique benefit you gain from doing yoga.
-
-![Benefits section of FlexGridYoga](assets/img/readme/screenshot-index-benefits.png)
-
-**Contains the following elements:**
-
-- a section **heading**
-- interactive and responsive **cards**
-
-**What it accomplish:**
-
-1.  Educate users on the benefits of engaging in yoga.
-2.  Give site owner a tool to inspire her visitors.
-3.  Make website a bit more interactive.
-
----
-
-> ### Join Section - first step to get involved
-
-New users might be hesitant to become a full paying member on the first visit. So in order for the site owner to keep users in the loop, and in order to let new users connect and learn more about the future content and what value it would bring to them, they have an option to join a newsletter where the site owner has the potential to reach interested visitors in the future via email.
-
-![Join section of FlexGridYoga](assets/img/readme/screenshot-index-join.png)
-
-**Contains the following elements:**
-
-- a responsive **text-box** containing information on what _value_ signing up could bring new users.
-- a **link** directing interested users to the sign up form on the _Members page_.
-- a responsive **form** that could feed an emailing list database. this form contains following information:
-  - **First name** _required_
-  - **Last name**
-  - **Email** _required_
-  - **Submit button**
-
-**What it accomplish:**
-
-1.  Educate users on the benefits of engaging in yoga.
-2.  Give site owner a tool to inspire her visitors in the future.
-
-**Design feature:**
-
-> Input labels are placed off screen using CSS. The users can't see them, but the screen readers can. Making the section looking clean while keeping functionality. Placeholders shows the user what is expected in the form-fields.
+> the first button that appears on each non removed note are is coupled with this function, it finds the note's correlated object in the myNotes array by it's ID value, and then set's the removed value to true before it re-renders the note filtering out all the removed notes. 
 >
-> By mixing different vivid colors in the background image, the join section becomes positive and fun to inspire user to commit.
+>You can also see that there are some logic to this function. if the note already has a removed value of true, it should be considered removed and have a delete button instead of a remove button. the delete function removes the note completely from myArray by using javascript's splice method. 
+>
+>If you have clicked the button that renders all the important / starred notes, there is logic telling the app to render the important notes again after a note has been removed. this gives the user the impression that they are staying in the same "place" on the website, and is not being forcely moved to the "home" view where all active notes are rendered.
 
----
+``` javaScript
+const removeNote = (i) => {
+  const domNoteId = Number(i.target.parentNode.id);
 
-> ### Members page header
+  //find the clicked note in the myNotes array by filtering its id.
+  const index = myNotes.findIndex((note) => {
+    return note._id === domNoteId;
+  });
 
-The header inherits most of the styling from the index page. but the welcome text box and the website name heading is replaced with a login form.
+  //is note already removed? delete it permanently, else set removed to true.
+  if(starred === 1){
+    myNotes[index].removed = true;
+    const rmStarred  = impFilter(myNotes)
+    renderNotes(notRemovedFilter(rmStarred));
 
-Existing users can sign in to the website here.
+  }else if (myNotes[index].removed) {
+    myNotes.splice([index], 1);
+    renderNotes(removedFilter(myNotes)); //render removed notes
+  }else {
+    myNotes[index].removed = true;
+    renderNotes(notRemovedFilter(myNotes)); //render all notes - removed
+    interact();
+  }
+};
+```
+<br>
+<br>
 
-![header on members page of FlexGridYoga](assets/img/readme/screenshot-members-login.png)
+#### **The restoreNote function**
+>
+> This function let's the user restore a note that has been removed. it basically finds the corelating object by filter the myNotes array with the matching note ID from the note being clicked, then set that objects removed value to false before rendering the removed notes again, displaying all removed notes to the user except the one that was just restored.
 
-**Contains the following elements**
+```javaScript
+const restoreNote = (i) => {
+  const domNoteId = Number(i.target.parentNode.id);
 
-- a **fieldset legend**
-- **log-in** form for existing users form contains the following form-elements:
-- **Email** _required_
-- **Password** _required_
-- **Submit button** that submits the form and could validate the user to log in.
+  //find the clicked note in the myNotes array by filtering its id.
+  const index = myNotes.findIndex((note) => {
+    return note._id === domNoteId;
+  });
 
-**What it accomplish:**
+  myNotes[index].removed = false;
+  renderNotes(removedFilter(myNotes));
+};
+```
+<br>
+<br>
 
-1.  gives existing users an easy way to log in to their accounts.
+#### **The NoteImpStatus function**
+> This is the function that let's the user toggle a note between important and not important after it has been created. 
+> Like the other note-button-functions in this app, it starts off by finding the matching note in myNotes array by filtering out the object that has a matching id value as the id on the DOM rendered note. 
+>
+> What is different with this function however, is that it creates a temporary array, where it puts the note you clicked, and then concatenate the temporary array with the  myNotes array. Why? because if you make a note important, the concatenation makes sure that the note ends up first in the array, if you make an important note, non-important it concatenates in a way that makes sure the note the user clicked lands in the end of the MyNotes array, and are there for displayed last the next time myNotes are rendered. 
 
-**Design feature:**
+``` javaScript
+const NoteImpStatus = (i) => {
+  const domNoteId = Number(i.target.parentNode.id);
 
-> Just like on the join section of the index page, the labels are not displayed but still accessible for screen readers and assistive technology for users who needs it.
+  //find the clicked note in the myNotes array by filtering its id.
+  const index = myNotes.findIndex((note) => {
+    return note._id === domNoteId;
+  });
 
----
+  let tempArr = [];
+  if (myNotes[index].prio === true) {
+    myNotes[index].prio = false; //set prio to false
+    tempArr = myNotes.splice([index], 1);
+    myNotes = myNotes.concat(tempArr);
+  } else {
+    myNotes[index].prio = true;
+    tempArr = myNotes.splice([index], 1);
+    myNotes = tempArr.concat(myNotes);
+  }
+  //render notes but only notes that have a removed value of false
+  renderNotes(notRemovedFilter(myNotes));
+};
+```
+<br>
+<br>
 
-> ### Members page - sign up section
+#### **The filter functions**
+>
+>
+> The filter functions are what makes this app easy and maintainable. The first approach in the creation of this app, all notes with different values where put in their own array. removed notes had their own array, important notes was pushed to one array and so on. This was very fiddly since you had to concatenate arrays, then remove duplicates on this array, it often ended in a mess. 
+> By using filters, and filtering out the notes you are interested in by a certain key value, there is no need for anything else than a large array where deleted, non-deleted, important and non-important notes are combined. If you want to view the important notes, filter out notes with an prio value of true, if you want to see the notes you removed, filter out the notes with a removed value of true, if you wanna see all your notes, but not the removed notes, filter out all notes with a removed value of false.
 
-In this section the user gets is faced with the option to become a paying member of the website and gain full access to its content.
+``` javaScript
+const impFilter = (array) => {
+  return array.filter((note) => {
+    return note.prio === true;
+  });
+};
 
-![sign up section on members page of FlexGridYoga](assets/img/readme/screenshot-members-signup.png)
+const removedFilter = (array) => {
+  return array.filter((note) => {
+    return note.removed === true;
+  });
+};
 
-**Contains the following elements**
+const notRemovedFilter = (array) => {
+  return array.filter((note) => {
+    return note.removed === false;
+  });
+};
+```
+<br>
+<br>
 
-- **information box** with the following sub-elements:
-  - **heading** letting user know what it costs
-  - **text** explaining the offer
-  - **video element** using an iframe with embedded youtube content that the user can interact with.
-- **account creation form** containing the following sub-elements:
-  - an _Account Creation_ **fieldset** with 3 input fields create the new account.
-  - A **detail > summary** element styled to look like a button that reviels the _payment_ part of the form
-  - a _Payment Card_ **fieldset** to fill in the payment details
-  - a _Billing_ **fieldset** that let the user fill in the billing adress for the payment.
+#### **The sort function**
+> This is the function the user gets access to by clicking the sort button in the control panel. 
+>It works by putting all the notes in a temporary array, then doing the sorting operation on that temporary array. This way the order of myNotes are not affected by the sorting m, which is convenient for the user who can click the home button after looking at the sorted view, and get back to the standard view.
+> 
+> Before the sorting operation is made, this function first checks if there are more than 2 non deleted notes in the myNotes array, if it is not, the function will return and the user will get prompted with a message stating that sorting can only be done if you have created at least 2 notes. 
+> If the user has indeed created more than two notes, the sorting will begin. 
+>
+> Uniquely for this function, it will go through each note in myArray, place it in a temporary array, and then add a new key named sorted, sorted will be set to true. if the notes that are being sorted is already true, it will be sorted in a different than sorted will be set to false. if sorted is true, the notes will be sorted from A-Z, if sorted is false the notes will be sorted from Z-A. 
+>
+> In summary, this functions sorts all the notes based on the first letter or number of the note.title. It is doing all operations on a copy of the myNotes array rather than changing the original array, and it is rendering the myNotes copy to the viewer when it is executing. 
+``` javaScript
+const sortByTitle = (array) => {
 
-**What it accomplish:**
+  //stop sorting attempt if there is one or less than one object in the array.
+  if (notRemovedFilter(array).length <= 1) {
+    feedback.innerHTML ="Try this again when you have created at least 2 notes"
+    renderNotes(notRemovedFilter(array));
+     return;
+     
+  }
+/*   make tempArray an instance of the array being passed 
+  then operate on the instance instead of changing the original array */ 
+  let tempArray = notRemovedFilter(array) 
+  // note.sorted has note been added? add it, set it to false and continue
+  if (tempArray[0].sorted === null) {
+    tempArray.forEach((note) => (note.sorted = false));
+  }
+  /* is note.sorted false? sort note.title A-Z, set .sorted to true and renderNotes, 
+    else sort .title Z-A set .sorted to false and render notes */
+  if (tempArray[0].sorted === false) {
+    tempArray.sort((a, b) => (a.title > b.title ? -1 : 1));
+    tempArray.forEach((note) => (note.sorted = true)); // add a sorted key that is set to true.
+    renderNotes(tempArray);
+    feedback.innerHTML = "sorting by title. Z-A"
+  } else {
+    tempArray.sort((a, b) => (a.title > b.title ? 1 : -1));
+    tempArray.forEach((note) => (note.sorted = false)); // add a sorted key that is set to false.
+    renderNotes(tempArray);
+    feedback.innerHTML = "sorting by title. A-Z"
+  }
+};
+```
+<br>
+<br>
 
-1.  Give users an idea of what is behind the paywall.
-2.  Give site owner a way to promote the paid-for content.
-3.  Let users create a members account.
-4.  Let users provide payment details to become full members.
+#### **The interact function**
+> The interact function add dynamics to the to the user experience. It is there to make this app just a little but less dull. 
+> this function checks how many note there is myNotes, and based on that number can print different things to the user. 
 
-**Technical Feature:**
+``` javaScript
+const interact = () => {
+  const numOfNotes = myNotes.length;
+  numOfNotes == 1
+    ? (feedback.innerHTML = "You have added a note, therefore you are...")
+    : numOfNotes == 2
+    ? (feedback.innerHTML = "what's better than 2 notes..? ah yes, 3 notes..")
+    : numOfNotes == 100
+    ? (feedback.innerHTML = "All your notes are belong to us!")
+    : numOfNotes >= 999
+    ? (feedback.innerHTML =
+        "mother of god.. no one has created this many notes... bailing out, your on your own.... ")
+    : (feedback.innerHTML = "Your notes are displayed here");
+};
+```
+<br>
+<br>
 
-> the video element in the information box let's the user get a hint of what to expect as a paying member. The video runs on youtube using iframe and youtube's sharing feature using embedded code which gives the user full controls over play, pause, volume and playing speed functionalities.
+#### **the scroll function**
+> A scroll function is added to help a user who have created a lot of different notes. If there are a lot of notes, list will be long, and the scroll will seem endless. 
+> 
+> this function adds a button called 'add' in the control panel. if it is clicked the user is taken to the top of the page where a new note can be added. 
 
----
-
-> ### Footer - Social media links
-
-The footer and the end of the website contains links to the website's social media platforms.
-
-![Footer of FlexGridYoga](assets/img/readme/screenshot-index-footer.png)
-
-**Contains the following elements**
-
-- List of **links to social media** pages.
-- **Copy right text** for the website. ( in this case my own name since this is an exercise.)
-
-**Section Goal:**
-
-1.  Let users connect to website's social media platforms
-2.  Give site owner a way to promote her community on social media.
-
-**Design feature:**
-
-> The footer area is designed to be as clean and minimal as possible yet have enough contrast to be clear ans readable.
-> animations on the elements has been removed to reduce distractions from the rest of the the website. the mouse still indicate these icons are links through the pointer-change.
-
+``` javaScript
+const scrlElem = document.getElementById('scroll-elem')
+const scrollFunction = () => {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    scrlElem.style.display = "flex";
+    
+  } else {
+    scrlElem.style.display = "none";
+  }
+};
+document.body.scrollTop = 0;
+window.onscroll = () => {scrollFunction()};
+```
 ---
 
 ### Features Left to Implement
 
-Herea are some ideas that could further improve this website:
+Here are some ideas that could further improve this website:
 
-- Flip over cards with more information of yoga benefits on the backside
-- Members login inside the fixed nav-bar for faster login for existing users.
-- Gallery page from social media showcasing the community
-
+- Login function and a back end system that le'ts the user save notes for later. 
+- color options inside the note generator
+- option to add tags to notes, and a filter that filters out notes that .include(tagNames)
+- search bar that let's user search for notes that .includes(searchTerm)
 ---
 
 ## Testing
