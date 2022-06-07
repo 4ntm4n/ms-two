@@ -475,49 +475,85 @@ Here are some ideas that could further improve this website:
 
 Here follows some picture of the website on mobile and tablet to show the website might appear on smaller screens than in the feature section.
 
-### **Mobile full page:**
+### **Desktop lading view:**
 
-> ![full mobile page](assets/img/readme/testing/mobile-full-index.png)
+> ![desktop landing view](assets/img/readme/large-screen-landing.png)
 >
-> > this is how the index page looks like on mobile
-> >
-> > You can for example see that the benefits section **cards** is shrunken in size and that the join form **input fields** are displayed in a column, rather than in a row.
+> > This is what the viewer sees when visiting the website device with a large screen
+> > you can for example see that the "add" button is not yet visible. it will appear if the user scrolls down more than 200px
 
-> ![full mobile page](assets/img/readme/testing/mobile-full-members.png)
+
+### **Desktop notes section:**
+
+> ![desktop notes section](assets/img/readme/large-screen-note-section.png)
 >
-> > this is how the members page looks like on mobile
-> >
-> > Every element is centered. and the information box that was split into two parts in the sign-up section is now looking like one solid box.
+> > this is what the user sees lower down on the page if notes has been added. You can for example see that the notes that were created with the prio-checkbox checked appears first even if they were created later than the other notes, and has a red background color.
+>> Note that the "add" button appeared in under the other buttons in the control panel to the right. If this button is clicked, the user will be taken with a smooth scroll to the note generator form field to add a new note.
 
-### **Mobile Navigation:**
 
-> ![full mobile page](assets/img/readme/testing/mobile-index-header.png)
+### **Mobile landing view:**
+
+> ![mobile landing view](assets/img/readme/small-screen-landing.png)
 >
-> > On mobile, the navigation menu is replaced with a hamburger button.
-> >
-> > This is what the mobile navigation looks like closed.
+> > This is what the viewer sees when visiting the website device with a mobile device.
+> > just like on mobile, the add button will appear as the user scrolls down on the page. 
+> > you can also see that the image only appears on larger screens. this both reduce loading time on smaller devices that usually have less processing power, and also prevent unnecessary scrolling for an image that is there only for styling purposes.
 
-> ![mobile navigation open](assets/img/readme/testing/mobile-nav-open.png)
+### **Mobile notes section:**
+
+> ![desktop notes section](assets/img/readme/small-screen-notes-section.png)
 >
-> > When you click the burger menu button, this is what the navigation menu looks like open.
-> >
-> > You can also see that when open the menu, the menu bar disappears, and the burger icon is animated to become an X.
+> > This is how the notes section looks like on smaller screens, just like on desktop, the important notes appear first regardless in which order the notes where created, and a new "add" button appears to the right of the rest of the buttons in the control panel above. 
 
-> ![mobile navigation active button](assets/img/readme/testing/mobile-nav-button.png)
+
+### **make existing note important**
+
+> ![make note important](assets/img/readme/star-existing.png)
 >
-> > When you click a button in the menu, it takes you to the correlating section.
-> >
-> > you close the menu by pressing the X.
+> > By hovering a note, one option is to click a star that makes the note important, the note will then turn red and move to the very first place in the list. 
 
+### **make existing important note, not important**
 
-### **Form Field Validation:**
-
-> ![form field being validated](assets/img/readme/testing/form-field-validation.png)
+> ![make important note not important](assets/img/readme/de-star-existing.png)
 >
-> > form fields are validated by html 5.
-> > All form fields are also type specific if applicable, meaning if a form field expects an email address, its input will not be accepted as valid if it is missing a correct email formatting.
+> > Similarly, you can make a note that has been set to be important, not important by clicking the star on an important note. this will move the note to the very last place in the list, while turning its background color to the normal yellow. 
+
+
+### **remove a note:**
+> ![remove note](assets/img/readme/remove-note.png)
+>
+> > If a task is completed, or a the user wants to remove a note for some other reason, it can be done by hovering a note and clicking the ghost icon. the note's correlating object will note be deleted from the myNotes array, buy its removed value will be set to *true*. Since this view, only renders notes which have the removed value set to false, it will disappear from the view.
+
+### **view all removed notes:**
+> ![remove note](assets/img/readme/removed-notes.png)
+> 
+> > All notes that has been removed by the user can be seen by clicking the deleted button with a ghost icon in it, seen in the control panel. 
+> > Here the user can marvel at all the notes that has been deleted. The user can get's two new options in this view when hovering over a note. One is to restore the note (setting it's removed value to false) or destroy it by clicking the skull icon. This will splice out the correlating note object and delete it forever...  :(
+
+### **Restore a removed note:**
+> ![restore a note](assets/img/readme/restore-note.png)
+> 
+> > If a user hovers over a removed note and clicks this arrow back button, the note will be restored as described above.
+
+### **Destroy a note:**
+> ![permanently delete a note](assets/img/readme/permanent-delete-note.png)
+> 
+> > a user can permanently delete a removed note by pressing this skull icon. There is no way of getting it back after that. 
+
+### **view the important notes only**
+> ![starred view](assets/img/readme/starrred-notes.png)
+> 
+> > For less distraction, a user can choose to view the important notes only. This is achieved by clicking the "starred" button in the control panel. Like all views in this app, the user is looking at a rendered representation of a filtered version of the myNotes array. The main array is not changed in any way so if the user clicks on the home button, the rest of the non removed notes appears again.  
+
+### **sorted view**
+> ![notes sorted a-z](assets/img/readme/sorting-az.png)
+> ![notes sorted a-z](assets/img/readme/sorting-za.png)
+> 
+> > a user can sort the notes title by A-Z if the button is clicked once, if the button is clicked two times it will sort the notes from Z-A. This works because JavaScript keeps a numeric value for each letter in the alphabet. Naturally this means that function also works with numbers in a string, like the images above show. the only thing that differentiate the notes title from each other are the number at the end of the title. this is what the sort function then use to sort the notes. You can read more about this function under "sort function" in the technical approach section of this readme. 
 > >
-> > in this example you can see an email form being validated because the form field is set to "required".
+> > For a user this can be valuable if you have a lot of tasks with the same title name but different descriptions that were created far apparat from each other in time.
+
+
 
 ### **Lighthouse Results:**
 
