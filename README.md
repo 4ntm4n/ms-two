@@ -32,24 +32,23 @@ The wireframes for this project focuses on the layout of the different sections 
 
 ### Design Approach
 
-The design of the website is created with the functionality of the application in mind . I did not want to distract the user too much from the core purpose of the application: to have the ability to create and manipulate digital sticky notes. Having that said, I wanted the application to feel retro, lo-tech and incorporate a bit of humor to it. 
+The design of the web app is dictated by the functions. I did not want to distract the user too much from the core purpose of the application: to have the ability to create and manipulate digital sticky notes. Having that said, I wanted the application to feel retro, lo-tech and incorporate a bit of humor to it. 
  
 **Design features**
 
 - Buttons have **universally understandable**  icons inside them.
-
-  - layout of buttons are **designed to be reached** by your right thumb, even on larger screens.
-
-  - **colors are contrasty** and highlights difference in different elements the user creates.
-
-  - User is **automatically taken to the relevant place on the screen** depending on what action the user takes.
-
-  - The user receives text **feedback** from within **already existing design elements** within the view when an action is taken.
+- layout of buttons are **designed to be reached** by your right thumb, even on larger screens.
+- **colors are contrasty** and highlights difference in different elements the user creates.
+- User is **automatically taken to the relevant place on the screen** depending on what action the user takes.
+- The user receives text **feedback** from within **already existing design elements** within the view when an action is taken.
 
 **Fonts**
-
-> **Permanent Marker** is a "scribbly font" that was chosen for the title of each note rendered in the view. this is to imitate the look and feel of a real sticky note. 
-
+> **Permanent Marker** is a "scribbly font" that was chosen for the title of each note rendered in the 
+> 
+> view. this is to imitate the look and feel of a real sticky note. 
+>
+> headings have the font set to  **bebas Neue** cursive by default
+> 
 > Paragraphs, anchor tags, and other small text areas have the font set to **Ubuntu Condensed** with a fallback of _Sans-serif_ and to create a retro vibe while maximize readability.
 
 **Colors**
@@ -348,8 +347,10 @@ const NoteImpStatus = (i) => {
 #### **The filter functions**
 >
 >
-> The filter functions are what makes this app easy and maintainable. The first approach in the creation of this app, all notes with different values where put in their own array. removed notes had their own array, important notes was pushed to one array and so on. This was very fiddly since you had to concatenate arrays, then remove duplicates on this array, it often ended in a mess. 
-> By using filters, and filtering out the notes you are interested in by a certain key value, there is no need for anything else than a large array where deleted, non-deleted, important and non-important notes are combined. If you want to view the important notes, filter out notes with an prio value of true, if you want to see the notes you removed, filter out the notes with a removed value of true, if you wanna see all your notes, but not the removed notes, filter out all notes with a removed value of false.
+> The filter functions are what makes this app easy and maintainable. The initial approach was to create one array for each note object's key value. Removed notes had their own array, important notes would have one array and so on. This was very fiddly since you had to mash arrays together at certain points, then remove duplicates on master array, it often ended in a mess with a variety of errors. 
+> By using filters, and filtering out the notes you are interested in by a certain key value, there is no need for anything else than a large array where deleted, non-deleted, important and non-important notes are combined. 
+> If you want to view the important notes, filter out notes with an prio value of true, if you want to see the notes you removed, filter out the notes with a removed value of true, if you wanna see all your notes, but not the removed notes, filter out all notes with a removed value of false.
+> The filter functions have a quite small footprint and one could add more filters to enhance functionality quite easily.
 
 ``` javaScript
 const impFilter = (array) => {
@@ -508,28 +509,6 @@ Here follows some picture of the website on mobile and tablet to show the websit
 > >
 > > you close the menu by pressing the X.
 
-### **Video Elements:**
-
-> ![Video element from youtube](assets/img/readme/testing/mobile-members-signup1.png)
->
-> > Here you can see the video element that is displayed in the sign-up section of the members page.
-> > This video is implemented using an iframe element and embedded code from youtube.
-> >
-> > This video works the same way it would on youtube.com, meaning the video will only play if the user intends it to. The user also has full control over actions such as play, pause, full screen view, video quality and sound.
-> >
-> > Since the video is embedded using iframe, this is like watching youtube from within this website, meaning the creator of what ever video is embedded will get credited by youtube in terms of view counts etc. It can there for also work as a link to a site owners potential youtube page.
-> >
-> > > **important note:**
-> > >
-> > > This video is for mockup reasons only to display what an embedded video would look like on this page and should be replaced by the site owners own video uploaded to youtube. All credit goes to the creator and creators account:
-> > >
-> > > _Name of account:_
-> > >
-> > > [**Boho Beautiful Yoga**](https://www.youtube.com/channel/UCWN2FPlvg9r-LnUyepH9IaQ)
-> > >
-> > > _Link to video used:_
-> > >
-> > > https://www.youtube.com/watch?v=CiaD3jP0YhA
 
 ### **Form Field Validation:**
 
@@ -701,7 +680,7 @@ To extend the validation of the HTML and CSS, external validators from w3c has b
 
 ## Deployment
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows:
+- The site was deployed to GitHub pages using the following steps:
   - In the GitHub repository, navigate to the Settings tab
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
