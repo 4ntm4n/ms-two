@@ -26,11 +26,6 @@
 
 ## Approach
 
-### Wireframes
-The wireframes for this project focuses on the layout of the different sections to ensure the functionality of the application came across to the user in a non distracting way. The mindset when creating the wireframes and layout for this app can be summarized like this: Functionality > Design.
-
-![Notes wireframes](assets/img/readme/wireframe.png)
-
 ### Design Approach
 
 The design of the web app is dictated by the functions. I did not want to distract the user too much from the core purpose of the application: to have the ability to create and manipulate digital sticky notes. Having that said, I wanted the application to feel retro, lo-tech and incorporate a bit of humor to it. 
@@ -80,7 +75,7 @@ The design of the web app is dictated by the functions. I did not want to distra
 <br>
 <br> 
 
-### **Technical Approach**
+### Technical Approach
 
 In this section we are going through the javascript functions, how they work with each other and how they respond to the users action in order to get an understanding how the application is working behind the scenes. 
 
