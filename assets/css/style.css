@@ -1,4 +1,7 @@
+/* font import */
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Madurai:wght@300;400&family=Permanent+Marker&family=Ubuntu+Condensed&display=swap");
+
+/* general styling --------------------------------------- */
 * {
   margin: 0;
 }
@@ -153,7 +156,6 @@ h2{
 .hidden {
   position: absolute;
   right: -99px;
-  visibility: hidden;
 }
 
 
