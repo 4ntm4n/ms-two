@@ -9,9 +9,17 @@
       name="description"
       content="create, sort and destroy your own digital sticky notes"
     />
+    <!-- favivon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css" />
 
-    <!-- script in head uses defer / async attr, to load after html content to increase speed by parallel load, see: https://www.w3schools.com/tags/att_script_defer.asp-->
+    <!-- script in head uses defer / async attr, to load after html content 
+    to increase speed by parallel load, see: https://www.w3schools.com/tags/att_script_defer.asp-->
     <script
       async
       src="https://kit.fontawesome.com/2759c1d447.js"
@@ -51,12 +59,12 @@
               <i class="fa-solid fa-note-sticky"></i>
               <span class="hidden">home</span>
             </button>
-        </li>
-          <li  id="scroll-elem">
+          </li>
+          <li id="scroll-elem">
             <label for="create-note-btn">Add</label>
             <button style class="btn" id="create-note-btn">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span class="hidden">Add</span>
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span class="hidden">Add</span>
             </button>
           </li>
         </ul>
@@ -111,10 +119,9 @@ After you have created a note, you can view them in various different ways by cl
       </div>
     </header>
 
-    <section id="notes-section" class="flexbox">   
-      
-        <h2 id="note-section-heading">your sticky notes lands here</h2>
-     
+    <section id="notes-section" class="flexbox">
+      <h2 id="note-section-heading">your sticky notes lands here</h2>
+
       <ul id="notes-list" class="flexbox flex-container">
         <li class="note">
           <h3 class="note-title">Normal sticky note</h3>
@@ -180,10 +187,19 @@ After you have created a note, you can view them in various different ways by cl
       </ul>
     </section>
     <footer>
-        <a class="flexbox" href="https://github.com/4ntm4n" target="_blank" aria-label="Link to my github page, opens in new window.">
-            <img id="footer-img" src="assets/img/aa-profile.webp" alt="Anton Askling GitHub profile picture">
-            follow me on GitHub
-        </a>
+      <a
+        class="flexbox"
+        href="https://github.com/4ntm4n"
+        target="_blank"
+        aria-label="Link to my github page, opens in new window."
+      >
+        <img
+          id="footer-img"
+          src="assets/img/aa-profile.webp"
+          alt="Anton Askling GitHub profile picture"
+        />
+        follow me on GitHub
+      </a>
       <p>copyright &copy; Anton Askling 2022</p>
     </footer>
   </body>
