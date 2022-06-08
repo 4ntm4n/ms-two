@@ -737,10 +737,15 @@ In this section I want to give credits to resources I have used when creating th
 > **image in footer**
 >
 > > created myself, using imagination and adobe illustrator
-> >
+> 
 > **color scheme**
 >
 > >https://www.schemecolor.com/city-by-night.php
+> 
+> 
+>  **favicon**
+>  favicons where generated using favicon.io
+> >http://favicon.io/
 
 ---
 

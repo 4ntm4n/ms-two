@@ -1,4 +1,4 @@
-//store objects from noteMaker in array
+//Declare array where all note objects will be stored
 let myNotes = [];
 
 // declare fontAwesome icons
@@ -8,18 +8,34 @@ const reverse = `<i class="fa-solid fa-arrow-rotate-left"></i>`;
 const prioIcon = `<i class="fa-solid fa-star"></i>`;
 const notPrioIcon = `<i class="fa-regular fa-star"></i>`;
 
-//declare 'feedback' and store the note section h2 in it, this will be used for user feedback through out.
+/**
+ * declare 'feedback' and store the note section h2 in it
+ * this will be used for user feedback through out this program.
+ */
 let feedback = document.getElementById("note-section-heading");
 
-//light-switch for starred button. will be 1 if starred is clicked will be 0 if other control button is clicked.
+/**
+ * light-switch for starred button.
+ * will be set to one when starred button is clicked
+ * will be set to 0 if any other button in the control panel is clicked.
+ */
 let starred = 0;
 
-//initiate ID counter for important and normal notes.
-let nonPrioCount = 1000; // non-prio notes ID origin.
-let prioCount = 1000; //PRIO notes ID origin.
+/**
+ * initiate id counter for important and normal notes.
+ * important notes will always have an id of sub 1000
+ * normal notes will have an id of 1000 and above
+ */
+let nonPrioCount = 1000; 
+let prioCount = 1000; 
 
 
-//function that stores user input from the note generator form. 
+/**
+ * declare function that handles note generator form submit
+ * check if form checkbox was checked, if so, isPrio is true, else false.
+ * call the noteMaker function with the form input and isPrio value.
+ * scroll the user into the right position where the note was added
+ */
 const handleSubmit = (event) => {
   event.preventDefault();
 
@@ -75,7 +91,11 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
   interact();
 };
 
-// this function takes an array as argument and loops through it and append it to the DOM.
+/** 
+ * declare function that loops through an array and append object data in a list format
+ * add button to individual notes
+ * add event listeners to each note button
+ */  
 const renderNotes = (array) => {
   const notesList = document.getElementById("notes-list");
   notesList.innerHTML = "";
@@ -83,8 +103,11 @@ const renderNotes = (array) => {
   for (let i = 0; i < array.length; i++) {
     // create the 3 different buttons for each object in the array.
     const impNoteBtn = document.createElement("button");
+    impNoteBtn.ariaLabel = "toggle importance on note";
     const restBtn = document.createElement("button");
+    restBtn.ariaLabel = "restore note";
     const rmBtn = document.createElement("button");
+    rmBtn.ariaLabel = "permanently delete note";
 
     const li = document.createElement("li"); // create a list element for each object in array.
     li.classList.add("note");
@@ -232,8 +255,12 @@ const sortByTitle = (array) => {
      return;
      
   }
-/*   make tempArray an instance of the array being passed 
-  then operate on the instance instead of changing the original array */ 
+  /** 
+   *  make tempArray an instance of the array being passed 
+   *  then operate on the instance instead of changing the original array
+   *  give objects inside tempArray a new key called sorted.
+   *  if the note has been sorted before, reverse sort order.
+   */  
   let tempArray = notRemovedFilter(array) 
   // note.sorted has note been added? add it, set it to false and continue
   if (tempArray[0].sorted === null) {
@@ -254,7 +281,7 @@ const sortByTitle = (array) => {
   }
 };
 
-//function that gives the user feedback based on number of notes created.
+//function that gives the user feedback based on number of notes in myNotes.
 const interact = () => {
   const numOfNotes = myNotes.length;
   numOfNotes == 1

@@ -155,7 +155,7 @@ h2{
 /* text inside buttons for screen readers only */
 .hidden {
   position: absolute;
-  right: -99px;
+  top: 30px;
 }
 
 
