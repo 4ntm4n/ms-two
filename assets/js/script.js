@@ -26,9 +26,8 @@ let starred = 0;
  * important notes will always have an id of sub 1000
  * normal notes will have an id of 1000 and above
  */
-let nonPrioCount = 1000; 
-let prioCount = 1000; 
-
+let nonPrioCount = 1000;
+let prioCount = 1000;
 
 /**
  * declare function that handles note generator form submit
@@ -39,7 +38,7 @@ let prioCount = 1000;
 const handleSubmit = (event) => {
   event.preventDefault();
 
-  // store form input fields in variables.  
+  // store form input fields in variables.
   const formTitle = document.getElementById("title-input");
   const formContent = document.getElementById("content-input");
   const formCheckbox = document.getElementById("input-checkbox");
@@ -56,9 +55,11 @@ const handleSubmit = (event) => {
 
   //scroll into the first item if the note created is prio, else scroll to the last item in list.
   const noteArr = document.getElementById("notes-list").children;
-  const lastNote = (noteArr.length -1);
+  const lastNote = noteArr.length - 1;
   const theLastNote = document.getElementById(noteArr[lastNote].id.toString());
-  isPrio ? feedback.scrollIntoView({behavior: "smooth"}) : theLastNote.scrollIntoView({behavior: "smooth"});  
+  isPrio
+    ? feedback.scrollIntoView({ behavior: "smooth" })
+    : theLastNote.scrollIntoView({ behavior: "smooth" });
 };
 
 //create a note object and push it to the myNotes array.
@@ -91,11 +92,11 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
   interact();
 };
 
-/** 
+/**
  * declare function that loops through an array and append object data in a list format
  * add button to individual notes
  * add event listeners to each note button
- */  
+ */
 const renderNotes = (array) => {
   const notesList = document.getElementById("notes-list");
   notesList.innerHTML = "";
@@ -150,7 +151,7 @@ const renderNotes = (array) => {
     li.appendChild(rmBtn);
     li.appendChild(impNoteBtn);
     notesList.appendChild(li);
-    
+
     //event listeners to buttons inside the notes
     rmBtn.addEventListener("click", (i) => {
       removeNote(i);
@@ -176,15 +177,14 @@ const removeNote = (i) => {
   });
 
   //is note already removed? delete it permanently, else set removed to true.
-  if(starred === 1){
+  if (starred === 1) {
     myNotes[index].removed = true;
-    const rmStarred  = impFilter(myNotes)
+    const rmStarred = impFilter(myNotes);
     renderNotes(notRemovedFilter(rmStarred));
-
-  }else if (myNotes[index].removed) {
+  } else if (myNotes[index].removed) {
     myNotes.splice([index], 1);
     renderNotes(removedFilter(myNotes)); //render removed notes
-  }else {
+  } else {
     myNotes[index].removed = true;
     renderNotes(notRemovedFilter(myNotes)); //render all notes - removed
     interact();
@@ -247,21 +247,20 @@ const notRemovedFilter = (array) => {
 
 //add function to sort an array of objects based on its title from A-Z / Z-A.
 const sortByTitle = (array) => {
-
   //stop sorting attempt if there is one or less than one object in the array.
   if (notRemovedFilter(array).length <= 1) {
-    feedback.innerHTML ="Try this again when you have created at least 2 notes"
+    feedback.innerHTML =
+      "Try this again when you have created at least 2 notes";
     renderNotes(notRemovedFilter(array));
-     return;
-     
+    return;
   }
-  /** 
-   *  make tempArray an instance of the array being passed 
+  /**
+   *  make tempArray an instance of the array being passed
    *  then operate on the instance instead of changing the original array
    *  give objects inside tempArray a new key called sorted.
    *  if the note has been sorted before, reverse sort order.
-   */  
-  let tempArray = notRemovedFilter(array) 
+   */
+  let tempArray = notRemovedFilter(array);
   // note.sorted has note been added? add it, set it to false and continue
   if (tempArray[0].sorted === null) {
     tempArray.forEach((note) => (note.sorted = false));
@@ -272,12 +271,12 @@ const sortByTitle = (array) => {
     tempArray.sort((a, b) => (a.title > b.title ? -1 : 1));
     tempArray.forEach((note) => (note.sorted = true)); // add a sorted key that is set to true.
     renderNotes(tempArray);
-    feedback.innerHTML = "sorting by title. Z-A"
+    feedback.innerHTML = "sorting by title. Z-A";
   } else {
     tempArray.sort((a, b) => (a.title > b.title ? 1 : -1));
     tempArray.forEach((note) => (note.sorted = false)); // add a sorted key that is set to false.
     renderNotes(tempArray);
-    feedback.innerHTML = "sorting by title. A-Z"
+    feedback.innerHTML = "sorting by title. A-Z";
   }
 };
 
@@ -295,19 +294,23 @@ const interact = () => {
         "mother of god.. no one has created this many notes... bailing out, your on your own.... ")
     : (feedback.innerHTML = "Your notes are displayed here");
 };
- 
-//scroll function credit: ispired by w3school 
-const scrlElem = document.getElementById('scroll-elem')
+
+//scroll function credit: ispired by w3school
+const scrlElem = document.getElementById("scroll-elem");
 const scrollFunction = () => {
-  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+  if (
+    document.body.scrollTop > 300 ||
+    document.documentElement.scrollTop > 300
+  ) {
     scrlElem.style.display = "flex";
-    
   } else {
     scrlElem.style.display = "none";
   }
 };
 document.body.scrollTop = 0;
-window.onscroll = () => {scrollFunction()};
+window.onscroll = () => {
+  scrollFunction();
+};
 
 //get control panel buttons from index.html
 const delBtn = document.getElementById("render-deleted");
@@ -317,40 +320,40 @@ const homeBtn = document.getElementById("my-notes");
 //click function for deleted button that display removed notes
 delBtn.addEventListener("click", () => {
   const removedNotes = removedFilter(myNotes);
-  renderNotes(removedNotes)
+  renderNotes(removedNotes);
   starred = 0;
-  feedback.innerHTML = "Your removed notes are displayed here"
-  feedback.scrollIntoView({behavior: "smooth"});
+  feedback.innerHTML = "Your removed notes are displayed here";
+  feedback.scrollIntoView({ behavior: "smooth" });
 });
 //click function for the starred button to filter out and render important notes
 impBtn.addEventListener("click", () => {
   const impNotes = impFilter(myNotes);
   renderNotes(notRemovedFilter(impNotes));
   starred = 1;
-  feedback.innerHTML = "Your important notes are displayed here"
-  feedback.scrollIntoView({behavior: "smooth"});
+  feedback.innerHTML = "Your important notes are displayed here";
+  feedback.scrollIntoView({ behavior: "smooth" });
 });
 //click function that call the sort function
 const sort = document.getElementById("sort-btn");
 sort.addEventListener("click", () => {
   starred = 0;
-  sortByTitle(myNotes)
-  feedback.scrollIntoView({behavior: "smooth"});
+  sortByTitle(myNotes);
+  feedback.scrollIntoView({ behavior: "smooth" });
 });
 
 //click function that renders all notes that have a removed value of false
-homeBtn.addEventListener("click", () =>{ 
-  renderNotes(notRemovedFilter(myNotes))
+homeBtn.addEventListener("click", () => {
+  renderNotes(notRemovedFilter(myNotes));
   starred = 0;
   interact();
-  feedback.scrollIntoView({behavior: "smooth"});
+  feedback.scrollIntoView({ behavior: "smooth" });
 });
 
 // click-function that takes user to the top of the page.
-const createNoteBtn = document.getElementById('create-note-btn')
-createNoteBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: "smooth", block: 'start'}); // For Safari
-})
+const createNoteBtn = document.getElementById("create-note-btn");
+createNoteBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth", block: "start" }); // For Safari
+});
 
 //call the handleSubmit function when submit button is clicked.
 const form = document.getElementById("notes-input");
