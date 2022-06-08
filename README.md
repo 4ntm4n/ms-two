@@ -583,7 +583,7 @@ To extend the validation of the HTML and CSS, external validators from w3c has b
   - No errors were found when passing the single CSS file through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2F4ntm4n.github.io%2Fms-two%2Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 
 - JavaScript:
-  - No errors were found when testing the javaScript code through [JSHint](https://jshint.com/)
+  - _109 warnings_ for using ES 6 syntax, but *No errors* were found when testing the javaScript code through [JSHint](https://jshint.com/)
 
 ### Unfixed Bugs
 
