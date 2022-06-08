@@ -40,7 +40,7 @@ const handleSubmit = (event) => {
 
   //scroll into the first item if the note created is prio, else scroll to the last item in list.
   const noteArr = document.getElementById("notes-list").children;
-  lastNote = (noteArr.length -1);
+  const lastNote = (noteArr.length -1);
   const theLastNote = document.getElementById(noteArr[lastNote].id.toString());
   isPrio ? feedback.scrollIntoView({behavior: "smooth"}) : theLastNote.scrollIntoView({behavior: "smooth"});  
 };
@@ -55,7 +55,6 @@ const noteMaker = (title, content, prio, _id, removed = false) => {
     removed,
     set id(idNum) {
       this._id = idNum;
-      console.log("an id has been set");
     },
   };
 
@@ -87,7 +86,7 @@ const renderNotes = (array) => {
     const restBtn = document.createElement("button");
     const rmBtn = document.createElement("button");
 
-    li = document.createElement("li"); // create a list element for each object in array.
+    const li = document.createElement("li"); // create a list element for each object in array.
     li.classList.add("note");
     li.setAttribute("id", array[i]._id);
 
@@ -225,7 +224,6 @@ const notRemovedFilter = (array) => {
 
 //add function to sort an array of objects based on its title from A-Z / Z-A.
 const sortByTitle = (array) => {
-  console.log("array is attempting to sort");
 
   //stop sorting attempt if there is one or less than one object in the array.
   if (notRemovedFilter(array).length <= 1) {
