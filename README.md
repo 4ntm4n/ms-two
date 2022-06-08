@@ -6,6 +6,8 @@
 
 ## Project outline
 
+The idea of notes was to create a _desktop productivity app_ that let user work with digital sticky notes the same way they might be using physical stickies. This app works on mobile too, but it looks and works better on larger screens in my own personal opinion and was developed with a desktop in mind.
+
 ### **user stories:**
 
 > Typical users are interested in getting similar functionality as they get from physical stickyNotes, but in a digital format.
@@ -28,7 +30,7 @@
 
 ### Design Approach
 
-The design of the web app is dictated by the functions. I did not want to distract the user too much from the core purpose of the application: to have the ability to create and manipulate digital sticky notes. Having that said, I wanted the application to feel retro, lo-tech and incorporate a bit of humor to it. 
+The design of the web app is dictated by it's functions. I did not want to distract the user too much from the core purpose of the application: to have the ability to create and manipulate digital sticky notes. The simplistic design makes it feel somewhat retro and a bit humorous, at lest that was the goal. 
  
 **Design features**
 
@@ -53,7 +55,7 @@ The design of the web app is dictated by the functions. I did not want to distra
 
 **Animations**
 
-> only notes, buttons and scroll have a slight subtle animation added to them. App is kept more simple and functions feels lighting fast by having it this way. It ties in to the overall low-tech feel of the design too while it gave me as a developer more time to focus on the functionality. 
+> Only notes, buttons and scroll have a slight subtle animation added to them. App is kept more simple and functions feels lighting fast by having it this way. It ties in to the overall low-tech feel of the design too while it gave me as a developer more time to focus on the functionality. 
 
 **Layout**
 > The layot of the app contains of a single page divided into 3 main sections.
@@ -62,7 +64,7 @@ The design of the web app is dictated by the functions. I did not want to distra
     >   The header contains a form that takes the user input, called note-generator. It also contains a control-panel with the buttons that the user can interact with in order to render it's created notes in different ways.
 
 2.  > **Notes section** <br>
-    >   the notes section contains a feedback header that changes depending on how the user interacts with the page. It also contains an empty list that the user will fill with notes. these notes are displayed in a loose grid pattern using CSS's flex-box and row-wrap.
+    >   The notes section contains a feedback header that changes depending on how the user interacts with the page. It also contains an empty list that the user will fill with notes. these notes are displayed in a loose grid pattern using CSS's flex-box and row-wrap.
 
 3.  > **Footer**
     >   The footer contains a link to my GitHub page and a copyright text.
@@ -254,7 +256,7 @@ const renderNotes = (array) => {
 <br>
 <br>
 
-> the first button that appears on each non removed note are is coupled with this function, it finds the note's correlated object in the myNotes array by it's ID value, and then set's the removed value to true before it re-renders the note filtering out all the removed notes. 
+> The first button that appears on each non removed note are is coupled with this function, it finds the note's correlated object in the myNotes array by it's ID value, and then set's the removed value to true before it re-renders the note filtering out all the removed notes. 
 >
 >You can also see that there are some logic to this function. if the note already has a removed value of true, it should be considered removed and have a delete button instead of a remove button. the delete function removes the note completely from myArray by using javascript's splice method. 
 >
@@ -483,7 +485,7 @@ Here follows some picture of the website on mobile and tablet to show the websit
 
 > ![desktop notes section](assets/img/readme/large-screen-note-section.png)
 >
-> > this is what the user sees lower down on the page if notes has been added. You can for example see that the notes that were created with the prio-checkbox checked appears first even if they were created later than the other notes, and has a red background color.
+> > This is what the user sees lower down on the page if notes has been added. You can for example see that the notes that were created with the prio-checkbox checked appears first even if they were created later than the other notes, and has a red background color.
 >> Note that the "add" button appeared in under the other buttons in the control panel to the right. If this button is clicked, the user will be taken with a smooth scroll to the note generator form field to add a new note.
 
 
@@ -534,7 +536,7 @@ Here follows some picture of the website on mobile and tablet to show the websit
 ### **Destroy a note:**
 > ![permanently delete a note](assets/img/readme/permanent-delete-note.png)
 > 
-> > a user can permanently delete a removed note by pressing this skull icon. There is no way of getting it back after that. 
+> > A user can permanently delete a removed note by pressing this skull icon. There is no way of getting it back after that. 
 
 ### **view the important notes only**
 > ![starred view](assets/img/readme/starrred-notes.png)
@@ -545,7 +547,7 @@ Here follows some picture of the website on mobile and tablet to show the websit
 > ![notes sorted a-z](assets/img/readme/sorting-az.png)
 > ![notes sorted z-a](assets/img/readme/sorting-za.png)
 > 
-> > a user can sort the notes title by A-Z if the button is clicked once, if the button is clicked two times it will sort the notes from Z-A. This works because JavaScript keeps a numeric value for each letter in the alphabet. Naturally this means that function also works with numbers in a string, like the images above show. the only thing that differentiate the notes title from each other are the number at the end of the title. this is what the sort function then use to sort the notes. You can read more about this function under "sort function" in the technical approach section of this readme. 
+> >  User can sort the notes title by A-Z if the button is clicked once, if the button is clicked two times it will sort the notes from Z-A. This works because JavaScript keeps a numeric value for each letter in the alphabet. Naturally this means that function also works with numbers in a string, like the images above show. the only thing that differentiate the notes title from each other are the number at the end of the title. this is what the sort function then use to sort the notes. You can read more about this function under "sort function" in the technical approach section of this readme. 
 > >
 > > For a user this can be valuable if you have a lot of tasks with the same title name but different descriptions that were created far apparat from each other in time.
 
@@ -750,7 +752,7 @@ This project is the second of five milestone projects in a full stack developer 
 
 - There are many ways to approach a project like this, but in this case I wanted to:
 
-  - **A**: limit myself to **pure** html and CSS and JavaScript and not use any frameworks in order to test my knowledge in the basics before moving on to other peoples pre-defined functions and methods. 
+  - **A**: limit myself to **pure** html and CSS and JavaScript and not use any frameworks.
 
   - **B**: work from my own idea to create something unique and that way challange myself to take something from my mind into reality.
 
