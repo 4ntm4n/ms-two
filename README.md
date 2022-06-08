@@ -547,7 +547,7 @@ Here follows some picture of the website on mobile and tablet to show the websit
 
 ### **sorted view**
 > ![notes sorted a-z](assets/img/readme/sorting-az.png)
-> ![notes sorted a-z](assets/img/readme/sorting-za.png)
+> ![notes sorted z-a](assets/img/readme/sorting-za.png)
 > 
 > > a user can sort the notes title by A-Z if the button is clicked once, if the button is clicked two times it will sort the notes from Z-A. This works because JavaScript keeps a numeric value for each letter in the alphabet. Naturally this means that function also works with numbers in a string, like the images above show. the only thing that differentiate the notes title from each other are the number at the end of the title. this is what the sort function then use to sort the notes. You can read more about this function under "sort function" in the technical approach section of this readme. 
 > >
@@ -557,16 +557,15 @@ Here follows some picture of the website on mobile and tablet to show the websit
 
 ### **Lighthouse Results:**
 
-> ![form field being validated](assets/img/readme/testing/lighthouse-report.png)
+> ![lighthouse report summary](assets/img/readme/lighthouse-summary.png)
 >
 > > _Performance_, _Accessibility_ adherence, _SEO_ and _Best Practices_ have been tested with the inbuilt lighthouse tester in chrome developer tools.
 > >
 > > These are the results.
 > >
-> > **Please Note:**
-> >
-> > The iframe element containing **youtube's code** has been commented out during testing of the website. This is because it contains performance thresholds and yields best practice suggestions that are outside the scope of this _front end_ project. see image below for details:
-> ![light house suggestions youtube element](assets/img/testing/bugs/../../readme/testing/bugs/bug2.png) 
+> > **Room for improvement:**
+> >![lighthouse report room for improvement](assets/img/readme/lighthouse-room-for-improvement.png) 
+> > Colors could be altered to get a 100% score on accessibility. 
 
 ### **Validator Tests**
 
