@@ -554,7 +554,11 @@ Here follows some picture of the website on mobile and tablet to show the websit
 > >
 > > For a user this can be valuable if you have a lot of tasks with the same title name but different descriptions that were created far apparat from each other in time.
 
-
+### **form validation 1:**
+> ![permanently delete a note](assets/img/readme/form-validation-one.png)
+> ![permanently delete a note](assets/img/readme/form-validation-two.png)
+> > The title field is the only required field in this application, if the user tries to leave the field blank, or if a user tries to fill in only blank spaces, the user will get prompted to fill in the form correctly. 
+> This is made possible through the required attribute in the html, and also through the pattern attribute that makes sure that the blank spaces in the beginning of the form field are considered a user error.
 
 ### **Lighthouse Results:**
 
@@ -688,9 +692,9 @@ In this section I want to give credits to resources I have used when creating th
 
 ### **Technical**
 
-> Here I want to give credit to the resources I have used that gave me enough knowledge in html and css in order to build this website.
+> Here I want to give credit to the resources I have used that gave me enough knowledge in html and css in order to build this web app.
 
-> #### **Codecademy** - _Intermediate CSS track_
+> #### **Codecademy**
 >
 > On Codecademy.com I took a course in JavaScript called "Learn JavaScript", as well as one called "building interactive JavaScript websites". Prior writing this web application in javascript, codecademy let me try my abilities by working with small isolated projects on specific topics. This was a great way for me to get the ability to both understand and write this application fluently with very few moments where I had too look at external resources. 
 >
@@ -738,6 +742,10 @@ In this section I want to give credits to resources I have used when creating th
 > **image in footer**
 >
 > > created myself, using imagination and adobe illustrator
+> >
+> **color scheme**
+>
+> >https://www.schemecolor.com/city-by-night.php
 
 ---
 
@@ -745,35 +753,17 @@ In this section I want to give credits to resources I have used when creating th
 
 Thank you for taking the time to read through this website documentation.
 
-This project is the first of five milestone projects in a full stack developer course that I have enrolled through [Code Institute](https://codeinstitute.net).
+This project is the second of five milestone projects in a full stack developer course that I have enrolled through [Code Institute](https://codeinstitute.net).
 
 - There are many ways to approach a project like this, but in this case I wanted to:
 
-  - **A**: limit myself to **pure** html and CSS since this is a course in those topics and I was curious to see how much could be done without using any javascript to create front end functionality.
+  - **A**: limit myself to **pure** html and CSS and JavaScript and not use any frameworks in order to test my knowledge in the basics before moving on to other peoples pre-defined functions and methods. 
 
-  - **B**: **not use** any framework to aid me in class creation, grid functionality and design.
+  - **B**: work from my own idea to create something unique and that way challange myself to take something from my mind into reality.
 
-  - **C**: Work from a **pre-defined** project suggestion (in this case yoga / mindfulness) to further challenge myself and create a, what I can imagine, more life like scenario for a web developer where you put yourself in a clients shoes and work with a topic that is not always aligning with personal interests.
+The notes in this application has been viewed by me as placeholders for potentially different content on a more advanced website that I could build in the future. The ability for a user to create, sort and remove objects to give a more customized experience in a website is something that appeals to me. I think I have learned some very valuable lessons by building this application regardless of if _this_ application will be viewed as valuable or not. 
 
-> FlexGrid Yoga - a study in HTML & CSS
+
+> Notes - a study in JavaScript
 >
 > By Anton Askling 2022
-
-
-
-
-
-# ms-two
-
-https://www.w3schools.com/jsref/jsref_concat_array.asp#:~:text=The%20concat()%20method%20concatenates,not%20change%20the%20existing%20arrays.
-
-prevent pointer when fontawesome icon inside button !"!!!!
-https://stackoverflow.com/questions/21653978/font-awesome-icon-preventing-click-in-parent-button
-
-scroll to top
-https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
-
-
-color scheme:
-https://www.
-schemecolor.com/city-by-night.php
