@@ -21,6 +21,7 @@
   - restore notes that has been removed.
   - delete notes permanently.
   - click a button that takes them to the note generator, instead of having to scroll up and down if many notes have been created.
+  - view all the notes that have been removed
   
 
 ## Approach
@@ -559,12 +560,13 @@ Here follows some picture of the website on mobile and tablet to show the websit
 
 > ![lighthouse report summary](assets/img/readme/lighthouse-summary.png)
 >
-> > _Performance_, _Accessibility_ adherence, _SEO_ and _Best Practices_ have been tested with the inbuilt lighthouse tester in chrome developer tools.
-> >
-> > These are the results.
+>  _Performance_, _Accessibility_ adherence, _SEO_ and _Best Practices_ have been tested with the inbuilt lighthouse tester in chrome developer tools.
+>  These are the results.
 > >
 > > **Room for improvement:**
+> >
 > >![lighthouse report room for improvement](assets/img/readme/lighthouse-room-for-improvement.png) 
+> >
 > > Colors could be altered to get a 100% score on accessibility. 
 
 ### **Validator Tests**
@@ -580,30 +582,11 @@ To extend the validation of the HTML and CSS, external validators from w3c has b
   - No errors were found when passing the single CSS file through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2F4ntm4n.github.io%2Fms-two%2Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 
 - JavaScript:
-  - External accessibility tests were made with no errors through [WAVE](https://wave.webaim.org/report#/https://4ntm4n.github.io/ms-one/index.html)
+  - No errors were found when testing the javaScript code through [JSHint](https://jshint.com/)
 
 ### Unfixed Bugs
 
-> **What?**
->
-> > background of fixed menu bar disappears.
-> >
-> > ![navigation bug](assets/img/readme/testing/bugs/bug1.png)
->
-> **When?**
->
-> > When user is on a desktop browser and resizes the viewport so small that the hamburger menu appears. If the hamburger menu is then clicked to be opened and the viewport is enlarged so that the "normal" navigation menu appears again.
->
-> **Why?**
->
-> > This is due to the fact that the menu is made with pure CSS and uses a transparent checkbox on top of the hamburger icon. When the checkbox is checked, the menu is toggled, and the navigation bar disappears. If it is left checked, and the viewport enlarged, the menu will disappear but the checkbox will remain checked. This means that all styling that is applied when the checkbox is checked also will remain until you physically uncheck the checkbox.
->
-> **Solution**
->
-> > 1.  You can redesign the menu so that it covers the entire screen, and remove the animation that removes the nav-bar. (This creates some other UX issues).
-> >
-> > 2.  You could re-create the hamburger menu using a method that involves javascript. (This is arguably the best solution but N/A for this project.)
-
+> No bugs has been found in the testing of the application. tests has been made extensively throughout the coding of the app. if you find any errors, please let me know. anton.askling[a]gmail(.)com
 ---
 
 ## **Testing User stories**
@@ -612,101 +595,78 @@ To extend the validation of the HTML and CSS, external validators from w3c has b
 >
 > > We are testing the user stories one by one. Click the list items to view its correlating solution.
 
-- **Typical users wants to:**
+- **Typical users wants to have the ability:**
 
   - <details>
       <summary>
-        Know more about site and yoga instructor
+        create new sticky notes.
       </summary>
-      <img src="assets/img/readme/screenshot-index-about.png">  
+      <img src="assets/img/readme/small-screen-landing.png">  
     </details>
 
   - <details>
       <summary>
-        Be able to subscribe to news coming from community regarding techniques and upcoming yoga sessions
+        remove completed / irrelevant notes from the view.
       </summary>  
-      <img src="assets/img/readme/screenshot-index-join.png">
+      <img src="assets/img/readme/remove-note.png">
     </details>
 
   - <details>
       <summary>
-        Get a hint about what is expected inside the paid members area
+        sort notes by title name from A-Z or Z-A
       </summary>
-      <img src="assets/img/testing/../readme/testing/mobile-members-signup1.png">  
+      <img src="assets/img/readme/sorting-az.png">
+      <img src="assets/img/readme/sorting-za.png">  
     </details>
 
   - <details>
       <summary>
-        Be able to sign up and become a full member, attending live- and pre recorded -yoga sessions
+        make notes prioritized and have them showed up first in the list of notes.
       </summary>
-      <img src="assets/img/readme/testing/mobile-members-signup2.png">    
+      <img src="assets/img/readme/make-important.png">    
     </details>
 
   - <details>
       <summary>
-        Connect to community on social medias
+        have a view for the prioritized notes only.
       </summary>
-      <img src="assets/img/readme/screenshot-index-footer.png">  
+      <img src="assets/img/readme/starrred-notes.png">  
     </details>
-
-- **Existing users wants to:**
 
   - <details>
       <summary>
-        Sign in to their account and conduct yoga sessions.
+        toggle between priority status on a note AFTER it has been created.
       </summary>
-      <img src="assets/img/readme/testing/mobile-members-login.png">  
+      <img src="assets/img/readme/star-existing.png">  
     </details>
 
-- **Site owner wants to:**
 
   - <details>
       <summary>
-        Educate new site visitors about herself
+        restore notes that has been removed.
       </summary>
-      <img src="assets/img/readme/screenshot-index-about.png">  
+      <img src="assets/img/readme/restore-note.png">  
     </details>
 
   - <details>
       <summary>
-        give breif overview of the benefits of yoga
+        delete notes permanently.
       </summary>  
-      <img src="assets/img/readme/screenshot-index-benefits.png">
+      <img src="assets/img/readme/permanent-delete-note.png">
     </details>
 
   - <details>
       <summary>
-        let new users sign up to newsletter to keep them in the loop of what is happening in the community
+        click a button that takes them to the note generator, instead of having to scroll up and down if many notes have been created.
       </summary>
-      <img src="assets/img/readme/screenshot-index-join.png"> 
+      <img src="assets/img/readme/add-button.png"> 
     </details>
 
   - <details>
       <summary>
-        let users know how they can engage in social media.
+        view all the notes that have been removed
       </summary>
-      <img src="assets/img/readme/screenshot-index-footer.png">  
-    </details>
-
-  - <details>
-      <summary>
-        let existing users log in to view the paid-for content.
-      </summary>
-      <img src="assets/img/readme/testing/mobile-members-login.png">    
-    </details>
-
-  - <details>
-      <summary>
-        Give a hint about what is expected inside the paid members area
-      </summary>
-      <img src="assets/img/testing/../readme/testing/mobile-members-signup1.png">  
-    </details>
-
-  - <details>
-      <summary>
-        Let new users sign up and become full members
-      </summary>
-      <img src="assets/img/readme/testing/mobile-members-signup2.png">    
+      <img src="assets/img/readme/removed-notes.png">  
     </details>
 
 ---
@@ -720,7 +680,7 @@ To extend the validation of the HTML and CSS, external validators from w3c has b
 
 > You can visit the live website form any device by following this link:
 >
-> https://4ntm4n.github.io/ms-one/index.html
+> https://4ntm4n.github.io/ms-two/index.html
 
 ## Credits
 
@@ -730,107 +690,54 @@ In this section I want to give credits to resources I have used when creating th
 
 > Here I want to give credit to the resources I have used that gave me enough knowledge in html and css in order to build this website.
 
-> #### **Code Institute**
->
-> Since I am a full stack developer student at code institute most of my fundamental programming skills and essential knowledge in html and css comes from here:
->
-> > https://codeinstitute.net
-
 > #### **Codecademy** - _Intermediate CSS track_
 >
-> On Codecademy.com I took a course in intermediate CSS after finishing the course material on Code Institute. Here I learned about flexbox in CSS and also CSS inbuilt grid functionality that I used to create rows for each section of this website.
+> On Codecademy.com I took a course in JavaScript called "Learn JavaScript", as well as one called "building interactive JavaScript websites". Prior writing this web application in javascript, codecademy let me try my abilities by working with small isolated projects on specific topics. This was a great way for me to get the ability to both understand and write this application fluently with very few moments where I had too look at external resources. 
 >
-> > Here is a link to the track on codecademy:
-> > https://www.codecademy.com/learn/learn-intermediate-css
->
-> > here is a link to project I made to teach myself flexbox:
-> > https://github.com/4ntm4n/Tea-cozy/blob/main/README.md
+> > Here is a link to the tracks on codecademy:
+> > https://www.codecademy.com/learn/build-interactive-websites
+> > https://www.codecademy.com/learn/introduction-to-javascript
+
 
 > #### **tips and tricks**
 >
 > Here I will are some things I picked up after googling and reading forums
 >
-> **smooth-scrolling in CSS:**
+> **Concat arrays (used when a note was made prio):**
 >
-> > https://gomakethings.com/smooth-scrolling-links-with-only-css/
+> > https://www.w3schools.com/jsref/jsref_concat_array.asp#:~:text=The%20concat()%20method%20concatenates,not%20change%20the%20existing%20arrays
 >
-> **center an image from html through CSS:**
+> **prevent button malfunction when using icons inside buttons:**
 >
-> > https://www.w3schools.com/howto/howto_css_image_center.asp
+> > https://stackoverflow.com/questions/21653978/font-awesome-icon-preventing-click-in-parent-button
 >
-> **adding script to bottom of the page:**
+> **scroll to the top of the page ('add' button)**
 >
-> > https://stackoverflow.com/questions/38407962/when-to-use-the-script-tag-in-the-head-and-body-section-of-a-html-page#:~:text=Put%20your%20functions%20in%20the,not%20interfere%20with%20page%20content.&text=If%20your%20is%20not%20placed,of%20the%20element.
+> > https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 >
-> **styling input fields:**
+> **How to sort objects in an array**
+> 
+> > https://www.youtube.com/watch?v=qy8TcQSGuoI&t=2s
 >
-> > https://www.w3schools.com/css/css_form.asp
->
-> **hamburger menu:**
->
-> found this burger menu method, imported it and modified it to suit this website.
->
-> > https://codepen.io/alvarotrigo/pen/wvrzPWL
->
-> **using media queries:**
->
-> > https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
->
-> **how to ease everything on hover:** > https://stackoverflow.com/questions/41267357/css-ease-in-and-out-on-hover
+> **How to target a list item by clicking a button inside it**
+> > https://stackoverflow.com/questions/65321786/how-to-target-an-item-inside-a-list-element-by-class?fbclid=IwAR0GF2tT65JqtKLRhaWEcw6XcTXMsR6D4S9FZmv7d6aCXyb7cwS7awWkPsk
+> 
+> **inspiration for my filter functions**
+> > https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
-### **Content**
-
-In terms of text content, almost everything has been invented by myself on the fly as I saw fit and can be viewed as relevant mockup text that should be replaced by the site owners own words if this site ever were to be commercially used.
-
-> #### **Benefits of yoga**
+>#### **Content**
 >
-> The cards in the benefits section have six different benefits of yoga presented on them, these benefits were inspired by this article.
->
-> > https://www.hopkinsmedicine.org/health/wellness-and-prevention/9-benefits-of-yoga
-
-### **Fonts and icons**
-
 > - Fonts for text and heading has been imported through [Google Fonts](https://fonts.google.com/)
 >   >
-> - The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-
-### **Media**
-
-In this section you can see where the media elements on the website comes from and who created them.
-
-> **flower pictures that are used for the benefits cards:** >https://www.freepik.com/free-vector/yoga-mind-quote-vector-template-social-media-post-set_20266489.htm#query=flower%20yoga%20pose&position=0&from_view=search
+> - All icons comes from [Font Awesome](https://fontawesome.com/)
 >
-> > created by rawpixel.com and availabel on https://freepik.com/
-
-> **background of sign-up section on members page:** >https://www.freepik.com/free-vector/people-practicing-yoga_9176176.htm#query=yoga%20studio&position=33&from_view=keyword
->
-> > Created by pch.vector and available on https://freepik.com/
-
-> **background of join section on index page** >https://www.freepik.com/free-vector/open-air-yoga-class-concept_9892525.htm#query=yoga&position=2&from_view=author
->
-> > created by pikisuperstar and available on https://freepik.com/
-
-> **Selfie image in the about section on index page** > https://www.freepik.com/free-photo/woman-yoga-mat-relax-park-young-sporty-asian-woman-practicing-yoga-doing-headstand-exercise-working-out-wearing-sportswear-pants-top_14625823.htm#query=yoga%20nature%20headstand&position=0&from_view=search
->
-> > Image by jcomp and available on https://freepik.com/
-
-> **background image in header on index and members page**
+> **image in header**
 >
 > > bought from Adobe stock photos and available on https://adobestock.com/
-
-> **video element in sign-up section on members page**
 >
-> As mentioned in the testing area: _This video is for mockup reasons only_ to display what an embedded video would look like on this page and should be replaced by the site owners own video uploaded to youtube. All credit goes to the creator and creators account.
+> **image in footer**
 >
-> By viewing the video on this website, you are watching the creators channel on youtube through the iframe and youtube's embedded code.
->
-> > _Name of account:_
-> >
-> > **Boho Beautiful Yoga**
->
-> > _Link to video used:_
-> >
-> > https://www.youtube.com/watch?v=CiaD3jP0YhA
+> > created myself, using imagination and adobe illustrator
 
 ---
 
