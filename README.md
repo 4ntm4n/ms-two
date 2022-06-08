@@ -687,8 +687,6 @@ In this section I want to give credits to resources I have used when creating th
 
 ### **Technical**
 
-> Here I want to give credit to the resources I have used that gave me enough knowledge in html and css in order to build this web app.
-
 > #### **Codecademy**
 >
 > On Codecademy.com I took a course in JavaScript called "Learn JavaScript", as well as one called "building interactive JavaScript websites". Prior writing this web application in javascript, codecademy let me try my abilities by working with small isolated projects on specific topics. This was a great way for me to get the ability to both understand and write this application fluently with very few moments where I had too look at external resources. 
@@ -724,7 +722,7 @@ In this section I want to give credits to resources I have used when creating th
 > **inspiration for my filter functions**
 > > https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
->#### **Content**
+### **Content**
 >
 > - Fonts for text and heading has been imported through [Google Fonts](https://fonts.google.com/)
 >   >
